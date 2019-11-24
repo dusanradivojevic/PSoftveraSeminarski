@@ -24,6 +24,22 @@ namespace Domen
             set { nazivGrada = value; }
         }
 
+        private Zemlja zemlja;
+
+        public Zemlja Zemlja
+        {
+            get { return zemlja; }
+            set { zemlja = value; }
+        }
+
+        private Korisnik korisnik;
+
+        public Korisnik Korisnik
+        {
+            get { return korisnik; }
+            set { korisnik = value; }
+        }
+        
         public override string ToString()
         {
             return nazivGrada;

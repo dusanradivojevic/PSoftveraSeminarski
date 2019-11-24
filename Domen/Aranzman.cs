@@ -72,6 +72,22 @@ namespace Domen
             set { brojSlobodnihMesta = value; }
         }
 
+        private Destinacija destinacija;
+
+        public Destinacija Destinacija
+        {
+            get { return destinacija; }
+            set { destinacija = value; }
+        }
+
+        private Korisnik korisnik;
+
+        public Korisnik Korisnik
+        {
+            get { return korisnik; }
+            set { korisnik = value; }
+        }
+        
         public override string ToString()
         {
             return nazivAranzmana;
