@@ -1,0 +1,9 @@
+D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\bin\Debug\Forme.exe.config
+D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\bin\Debug\Forme.exe
+D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\bin\Debug\Forme.pdb
+D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\obj\Debug\Forme.csprojAssemblyReference.cache
+D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\obj\Debug\Forme.FrmPrijava.resources
+D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\obj\Debug\Forme.Properties.Resources.resources
+D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\obj\Debug\Forme.csproj.GenerateResource.cache
+D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\obj\Debug\Forme.exe
+D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\obj\Debug\Forme.pdb
