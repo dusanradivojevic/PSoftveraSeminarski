@@ -10,19 +10,14 @@ using System.Windows.Forms;
 
 namespace Forme
 {
-    public partial class FrmGlavna : Form
+    public partial class FrmDodajAranzman : Form
     {
-        public FrmGlavna()
+        public FrmDodajAranzman()
         {
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void FrmDodajAranzman_Load(object sender, EventArgs e)
         {
 
         }

@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace Forme
 {
-    public partial class FrmGlavna : Form
+    public partial class FrmDetaljiAranzmana : Form
     {
-        public FrmGlavna()
+        public FrmDetaljiAranzmana()
         {
             InitializeComponent();
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

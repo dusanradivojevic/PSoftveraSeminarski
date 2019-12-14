@@ -46,11 +46,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmDetaljiAranzmana.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDetaljiAranzmana.Designer.cs">
+      <DependentUpon>FrmDetaljiAranzmana.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDodajAranzman.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDodajAranzman.Designer.cs">
+      <DependentUpon>FrmDodajAranzman.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDodajDestinaciju.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDodajDestinaciju.Designer.cs">
+      <DependentUpon>FrmDodajDestinaciju.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmGlavna.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmGlavna.Designer.cs">
       <DependentUpon>FrmGlavna.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmKreirajPutnika.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmKreirajPutnika.Designer.cs">
+      <DependentUpon>FrmKreirajPutnika.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmObrisiDestinaciju.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmObrisiDestinaciju.Designer.cs">
+      <DependentUpon>FrmObrisiDestinaciju.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPrijava.cs">
       <SubType>Form</SubType>
@@ -58,14 +88,38 @@
     <Compile Include="FrmPrijava.Designer.cs">
       <DependentUpon>FrmPrijava.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmUpravljanjePutnicima.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUpravljanjePutnicima.Designer.cs">
+      <DependentUpon>FrmUpravljanjePutnicima.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sesija.cs" />
+    <EmbeddedResource Include="FrmDetaljiAranzmana.resx">
+      <DependentUpon>FrmDetaljiAranzmana.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDodajAranzman.resx">
+      <DependentUpon>FrmDodajAranzman.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDodajDestinaciju.resx">
+      <DependentUpon>FrmDodajDestinaciju.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmGlavna.resx">
       <DependentUpon>FrmGlavna.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmKreirajPutnika.resx">
+      <DependentUpon>FrmKreirajPutnika.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmObrisiDestinaciju.resx">
+      <DependentUpon>FrmObrisiDestinaciju.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPrijava.resx">
       <DependentUpon>FrmPrijava.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUpravljanjePutnicima.resx">
+      <DependentUpon>FrmUpravljanjePutnicima.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

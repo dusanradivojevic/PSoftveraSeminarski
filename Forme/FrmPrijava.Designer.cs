@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrijava));
             this.btnPrijaviSe = new System.Windows.Forms.Button();
             this.txtKorisnickoIme = new System.Windows.Forms.TextBox();
             this.txtSifra = new System.Windows.Forms.TextBox();
@@ -59,6 +60,7 @@
             this.txtSifra.Location = new System.Drawing.Point(151, 105);
             this.txtSifra.Margin = new System.Windows.Forms.Padding(4);
             this.txtSifra.Name = "txtSifra";
+            this.txtSifra.PasswordChar = '*';
             this.txtSifra.Size = new System.Drawing.Size(226, 24);
             this.txtSifra.TabIndex = 2;
             this.txtSifra.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSifra_KeyDown);
@@ -96,6 +98,7 @@
             this.Controls.Add(this.txtKorisnickoIme);
             this.Controls.Add(this.btnPrijaviSe);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmPrijava";
             this.Text = "Prijava";
