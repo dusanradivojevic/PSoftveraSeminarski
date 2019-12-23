@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Domen
 {
-    public class Korisnik
+    public class Korisnik : IDomenskiObjekat
     {
         private int korisnikID;
 
@@ -48,9 +49,36 @@ namespace Domen
             set { sifra = value; }
         }
 
+        public string NazivTabele => "Korisnik";
+
+        public string VrednostiZaInsert => $"{korisnikID}, '{Ime}', '{Prezime}', '{Email}', " +
+            $"'{Sifra}";
+
+        public string KriterijumiZaPretragu => $"KorisnikID = {KorisnikID} AND Sifra = {Sifra}";
+
         public override string ToString()
         {
             return ime + ' ' + prezime;
+        }
+
+        public List<IDomenskiObjekat> VratiListu(SqlDataReader reader)
+        {
+            List<IDomenskiObjekat> korisnici = new List<IDomenskiObjekat>();
+            while (reader.Read())
+            {
+                Korisnik k = new Korisnik
+                {
+                    KorisnikID = (int)reader["KorisnikID"],
+                    Ime = (string)reader["Ime"],
+                    Prezime = (string)reader["Prezime"],
+                    Email = (string)reader["Email"],
+                    Sifra = (string)reader["Sifra"]
+                };
+
+                korisnici.Add(k);
+            }
+
+            return korisnici;
         }
     }
 }

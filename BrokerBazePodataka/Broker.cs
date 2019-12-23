@@ -18,31 +18,45 @@ namespace BrokerBazePodataka
             konekcija = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=TuristickaAgencija;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         }
 
-        private void OtvoriKonekciju()
+        public void OtvoriKonekciju()
         {
             konekcija.Open();
         }
 
-        private void ZatvoriKonekciju()
+        public void ZatvoriKonekciju()
         {
             konekcija.Close();
         }
 
-        private void PokreniTransakciju()
+        public void PokreniTransakciju()
         {
             transakcija = konekcija.BeginTransaction();
         }
 
-        private void Commit()
+        public void Commit()
         {
             transakcija.Commit();
         }
 
-        private void Rollback()
+        public void Rollback()
         {
             transakcija.Rollback();
         }
 
+        // === Korisnik ===
+
+        public List<IDomenskiObjekat> PrijaviMe(IDomenskiObjekat objekat)
+        {
+            SqlCommand command = new SqlCommand("", konekcija, transakcija);
+            command.CommandText = $"SELECT * FROM {objekat.NazivTabele} " +
+                $"WHERE {objekat.KriterijumiZaPretragu}";
+            SqlDataReader reader = command.ExecuteReader();
+            List<IDomenskiObjekat> rezultat = objekat.VratiListu(reader);
+            reader.Close();
+            return rezultat;
+        }
+
+        //
         public List<Aranzman> VratiSveAranzmane()
         {
             List<Aranzman> listaAranzmana = new List<Aranzman>();
