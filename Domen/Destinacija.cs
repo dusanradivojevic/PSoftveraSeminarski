@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Domen
 {
-    public class Destinacija
+    public class Destinacija : IDomenskiObjekat
     {
         private int destinacijaID;
 
@@ -39,10 +40,81 @@ namespace Domen
             get { return korisnik; }
             set { korisnik = value; }
         }
-        
+
         public override string ToString()
         {
             return nazivGrada;
+            //return nazivGrada + $" ({Zemlja.NazivZemlje})";
+        }
+
+        public string NazivTabele => "Destinacija";
+
+        public string VrednostiZaInsert => $"{DestinacijaID}, '{nazivGrada}', " +
+            $"{Zemlja.ZemljaID}, {Korisnik.KorisnikID}";
+
+        public string KriterijumiZaPretragu => $"DestinacijaID = {DestinacijaID}";
+              
+        public List<IDomenskiObjekat> VratiListu(SqlDataReader reader)
+        {
+            List<IDomenskiObjekat> destinacije = new List<IDomenskiObjekat>();
+            while (reader.Read())
+            {
+                Destinacija d = new Destinacija
+                {
+                    DestinacijaID = (int)reader["DestinacijaID"],
+                    NazivGrada = (string)reader["NazivGrada"],
+                    Zemlja = new Zemlja()
+                    {
+                        ZemljaID = (int)reader["ZemljaID"]
+                    },
+                    Korisnik = new Korisnik()
+                    {
+                        KorisnikID = (int)reader["KorisnikID"]
+                    }
+                };
+
+                destinacije.Add(d);
+            }
+
+            return destinacije;
+        }
+
+        public IDomenskiObjekat VratiPodDomen()
+        {
+            if (Zemlja != null && Zemlja.NazivZemlje == null)
+            {
+                return Zemlja as IDomenskiObjekat;
+            }
+
+            if (Korisnik != null && Korisnik.Ime == null)
+            {
+                return Korisnik as IDomenskiObjekat;
+            }
+
+            return null;
+        }
+
+        public void PostaviVrednost(IDomenskiObjekat ido)
+        {
+            Destinacija d = (Destinacija)ido;
+
+            DestinacijaID = d.DestinacijaID;
+            NazivGrada = d.NazivGrada;
+            Zemlja = d.Zemlja;
+            Korisnik = d.Korisnik;
+        }
+
+        public void PostaviVrednostPodDomena(IDomenskiObjekat ido)
+        {
+            if (ido is Zemlja)
+            {
+                Zemlja = (Zemlja)ido;
+            }
+
+            if (ido is Korisnik)
+            {
+                Korisnik = (Korisnik)ido;
+            }
         }
     }
 }

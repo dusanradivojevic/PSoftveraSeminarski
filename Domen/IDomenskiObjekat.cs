@@ -14,5 +14,8 @@ namespace Domen
         string KriterijumiZaPretragu { get; }
 
         List<IDomenskiObjekat> VratiListu(SqlDataReader reader);
+        IDomenskiObjekat VratiPodDomen();
+        void PostaviVrednost(IDomenskiObjekat ido);
+        void PostaviVrednostPodDomena(IDomenskiObjekat ido);
     }
 }

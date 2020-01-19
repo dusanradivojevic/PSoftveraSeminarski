@@ -148,6 +148,10 @@
       <Project>{64d67e9e-32fa-4800-a04e-c87eb00d1b61}</Project>
       <Name>Domen</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Kontroler\Kontroler.csproj">
+      <Project>{16AD2A1E-FC8F-4B1A-AA9F-C5C7DD1C55D2}</Project>
+      <Name>Kontroler</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

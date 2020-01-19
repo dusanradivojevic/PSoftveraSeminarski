@@ -54,7 +54,20 @@ namespace Domen
         public string VrednostiZaInsert => $"{korisnikID}, '{Ime}', '{Prezime}', '{Email}', " +
             $"'{Sifra}";
 
-        public string KriterijumiZaPretragu => $"KorisnikID = {KorisnikID} AND Sifra = {Sifra}";
+        public string KriterijumiZaPretragu
+        {
+            get
+            {
+                if (Email == null)
+                {
+                    return $"KorisnikID = {KorisnikID}";
+                }
+                else
+                {
+                    return $"Email = '{Email}' AND Sifra = '{Sifra}'";
+                }
+            }
+        }
 
         public override string ToString()
         {
@@ -79,6 +92,27 @@ namespace Domen
             }
 
             return korisnici;
+        }
+
+        public IDomenskiObjekat VratiPodDomen()
+        {
+            return null;
+        }
+
+        public void PostaviVrednost(IDomenskiObjekat ido)
+        {
+            Korisnik k = (Korisnik)ido;
+
+            korisnikID = k.KorisnikID;
+            Ime = k.Ime;
+            Prezime = k.Prezime;
+            Email = k.Email;
+            Sifra = k.Sifra;
+        }
+
+        public void PostaviVrednostPodDomena(IDomenskiObjekat ido)
+        {
+            return;
         }
     }
 }

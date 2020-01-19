@@ -50,6 +50,9 @@
             this.dodajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.obrisiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.upravljanjePutnicimaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.odjavaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.odjaviSeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAranzmaniPretraga)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -57,6 +60,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.btnPrikaziDetalje);
             this.groupBox1.Controls.Add(this.btnPretrazi);
             this.groupBox1.Controls.Add(this.txtDestinacija);
@@ -85,6 +89,7 @@
             this.btnPrikaziDetalje.TabIndex = 15;
             this.btnPrikaziDetalje.Text = "Prikazi detalje";
             this.btnPrikaziDetalje.UseVisualStyleBackColor = true;
+            this.btnPrikaziDetalje.Click += new System.EventHandler(this.btnPrikaziDetalje_Click);
             // 
             // btnPretrazi
             // 
@@ -213,7 +218,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.upravljanjeDestinacijamaToolStripMenuItem,
-            this.upravljanjePutnicimaToolStripMenuItem});
+            this.upravljanjePutnicimaToolStripMenuItem,
+            this.odjavaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(778, 24);
@@ -246,6 +252,31 @@
             this.upravljanjePutnicimaToolStripMenuItem.Name = "upravljanjePutnicimaToolStripMenuItem";
             this.upravljanjePutnicimaToolStripMenuItem.Size = new System.Drawing.Size(135, 20);
             this.upravljanjePutnicimaToolStripMenuItem.Text = "Upravljanje putnicima";
+            // 
+            // odjavaToolStripMenuItem
+            // 
+            this.odjavaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.odjaviSeToolStripMenuItem});
+            this.odjavaToolStripMenuItem.Name = "odjavaToolStripMenuItem";
+            this.odjavaToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.odjavaToolStripMenuItem.Text = "Odjava";
+            // 
+            // odjaviSeToolStripMenuItem
+            // 
+            this.odjaviSeToolStripMenuItem.Name = "odjaviSeToolStripMenuItem";
+            this.odjaviSeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.odjaviSeToolStripMenuItem.Text = "Odjavi se";
+            this.odjaviSeToolStripMenuItem.Click += new System.EventHandler(this.odjaviSeToolStripMenuItem_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(447, 65);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(94, 15);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "(gornja granica)";
             // 
             // FrmGlavna
             // 
@@ -294,5 +325,8 @@
         private System.Windows.Forms.ToolStripMenuItem upravljanjePutnicimaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem obrisiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem odjavaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem odjaviSeToolStripMenuItem;
+        private System.Windows.Forms.Label label6;
     }
 }

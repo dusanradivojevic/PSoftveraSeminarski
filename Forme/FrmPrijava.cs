@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kontroler;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,10 +23,23 @@ namespace Forme
 
         private void btnPrijaviSe_Click(object sender, EventArgs e)
         {
-            //Validacija
+            //Validacija unosa, ovde ili u kontroleru
 
-            FrmGlavna forma = new FrmGlavna();
-            forma.ShowDialog();
+            string korisnik = Kontroler.Kontroler.Instance.Prijava(txtKorisnickoIme.Text,
+                txtSifra.Text);
+            if (korisnik != null)
+            {
+                string[] pom = korisnik.Split(' ');
+                Sesija.Instance.PostaviKorisnika(pom[0], pom[1]);
+
+                FrmGlavna forma = new FrmGlavna();
+                forma.PostaviKorisnika(Sesija.Instance.VratiKorisnika());
+                forma.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Neispravan email ili sifra!");
+            }
         }
 
         private void txtSifra_KeyDown(object sender, KeyEventArgs e)

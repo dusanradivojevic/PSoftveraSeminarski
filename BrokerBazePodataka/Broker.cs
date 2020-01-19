@@ -15,7 +15,7 @@ namespace BrokerBazePodataka
 
         public Broker()
         {
-            konekcija = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=TuristickaAgencija;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            konekcija = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=db_agencija;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         }
 
         public void OtvoriKonekciju()
@@ -43,9 +43,35 @@ namespace BrokerBazePodataka
             transakcija.Rollback();
         }
 
-        // === Korisnik ===
+        public List<IDomenskiObjekat> VratiSve(IDomenskiObjekat objekat)
+        {
+            SqlCommand command = new SqlCommand("", konekcija, transakcija);
+            command.CommandText = $"SELECT * FROM {objekat.NazivTabele}";
+            SqlDataReader reader = command.ExecuteReader();
+            List<IDomenskiObjekat> rezultat = objekat.VratiListu(reader);
+            reader.Close();
 
-        public List<IDomenskiObjekat> PrijaviMe(IDomenskiObjekat objekat)
+            for (int i = 0; i < rezultat.Count; )
+            {
+                IDomenskiObjekat ido = rezultat[i];
+                IDomenskiObjekat podDomen = ido.VratiPodDomen();
+
+                if (podDomen != null)
+                {
+                    podDomen.PostaviVrednost(Pronadji(podDomen)[0]);
+                    ido.PostaviVrednostPodDomena(podDomen);
+                }
+                else
+                {
+                    i++;
+                }
+            }
+                          
+            return rezultat;       
+            
+        }
+
+        public List<IDomenskiObjekat> Pronadji(IDomenskiObjekat objekat)
         {
             SqlCommand command = new SqlCommand("", konekcija, transakcija);
             command.CommandText = $"SELECT * FROM {objekat.NazivTabele} " +
@@ -56,89 +82,5 @@ namespace BrokerBazePodataka
             return rezultat;
         }
 
-        //
-        public List<Aranzman> VratiSveAranzmane()
-        {
-            List<Aranzman> listaAranzmana = new List<Aranzman>();
-
-            try
-            {
-                OtvoriKonekciju();
-                SqlCommand komanda = konekcija.CreateCommand();
-                komanda.CommandText = "SELECT * FROM Aranzman";
-                SqlDataReader citac = komanda.ExecuteReader();
-
-                while (citac.Read())
-                {
-                    Aranzman a = new Aranzman()
-                    {
-                        AranzmanID = (int)citac["AranzmanID"],
-                        NazivAranzmana = (string)citac["NazivAranzmana"],
-                        OpisAranzmana = (string)citac["OpisAranzmana"],
-                        Cena = (decimal)citac["Cena"],
-                        Datum = (DateTime)citac["Datum"],
-                        UkupanBrMesta = (int)citac["UkupanBrMesta"],
-                        BrojPutnika = (int)citac["BrojPutnika"],
-                        BrSlobodnihMesta = (int)citac["BrSlobodnihMesta"],
-                        Destinacija = new Destinacija()
-                        {
-                            DestinacijaID = (int)citac["DestinacijaID"]
-                        },
-                        Korisnik = new Korisnik()
-                        {
-                            KorisnikID = (int)citac["KorisnikID"]
-                        }
-                    };
-
-                    listaAranzmana.Add(a);
-                }
-            }
-            finally
-            {
-                ZatvoriKonekciju();
-            }
-
-            return listaAranzmana;
-        }
-
-        public List<Destinacija> VratiSveDestinacije()
-        {
-            List<Destinacija> listaDestinacija = new List<Destinacija>();
-
-            try
-            {
-                OtvoriKonekciju();
-
-                SqlCommand komanda = konekcija.CreateCommand();
-                komanda.CommandText = "SELECT * FROM Destinacija";
-                SqlDataReader citac = komanda.ExecuteReader();
-
-                while (citac.Read())
-                {
-                    Destinacija d = new Destinacija()
-                    {
-                        
-                        DestinacijaID = (int)citac["DestinacijaID"],
-                        NazivGrada = (string)citac["NazivGrada"],
-                        Zemlja = new Zemlja()
-                        {
-                            ZemljaID = (int)citac["ZemljaID"]
-                        },
-                        Korisnik = new Korisnik()
-                        {
-                            KorisnikID = (int)citac["KorisnikID"]
-                        }
-                    };
-
-                    listaDestinacija.Add(d);
-                }
-            }
-            finally
-            {
-                ZatvoriKonekciju();
-            }
-
-            return listaDestinacija;
-        }
     }
 }

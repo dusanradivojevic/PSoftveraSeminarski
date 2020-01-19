@@ -10,7 +10,7 @@ namespace SistemskeOperacije
 {
     public abstract class OpstaSO
     {
-        protected Broker broker = new Broker();
+        protected Broker broker = new Broker();        
 
         public void IzvrsiSO(IDomenskiObjekat objekat)
         {
@@ -24,8 +24,9 @@ namespace SistemskeOperacije
 
                 broker.Commit();
             }
-            catch
+            catch(Exception e)
             {
+                Console.WriteLine(e.Message);
                 broker.Rollback();
             }
             finally

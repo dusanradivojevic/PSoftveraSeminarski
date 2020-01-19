@@ -28,5 +28,22 @@ namespace Forme
         {
 
         }
+
+        public void PostaviKorisnika(string ime, string prezime)
+        {
+            Korisnik = new Korisnik();
+            Korisnik.Ime = ime;
+            Korisnik.Prezime = prezime;
+        }
+
+        public void OdjaviKorisnika()
+        {
+            Korisnik = null;
+        }
+
+        public string VratiKorisnika()
+        {
+            return $"{Korisnik.Ime} {Korisnik.Prezime}";
+        }
     }
 }

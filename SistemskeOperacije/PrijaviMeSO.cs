@@ -9,11 +9,11 @@ namespace SistemskeOperacije
 {
     public class PrijaviMeSO : OpstaSO
     {
-        Korisnik Korisnik { get; set; }
+        public Korisnik Korisnik { get; set; }
 
         protected override void IzvrsiKonkretnuOperaciju(IDomenskiObjekat objekat)
         {
-            List<IDomenskiObjekat> korisnici = broker.PrijaviMe((Korisnik)objekat);
+            List<IDomenskiObjekat> korisnici = broker.Pronadji((Korisnik)objekat);
 
             if(korisnici.Count == 0)
             {
@@ -24,7 +24,7 @@ namespace SistemskeOperacije
             {
                 throw new Exception("Postoji visestruko podudaranje korisnika sa" +
                     "tim parametrima u bazi");
-            }      
+            }
 
             Korisnik = korisnici[0] as Korisnik;
         }

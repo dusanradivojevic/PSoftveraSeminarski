@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Aranzman.cs" />
+    <Compile Include="IDomenskiObjekat.cs" />
     <Compile Include="Korisnik.cs" />
     <Compile Include="Destinacija.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

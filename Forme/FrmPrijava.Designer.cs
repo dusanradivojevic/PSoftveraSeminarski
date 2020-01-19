@@ -54,6 +54,7 @@
             this.txtKorisnickoIme.Name = "txtKorisnickoIme";
             this.txtKorisnickoIme.Size = new System.Drawing.Size(226, 24);
             this.txtKorisnickoIme.TabIndex = 1;
+            this.txtKorisnickoIme.Text = "r.dusan97@gmail.com";
             // 
             // txtSifra
             // 
@@ -63,6 +64,7 @@
             this.txtSifra.PasswordChar = '*';
             this.txtSifra.Size = new System.Drawing.Size(226, 24);
             this.txtSifra.TabIndex = 2;
+            this.txtSifra.Text = "123";
             this.txtSifra.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSifra_KeyDown);
             // 
             // label1

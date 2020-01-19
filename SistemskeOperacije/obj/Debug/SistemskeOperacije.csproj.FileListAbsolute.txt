@@ -1,0 +1,10 @@
+D:\FON\PS\Seminarski kod\TuristickaAgencija\SistemskeOperacije\bin\Debug\SistemskeOperacije.dll
+D:\FON\PS\Seminarski kod\TuristickaAgencija\SistemskeOperacije\bin\Debug\SistemskeOperacije.pdb
+D:\FON\PS\Seminarski kod\TuristickaAgencija\SistemskeOperacije\bin\Debug\BrokerBazePodataka.dll
+D:\FON\PS\Seminarski kod\TuristickaAgencija\SistemskeOperacije\bin\Debug\Domen.dll
+D:\FON\PS\Seminarski kod\TuristickaAgencija\SistemskeOperacije\bin\Debug\BrokerBazePodataka.pdb
+D:\FON\PS\Seminarski kod\TuristickaAgencija\SistemskeOperacije\bin\Debug\Domen.pdb
+D:\FON\PS\Seminarski kod\TuristickaAgencija\SistemskeOperacije\obj\Debug\SistemskeOperacije.csprojAssemblyReference.cache
+D:\FON\PS\Seminarski kod\TuristickaAgencija\SistemskeOperacije\obj\Debug\SistemskeOperacije.csproj.CopyComplete
+D:\FON\PS\Seminarski kod\TuristickaAgencija\SistemskeOperacije\obj\Debug\SistemskeOperacije.dll
+D:\FON\PS\Seminarski kod\TuristickaAgencija\SistemskeOperacije\obj\Debug\SistemskeOperacije.pdb
