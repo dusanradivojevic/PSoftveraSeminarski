@@ -69,6 +69,8 @@ namespace Domen
             }
         }
 
+        public string PrimarniKljuc => "KorisnikID";
+
         public override string ToString()
         {
             return ime + ' ' + prezime;

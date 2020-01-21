@@ -42,6 +42,23 @@ namespace BrokerBazePodataka
         {
             transakcija.Rollback();
         }
+        
+        public int Sacuvaj(IDomenskiObjekat objekat)
+        {
+            SqlCommand command = new SqlCommand("", konekcija, transakcija);
+            command.CommandText = $"INSERT INTO {objekat.NazivTabele} VALUES" +
+                $" ({objekat.VrednostiZaInsert})";
+            return command.ExecuteNonQuery();
+        }
+
+        public object VratiNajveciID(IDomenskiObjekat objekat)
+        {
+            SqlCommand command = new SqlCommand("", konekcija, transakcija);
+            command.CommandText = $"SELECT MAX({objekat.PrimarniKljuc}) FROM " +
+                $"{objekat.NazivTabele}";
+            object rez = command.ExecuteScalar();             
+            return rez;
+        }
 
         public List<IDomenskiObjekat> VratiSve(IDomenskiObjekat objekat)
         {
@@ -50,25 +67,7 @@ namespace BrokerBazePodataka
             SqlDataReader reader = command.ExecuteReader();
             List<IDomenskiObjekat> rezultat = objekat.VratiListu(reader);
             reader.Close();
-
-            for (int i = 0; i < rezultat.Count; )
-            {
-                IDomenskiObjekat ido = rezultat[i];
-                IDomenskiObjekat podDomen = ido.VratiPodDomen();
-
-                if (podDomen != null)
-                {
-                    podDomen.PostaviVrednost(Pronadji(podDomen)[0]);
-                    ido.PostaviVrednostPodDomena(podDomen);
-                }
-                else
-                {
-                    i++;
-                }
-            }
-                          
-            return rezultat;       
-            
+            return rezultat;     
         }
 
         public List<IDomenskiObjekat> Pronadji(IDomenskiObjekat objekat)

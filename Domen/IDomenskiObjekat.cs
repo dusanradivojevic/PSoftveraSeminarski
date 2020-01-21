@@ -12,6 +12,7 @@ namespace Domen
         string NazivTabele { get; }
         string VrednostiZaInsert { get; }
         string KriterijumiZaPretragu { get; }
+        string PrimarniKljuc { get; } //ili da se ID dodaje na naziv tabele
 
         List<IDomenskiObjekat> VratiListu(SqlDataReader reader);
         IDomenskiObjekat VratiPodDomen();

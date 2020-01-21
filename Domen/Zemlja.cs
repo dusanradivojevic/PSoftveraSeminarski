@@ -40,6 +40,8 @@ namespace Domen
 
         public string KriterijumiZaPretragu => $"ZemljaID = {ZemljaID}";
 
+        public string PrimarniKljuc => "ZemljaID";
+
         public override string ToString()
         {
             return skraceniNaziv;

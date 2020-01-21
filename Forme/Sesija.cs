@@ -9,7 +9,7 @@ namespace Forme
 {
     public class Sesija
     {
-        private Korisnik Korisnik { get; set; }
+        private Korisnik korisnik;
 
         private static Sesija _instance;
         public static Sesija Instance
@@ -29,21 +29,23 @@ namespace Forme
 
         }
 
-        public void PostaviKorisnika(string ime, string prezime)
+        public void PostaviKorisnika(Korisnik k)
         {
-            Korisnik = new Korisnik();
-            Korisnik.Ime = ime;
-            Korisnik.Prezime = prezime;
+            korisnik = k;
         }
 
         public void OdjaviKorisnika()
         {
-            Korisnik = null;
+            korisnik = null;
         }
 
-        public string VratiKorisnika()
+        public string VratiKorisnikaToString()
         {
-            return $"{Korisnik.Ime} {Korisnik.Prezime}";
+            return $"{korisnik.Ime} {korisnik.Prezime}";
+        }
+        public Korisnik VratiKorisnikaObjekat()
+        {
+            return korisnik;
         }
     }
 }

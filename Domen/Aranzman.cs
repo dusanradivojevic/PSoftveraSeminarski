@@ -100,6 +100,8 @@ namespace Domen
 
         [Browsable(false)]
         public string KriterijumiZaPretragu => $"AranzmanID = {AranzmanID}";
+        [Browsable(false)]
+        public string PrimarniKljuc => "AranzmanID";
 
         public override string ToString()
         {

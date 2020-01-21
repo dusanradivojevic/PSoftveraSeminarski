@@ -1,4 +1,5 @@
-﻿using Kontroler;
+﻿using Domen;
+using Kontroler;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,16 +25,14 @@ namespace Forme
         private void btnPrijaviSe_Click(object sender, EventArgs e)
         {
             //Validacija unosa, ovde ili u kontroleru
-
-            string korisnik = Kontroler.Kontroler.Instance.Prijava(txtKorisnickoIme.Text,
+            Korisnik k = Kontroler.Kontroler.Instance.Prijava(txtKorisnickoIme.Text,
                 txtSifra.Text);
-            if (korisnik != null)
-            {
-                string[] pom = korisnik.Split(' ');
-                Sesija.Instance.PostaviKorisnika(pom[0], pom[1]);
 
+            if (k != null)
+            {
+                Sesija.Instance.PostaviKorisnika(k);
                 FrmGlavna forma = new FrmGlavna();
-                forma.PostaviKorisnika(Sesija.Instance.VratiKorisnika());
+                forma.PostaviKorisnika(Sesija.Instance.VratiKorisnikaToString());
                 forma.ShowDialog();
             }
             else

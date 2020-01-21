@@ -43,8 +43,8 @@ namespace Domen
 
         public override string ToString()
         {
-            return nazivGrada;
-            //return nazivGrada + $" ({Zemlja.NazivZemlje})";
+            //return nazivGrada;
+            return nazivGrada + $" ({Zemlja.NazivZemlje})";
         }
 
         public string NazivTabele => "Destinacija";
@@ -53,7 +53,9 @@ namespace Domen
             $"{Zemlja.ZemljaID}, {Korisnik.KorisnikID}";
 
         public string KriterijumiZaPretragu => $"DestinacijaID = {DestinacijaID}";
-              
+
+        public string PrimarniKljuc => "DestinacijaID"; 
+
         public List<IDomenskiObjekat> VratiListu(SqlDataReader reader)
         {
             List<IDomenskiObjekat> destinacije = new List<IDomenskiObjekat>();

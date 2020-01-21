@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDodajAranzman));
             this.btnSacuvaj = new System.Windows.Forms.Button();
             this.btnOdustani = new System.Windows.Forms.Button();
-            this.lbl1 = new System.Windows.Forms.Label();
-            this.txtID = new System.Windows.Forms.TextBox();
             this.txtNazivAranzmana = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,7 +48,9 @@
             this.cmbDestinacija = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.cmbKorisnik = new System.Windows.Forms.ComboBox();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.txtKorisnik = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnSacuvaj
@@ -62,6 +62,7 @@
             this.btnSacuvaj.TabIndex = 0;
             this.btnSacuvaj.Text = "Sacuvaj";
             this.btnSacuvaj.UseVisualStyleBackColor = true;
+            this.btnSacuvaj.Click += new System.EventHandler(this.btnSacuvaj_Click);
             // 
             // btnOdustani
             // 
@@ -72,26 +73,7 @@
             this.btnOdustani.TabIndex = 1;
             this.btnOdustani.Text = "Odustani";
             this.btnOdustani.UseVisualStyleBackColor = true;
-            // 
-            // lbl1
-            // 
-            this.lbl1.AutoSize = true;
-            this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl1.Location = new System.Drawing.Point(12, 20);
-            this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(23, 18);
-            this.lbl1.TabIndex = 2;
-            this.lbl1.Text = "Id:";
-            // 
-            // txtID
-            // 
-            this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtID.Location = new System.Drawing.Point(67, 20);
-            this.txtID.Name = "txtID";
-            this.txtID.ReadOnly = true;
-            this.txtID.Size = new System.Drawing.Size(106, 24);
-            this.txtID.TabIndex = 3;
-            this.txtID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnOdustani.Click += new System.EventHandler(this.btnOdustani_Click);
             // 
             // txtNazivAranzmana
             // 
@@ -175,6 +157,7 @@
             this.txtUkBrMesta.Size = new System.Drawing.Size(134, 24);
             this.txtUkBrMesta.TabIndex = 14;
             this.txtUkBrMesta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtUkBrMesta.TextChanged += new System.EventHandler(this.txtUkBrMesta_TextChanged);
             // 
             // label5
             // 
@@ -249,27 +232,49 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(450, 342);
+            this.label9.Location = new System.Drawing.Point(450, 341);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(66, 18);
             this.label9.TabIndex = 22;
             this.label9.Text = "Korisnik:";
             // 
-            // cmbKorisnik
+            // lbl1
             // 
-            this.cmbKorisnik.FormattingEnabled = true;
-            this.cmbKorisnik.Location = new System.Drawing.Point(403, 363);
-            this.cmbKorisnik.Name = "cmbKorisnik";
-            this.cmbKorisnik.Size = new System.Drawing.Size(160, 21);
-            this.cmbKorisnik.TabIndex = 21;
+            this.lbl1.AutoSize = true;
+            this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl1.Location = new System.Drawing.Point(12, 20);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(23, 18);
+            this.lbl1.TabIndex = 2;
+            this.lbl1.Text = "Id:";
+            // 
+            // txtID
+            // 
+            this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID.Location = new System.Drawing.Point(67, 20);
+            this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
+            this.txtID.Size = new System.Drawing.Size(106, 24);
+            this.txtID.TabIndex = 3;
+            this.txtID.Text = "(izbrisati)";
+            this.txtID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtKorisnik
+            // 
+            this.txtKorisnik.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKorisnik.Location = new System.Drawing.Point(403, 363);
+            this.txtKorisnik.Name = "txtKorisnik";
+            this.txtKorisnik.Size = new System.Drawing.Size(160, 24);
+            this.txtKorisnik.TabIndex = 23;
+            this.txtKorisnik.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // FrmDodajAranzman
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 471);
+            this.Controls.Add(this.txtKorisnik);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.cmbKorisnik);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cmbDestinacija);
             this.Controls.Add(this.txtBrSlbMesta);
@@ -303,8 +308,6 @@
 
         private System.Windows.Forms.Button btnSacuvaj;
         private System.Windows.Forms.Button btnOdustani;
-        private System.Windows.Forms.Label lbl1;
-        private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.TextBox txtNazivAranzmana;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -322,6 +325,8 @@
         private System.Windows.Forms.ComboBox cmbDestinacija;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox cmbKorisnik;
+        private System.Windows.Forms.Label lbl1;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.TextBox txtKorisnik;
     }
 }

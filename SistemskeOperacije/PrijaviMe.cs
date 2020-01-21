@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SistemskeOperacije
 {
-    public class PrijaviMeSO : OpstaSO
+    public class PrijaviMe : OpstaSO
     {
         public Korisnik Korisnik { get; set; }
 

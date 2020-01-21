@@ -101,5 +101,11 @@ namespace Forme
             frmDetalji.PostaviVrednosti(red);
             frmDetalji.ShowDialog();
         }
+
+        private void btnDodaj_Click(object sender, EventArgs e)
+        {
+            FrmDodajAranzman forma = new FrmDodajAranzman();
+            forma.ShowDialog();
+        }
     }
 }
