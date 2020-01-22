@@ -98,6 +98,9 @@ namespace Domen
 
         public void PostaviVrednost(IDomenskiObjekat ido)
         {
+            if (!(ido is Destinacija))
+                return;
+            
             Destinacija d = (Destinacija)ido;
 
             DestinacijaID = d.DestinacijaID;

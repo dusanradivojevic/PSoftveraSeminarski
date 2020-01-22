@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmKreirajPutnika));
             this.label9 = new System.Windows.Forms.Label();
-            this.cmbKorisnik = new System.Windows.Forms.ComboBox();
             this.txtJmbg = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtPrezime = new System.Windows.Forms.TextBox();
@@ -41,6 +40,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnOdustani = new System.Windows.Forms.Button();
             this.btnPotvrdi = new System.Windows.Forms.Button();
+            this.txtKorisnik = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label9
@@ -52,14 +52,6 @@
             this.label9.Size = new System.Drawing.Size(66, 18);
             this.label9.TabIndex = 26;
             this.label9.Text = "Korisnik:";
-            // 
-            // cmbKorisnik
-            // 
-            this.cmbKorisnik.FormattingEnabled = true;
-            this.cmbKorisnik.Location = new System.Drawing.Point(80, 223);
-            this.cmbKorisnik.Name = "cmbKorisnik";
-            this.cmbKorisnik.Size = new System.Drawing.Size(210, 21);
-            this.cmbKorisnik.TabIndex = 25;
             // 
             // txtJmbg
             // 
@@ -144,6 +136,7 @@
             this.btnOdustani.TabIndex = 34;
             this.btnOdustani.Text = "Odustani";
             this.btnOdustani.UseVisualStyleBackColor = true;
+            this.btnOdustani.Click += new System.EventHandler(this.btnOdustani_Click);
             // 
             // btnPotvrdi
             // 
@@ -154,12 +147,23 @@
             this.btnPotvrdi.TabIndex = 33;
             this.btnPotvrdi.Text = "Potvrdi";
             this.btnPotvrdi.UseVisualStyleBackColor = true;
+            this.btnPotvrdi.Click += new System.EventHandler(this.btnPotvrdi_Click);
+            // 
+            // txtKorisnik
+            // 
+            this.txtKorisnik.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKorisnik.Location = new System.Drawing.Point(80, 223);
+            this.txtKorisnik.Name = "txtKorisnik";
+            this.txtKorisnik.ReadOnly = true;
+            this.txtKorisnik.Size = new System.Drawing.Size(210, 24);
+            this.txtKorisnik.TabIndex = 35;
             // 
             // FrmKreirajPutnika
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(366, 319);
+            this.Controls.Add(this.txtKorisnik);
             this.Controls.Add(this.btnOdustani);
             this.Controls.Add(this.btnPotvrdi);
             this.Controls.Add(this.label4);
@@ -169,7 +173,6 @@
             this.Controls.Add(this.txtPrezime);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.cmbKorisnik);
             this.Controls.Add(this.txtJmbg);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -183,7 +186,6 @@
         #endregion
 
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox cmbKorisnik;
         private System.Windows.Forms.TextBox txtJmbg;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtPrezime;
@@ -194,5 +196,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnOdustani;
         private System.Windows.Forms.Button btnPotvrdi;
+        private System.Windows.Forms.TextBox txtKorisnik;
     }
 }

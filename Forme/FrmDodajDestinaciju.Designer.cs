@@ -36,9 +36,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbZemlja = new System.Windows.Forms.ComboBox();
-            this.cmbKorisnik = new System.Windows.Forms.ComboBox();
             this.btnDodaj = new System.Windows.Forms.Button();
             this.btnOdustani = new System.Windows.Forms.Button();
+            this.txtKorisnik = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -104,15 +104,6 @@
             this.cmbZemlja.TabIndex = 6;
             this.cmbZemlja.SelectedIndexChanged += new System.EventHandler(this.cmbZemlja_SelectedIndexChanged);
             // 
-            // cmbKorisnik
-            // 
-            this.cmbKorisnik.FormattingEnabled = true;
-            this.cmbKorisnik.Location = new System.Drawing.Point(124, 181);
-            this.cmbKorisnik.Name = "cmbKorisnik";
-            this.cmbKorisnik.Size = new System.Drawing.Size(156, 26);
-            this.cmbKorisnik.TabIndex = 7;
-            this.cmbKorisnik.SelectedIndexChanged += new System.EventHandler(this.cmbKorisnik_SelectedIndexChanged);
-            // 
             // btnDodaj
             // 
             this.btnDodaj.Location = new System.Drawing.Point(19, 233);
@@ -131,25 +122,34 @@
             this.btnOdustani.TabIndex = 9;
             this.btnOdustani.Text = "Odustani";
             this.btnOdustani.UseVisualStyleBackColor = true;
+            this.btnOdustani.Click += new System.EventHandler(this.btnOdustani_Click);
+            // 
+            // txtKorisnik
+            // 
+            this.txtKorisnik.Location = new System.Drawing.Point(124, 178);
+            this.txtKorisnik.Name = "txtKorisnik";
+            this.txtKorisnik.ReadOnly = true;
+            this.txtKorisnik.Size = new System.Drawing.Size(156, 24);
+            this.txtKorisnik.TabIndex = 10;
             // 
             // FrmDodajDestinaciju
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(300, 282);
+            this.Controls.Add(this.txtKorisnik);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDodaj);
             this.Controls.Add(this.btnOdustani);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.cmbKorisnik);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtNazivGrada);
             this.Controls.Add(this.cmbZemlja);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmDodajDestinaciju";
             this.Text = "Dodavanje destinacije";
             this.ResumeLayout(false);
@@ -166,8 +166,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbZemlja;
-        private System.Windows.Forms.ComboBox cmbKorisnik;
         private System.Windows.Forms.Button btnDodaj;
         private System.Windows.Forms.Button btnOdustani;
+        private System.Windows.Forms.TextBox txtKorisnik;
     }
 }

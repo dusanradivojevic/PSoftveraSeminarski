@@ -44,7 +44,7 @@ namespace Domen
 
         public override string ToString()
         {
-            return skraceniNaziv;
+            return NazivZemlje + " - " + SkraceniNaziv;
         }
 
         public List<IDomenskiObjekat> VratiListu(SqlDataReader reader)
@@ -72,6 +72,9 @@ namespace Domen
 
         public void PostaviVrednost(IDomenskiObjekat ido)
         {
+            if (!(ido is Zemlja))
+                return;
+
             Zemlja z = (Zemlja)ido;
 
             ZemljaID = z.ZemljaID;

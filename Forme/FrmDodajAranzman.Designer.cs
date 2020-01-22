@@ -212,10 +212,11 @@
             // 
             // cmbDestinacija
             // 
+            this.cmbDestinacija.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDestinacija.FormattingEnabled = true;
             this.cmbDestinacija.Location = new System.Drawing.Point(403, 302);
             this.cmbDestinacija.Name = "cmbDestinacija";
-            this.cmbDestinacija.Size = new System.Drawing.Size(160, 21);
+            this.cmbDestinacija.Size = new System.Drawing.Size(160, 26);
             this.cmbDestinacija.TabIndex = 19;
             // 
             // label8

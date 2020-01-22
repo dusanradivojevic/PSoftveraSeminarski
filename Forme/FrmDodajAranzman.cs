@@ -57,12 +57,13 @@ namespace Forme
                 cmbDestinacija.SelectedItem != null)
             {
                 bool rez = Kontroler.Kontroler.Instance.UnesiNoviAranzman(txtNazivAranzmana.Text,
-                    rtbOpis.Text, cena, dtpDatum.Value, ukBrMesta, ukBrMesta, ukBrMesta,
+                    rtbOpis.Text, cena, dtpDatum.Value, ukBrMesta, 0, ukBrMesta,
                     cmbDestinacija.SelectedItem as Destinacija,
                     Sesija.Instance.VratiKorisnikaObjekat());
                 if (rez)
                 {
                     MessageBox.Show("Aranzman je uspesno sacuvan!");
+                    Dispose();
                 }
                 else
                 {

@@ -109,6 +109,7 @@
             this.btnPretrazi.TabIndex = 14;
             this.btnPretrazi.Text = "Pretrazi";
             this.btnPretrazi.UseVisualStyleBackColor = true;
+            this.btnPretrazi.Click += new System.EventHandler(this.btnPretrazi_Click);
             // 
             // txtDestinacija
             // 
@@ -188,9 +189,12 @@
             // 
             // dgvAranzmaniPretraga
             // 
+            this.dgvAranzmaniPretraga.AllowUserToAddRows = false;
+            this.dgvAranzmaniPretraga.AllowUserToDeleteRows = false;
             this.dgvAranzmaniPretraga.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAranzmaniPretraga.Location = new System.Drawing.Point(146, 86);
             this.dgvAranzmaniPretraga.Name = "dgvAranzmaniPretraga";
+            this.dgvAranzmaniPretraga.ReadOnly = true;
             this.dgvAranzmaniPretraga.Size = new System.Drawing.Size(602, 233);
             this.dgvAranzmaniPretraga.TabIndex = 1;
             // 
@@ -243,14 +247,15 @@
             this.dodajToolStripMenuItem,
             this.obrisiToolStripMenuItem});
             this.upravljanjeDestinacijamaToolStripMenuItem.Name = "upravljanjeDestinacijamaToolStripMenuItem";
-            this.upravljanjeDestinacijamaToolStripMenuItem.Size = new System.Drawing.Size(154, 20);
-            this.upravljanjeDestinacijamaToolStripMenuItem.Text = "Upravljanje destinacijama";
+            this.upravljanjeDestinacijamaToolStripMenuItem.Size = new System.Drawing.Size(141, 20);
+            this.upravljanjeDestinacijamaToolStripMenuItem.Text = "Upravljaj destinacijama";
             // 
             // dodajToolStripMenuItem
             // 
             this.dodajToolStripMenuItem.Name = "dodajToolStripMenuItem";
             this.dodajToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.dodajToolStripMenuItem.Text = "Dodaj";
+            this.dodajToolStripMenuItem.Click += new System.EventHandler(this.dodajToolStripMenuItem_Click);
             // 
             // obrisiToolStripMenuItem
             // 
@@ -261,8 +266,9 @@
             // upravljanjePutnicimaToolStripMenuItem
             // 
             this.upravljanjePutnicimaToolStripMenuItem.Name = "upravljanjePutnicimaToolStripMenuItem";
-            this.upravljanjePutnicimaToolStripMenuItem.Size = new System.Drawing.Size(135, 20);
-            this.upravljanjePutnicimaToolStripMenuItem.Text = "Upravljanje putnicima";
+            this.upravljanjePutnicimaToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
+            this.upravljanjePutnicimaToolStripMenuItem.Text = "Upravljaj putnicima";
+            this.upravljanjePutnicimaToolStripMenuItem.Click += new System.EventHandler(this.upravljanjePutnicimaToolStripMenuItem_Click);
             // 
             // odjavaToolStripMenuItem
             // 

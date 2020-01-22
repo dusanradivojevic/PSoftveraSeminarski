@@ -156,6 +156,9 @@ namespace Domen
 
         public void PostaviVrednost(IDomenskiObjekat ido)
         {
+            if (!(ido is Aranzman))
+                return;
+
             Aranzman a = (Aranzman)ido;
 
             AranzmanID = a.AranzmanID;

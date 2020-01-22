@@ -52,18 +52,23 @@
             this.txtDestinacija = new System.Windows.Forms.TextBox();
             this.txtKorisnik = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnObrisiPutnike = new System.Windows.Forms.Button();
-            this.btnDodajPutnike = new System.Windows.Forms.Button();
-            this.dgvPutnici = new System.Windows.Forms.DataGridView();
+            this.dgvSviPutnici = new System.Windows.Forms.DataGridView();
+            this.btnKreirajPutnika = new System.Windows.Forms.Button();
+            this.btnIzaberi = new System.Windows.Forms.Button();
+            this.dgvIzabraniPutnici = new System.Windows.Forms.DataGridView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnIzbaci = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPutnici)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSviPutnici)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIzabraniPutnici)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(449, 334);
+            this.label9.Location = new System.Drawing.Point(580, 52);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(66, 18);
             this.label9.TabIndex = 44;
@@ -73,16 +78,17 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(437, 271);
+            this.label8.Location = new System.Drawing.Point(580, 15);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(84, 18);
             this.label8.TabIndex = 42;
             this.label8.Text = "Destinacija:";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // txtBrSlbMesta
             // 
             this.txtBrSlbMesta.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBrSlbMesta.Location = new System.Drawing.Point(169, 355);
+            this.txtBrSlbMesta.Location = new System.Drawing.Point(554, 190);
             this.txtBrSlbMesta.Name = "txtBrSlbMesta";
             this.txtBrSlbMesta.ReadOnly = true;
             this.txtBrSlbMesta.Size = new System.Drawing.Size(134, 24);
@@ -93,7 +99,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(11, 358);
+            this.label7.Location = new System.Drawing.Point(396, 193);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(152, 18);
             this.label7.TabIndex = 39;
@@ -102,7 +108,7 @@
             // txtBrojPutnika
             // 
             this.txtBrojPutnika.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBrojPutnika.Location = new System.Drawing.Point(169, 315);
+            this.txtBrojPutnika.Location = new System.Drawing.Point(554, 150);
             this.txtBrojPutnika.Name = "txtBrojPutnika";
             this.txtBrojPutnika.ReadOnly = true;
             this.txtBrojPutnika.Size = new System.Drawing.Size(134, 24);
@@ -113,7 +119,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(11, 317);
+            this.label6.Location = new System.Drawing.Point(396, 152);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(90, 18);
             this.label6.TabIndex = 37;
@@ -122,7 +128,7 @@
             // txtUkBrMesta
             // 
             this.txtUkBrMesta.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUkBrMesta.Location = new System.Drawing.Point(169, 271);
+            this.txtUkBrMesta.Location = new System.Drawing.Point(554, 106);
             this.txtUkBrMesta.Name = "txtUkBrMesta";
             this.txtUkBrMesta.ReadOnly = true;
             this.txtUkBrMesta.Size = new System.Drawing.Size(134, 24);
@@ -133,7 +139,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(11, 271);
+            this.label5.Location = new System.Drawing.Point(396, 106);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(137, 18);
             this.label5.TabIndex = 35;
@@ -147,7 +153,7 @@
             this.txtCena.ReadOnly = true;
             this.txtCena.Size = new System.Drawing.Size(106, 24);
             this.txtCena.TabIndex = 34;
-            this.txtCena.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtCena.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 
@@ -175,7 +181,7 @@
             this.rtbOpis.Location = new System.Drawing.Point(66, 105);
             this.rtbOpis.Name = "rtbOpis";
             this.rtbOpis.ReadOnly = true;
-            this.rtbOpis.Size = new System.Drawing.Size(544, 152);
+            this.rtbOpis.Size = new System.Drawing.Size(277, 119);
             this.rtbOpis.TabIndex = 30;
             this.rtbOpis.Text = "";
             // 
@@ -197,6 +203,7 @@
             this.txtNazivAranzmana.ReadOnly = true;
             this.txtNazivAranzmana.Size = new System.Drawing.Size(210, 24);
             this.txtNazivAranzmana.TabIndex = 28;
+            this.txtNazivAranzmana.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -222,7 +229,7 @@
             // 
             this.lbl1.AutoSize = true;
             this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl1.Location = new System.Drawing.Point(11, 12);
+            this.lbl1.Location = new System.Drawing.Point(17, 15);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(23, 18);
             this.lbl1.TabIndex = 25;
@@ -231,7 +238,7 @@
             // btnOdustani
             // 
             this.btnOdustani.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOdustani.Location = new System.Drawing.Point(356, 593);
+            this.btnOdustani.Location = new System.Drawing.Point(521, 452);
             this.btnOdustani.Name = "btnOdustani";
             this.btnOdustani.Size = new System.Drawing.Size(99, 40);
             this.btnOdustani.TabIndex = 24;
@@ -242,12 +249,13 @@
             // btnSacuvaj
             // 
             this.btnSacuvaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSacuvaj.Location = new System.Drawing.Point(152, 593);
+            this.btnSacuvaj.Location = new System.Drawing.Point(303, 452);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(99, 40);
             this.btnSacuvaj.TabIndex = 23;
             this.btnSacuvaj.Text = "Sacuvaj";
             this.btnSacuvaj.UseVisualStyleBackColor = true;
+            this.btnSacuvaj.Click += new System.EventHandler(this.btnSacuvaj_Click);
             // 
             // txtDatum
             // 
@@ -257,73 +265,113 @@
             this.txtDatum.ReadOnly = true;
             this.txtDatum.Size = new System.Drawing.Size(210, 24);
             this.txtDatum.TabIndex = 45;
+            this.txtDatum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtDestinacija
             // 
             this.txtDestinacija.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDestinacija.Location = new System.Drawing.Point(402, 292);
+            this.txtDestinacija.Location = new System.Drawing.Point(680, 12);
             this.txtDestinacija.Name = "txtDestinacija";
             this.txtDestinacija.ReadOnly = true;
             this.txtDestinacija.Size = new System.Drawing.Size(157, 24);
             this.txtDestinacija.TabIndex = 46;
-            this.txtDestinacija.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDestinacija.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtKorisnik
             // 
             this.txtKorisnik.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKorisnik.Location = new System.Drawing.Point(402, 352);
+            this.txtKorisnik.Location = new System.Drawing.Point(680, 52);
             this.txtKorisnik.Name = "txtKorisnik";
             this.txtKorisnik.ReadOnly = true;
             this.txtKorisnik.Size = new System.Drawing.Size(157, 24);
             this.txtKorisnik.TabIndex = 47;
-            this.txtKorisnik.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtKorisnik.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnObrisiPutnike);
-            this.groupBox1.Controls.Add(this.btnDodajPutnike);
-            this.groupBox1.Controls.Add(this.dgvPutnici);
-            this.groupBox1.Location = new System.Drawing.Point(13, 392);
+            this.groupBox1.Controls.Add(this.dgvSviPutnici);
+            this.groupBox1.Location = new System.Drawing.Point(8, 251);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(597, 195);
+            this.groupBox1.Size = new System.Drawing.Size(394, 195);
             this.groupBox1.TabIndex = 48;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Putnici";
+            this.groupBox1.Text = "Svi putnici";
             // 
-            // btnObrisiPutnike
+            // dgvSviPutnici
             // 
-            this.btnObrisiPutnike.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnObrisiPutnike.Location = new System.Drawing.Point(473, 116);
-            this.btnObrisiPutnike.Name = "btnObrisiPutnike";
-            this.btnObrisiPutnike.Size = new System.Drawing.Size(107, 45);
-            this.btnObrisiPutnike.TabIndex = 50;
-            this.btnObrisiPutnike.Text = "Obrisi putnike";
-            this.btnObrisiPutnike.UseVisualStyleBackColor = true;
+            this.dgvSviPutnici.AllowUserToAddRows = false;
+            this.dgvSviPutnici.AllowUserToDeleteRows = false;
+            this.dgvSviPutnici.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSviPutnici.Location = new System.Drawing.Point(7, 24);
+            this.dgvSviPutnici.Name = "dgvSviPutnici";
+            this.dgvSviPutnici.ReadOnly = true;
+            this.dgvSviPutnici.Size = new System.Drawing.Size(374, 165);
+            this.dgvSviPutnici.TabIndex = 0;
             // 
-            // btnDodajPutnike
+            // btnKreirajPutnika
             // 
-            this.btnDodajPutnike.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDodajPutnike.Location = new System.Drawing.Point(473, 42);
-            this.btnDodajPutnike.Name = "btnDodajPutnike";
-            this.btnDodajPutnike.Size = new System.Drawing.Size(107, 45);
-            this.btnDodajPutnike.TabIndex = 49;
-            this.btnDodajPutnike.Text = "Dodaj putnika";
-            this.btnDodajPutnike.UseVisualStyleBackColor = true;
+            this.btnKreirajPutnika.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKreirajPutnika.Location = new System.Drawing.Point(408, 395);
+            this.btnKreirajPutnika.Name = "btnKreirajPutnika";
+            this.btnKreirajPutnika.Size = new System.Drawing.Size(107, 45);
+            this.btnKreirajPutnika.TabIndex = 49;
+            this.btnKreirajPutnika.Text = "Kreiraj putnika";
+            this.btnKreirajPutnika.UseVisualStyleBackColor = true;
+            this.btnKreirajPutnika.Click += new System.EventHandler(this.btnKreirajPutnika_Click);
             // 
-            // dgvPutnici
+            // btnIzaberi
             // 
-            this.dgvPutnici.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPutnici.Location = new System.Drawing.Point(7, 24);
-            this.dgvPutnici.Name = "dgvPutnici";
-            this.dgvPutnici.Size = new System.Drawing.Size(435, 165);
-            this.dgvPutnici.TabIndex = 0;
+            this.btnIzaberi.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIzaberi.Location = new System.Drawing.Point(408, 275);
+            this.btnIzaberi.Name = "btnIzaberi";
+            this.btnIzaberi.Size = new System.Drawing.Size(107, 33);
+            this.btnIzaberi.TabIndex = 51;
+            this.btnIzaberi.Text = "→";
+            this.btnIzaberi.UseVisualStyleBackColor = true;
+            this.btnIzaberi.Click += new System.EventHandler(this.btnIzaberiPutnike_Click);
+            // 
+            // dgvIzabraniPutnici
+            // 
+            this.dgvIzabraniPutnici.AllowUserToAddRows = false;
+            this.dgvIzabraniPutnici.AllowUserToDeleteRows = false;
+            this.dgvIzabraniPutnici.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvIzabraniPutnici.Location = new System.Drawing.Point(7, 24);
+            this.dgvIzabraniPutnici.Name = "dgvIzabraniPutnici";
+            this.dgvIzabraniPutnici.ReadOnly = true;
+            this.dgvIzabraniPutnici.Size = new System.Drawing.Size(374, 165);
+            this.dgvIzabraniPutnici.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dgvIzabraniPutnici);
+            this.groupBox2.Location = new System.Drawing.Point(521, 251);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(389, 195);
+            this.groupBox2.TabIndex = 52;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Izabrani putnici";
+            // 
+            // btnIzbaci
+            // 
+            this.btnIzbaci.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIzbaci.Location = new System.Drawing.Point(408, 314);
+            this.btnIzbaci.Name = "btnIzbaci";
+            this.btnIzbaci.Size = new System.Drawing.Size(107, 33);
+            this.btnIzbaci.TabIndex = 53;
+            this.btnIzbaci.Text = "←";
+            this.btnIzbaci.UseVisualStyleBackColor = true;
+            this.btnIzbaci.Click += new System.EventHandler(this.btnIzbaci_Click);
             // 
             // FrmDetaljiAranzmana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 642);
+            this.ClientSize = new System.Drawing.Size(911, 501);
+            this.Controls.Add(this.btnIzbaci);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.btnIzaberi);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnKreirajPutnika);
             this.Controls.Add(this.txtKorisnik);
             this.Controls.Add(this.txtDestinacija);
             this.Controls.Add(this.txtDatum);
@@ -352,7 +400,9 @@
             this.Name = "FrmDetaljiAranzmana";
             this.Text = "FrmDetaljiAranzmana";
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPutnici)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSviPutnici)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIzabraniPutnici)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -383,8 +433,11 @@
         private System.Windows.Forms.TextBox txtDestinacija;
         private System.Windows.Forms.TextBox txtKorisnik;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnObrisiPutnike;
-        private System.Windows.Forms.Button btnDodajPutnike;
-        private System.Windows.Forms.DataGridView dgvPutnici;
+        private System.Windows.Forms.Button btnKreirajPutnika;
+        private System.Windows.Forms.DataGridView dgvSviPutnici;
+        private System.Windows.Forms.Button btnIzaberi;
+        private System.Windows.Forms.DataGridView dgvIzabraniPutnici;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnIzbaci;
     }
 }

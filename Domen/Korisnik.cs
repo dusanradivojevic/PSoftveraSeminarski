@@ -103,6 +103,9 @@ namespace Domen
 
         public void PostaviVrednost(IDomenskiObjekat ido)
         {
+            if (!(ido is Korisnik))
+                return;
+
             Korisnik k = (Korisnik)ido;
 
             korisnikID = k.KorisnikID;

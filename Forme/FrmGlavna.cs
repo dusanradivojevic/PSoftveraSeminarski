@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domen;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,7 +21,12 @@ namespace Forme
 
         private void SrediFormu()
         {
-            dgvAranzmaniPretraga.DataSource = Kontroler.Kontroler.Instance.VratiSveAranzmane();
+            List<Aranzman> lista = Kontroler.Kontroler.Instance.VratiSveAranzmane();
+            dgvAranzmaniPretraga.DataSource = lista;
+            dgvAranzmaniPretraga.AutoSizeColumnsMode =
+                DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvAranzmaniPretraga.Columns[2].Width = 60;
+
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -105,6 +111,24 @@ namespace Forme
         private void btnDodaj_Click(object sender, EventArgs e)
         {
             FrmDodajAranzman forma = new FrmDodajAranzman();
+            forma.ShowDialog();
+        }
+
+        private void dodajToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmDodajDestinaciju forma = new FrmDodajDestinaciju();
+            forma.ShowDialog();
+        }
+
+        private void btnPretrazi_Click(object sender, EventArgs e)
+        {
+            
+                    
+        }
+
+        private void upravljanjePutnicimaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmUpravljanjePutnicima forma = new FrmUpravljanjePutnicima();
             forma.ShowDialog();
         }
     }
