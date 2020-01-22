@@ -253,15 +253,16 @@
             // dodajToolStripMenuItem
             // 
             this.dodajToolStripMenuItem.Name = "dodajToolStripMenuItem";
-            this.dodajToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.dodajToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dodajToolStripMenuItem.Text = "Dodaj";
             this.dodajToolStripMenuItem.Click += new System.EventHandler(this.dodajToolStripMenuItem_Click);
             // 
             // obrisiToolStripMenuItem
             // 
             this.obrisiToolStripMenuItem.Name = "obrisiToolStripMenuItem";
-            this.obrisiToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.obrisiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.obrisiToolStripMenuItem.Text = "Obrisi";
+            this.obrisiToolStripMenuItem.Click += new System.EventHandler(this.obrisiToolStripMenuItem_Click);
             // 
             // upravljanjePutnicimaToolStripMenuItem
             // 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SistemskeOperacije
 {
-    public class ObrisiPutnika : OpstaSO
+    public class ObrisiDestinaciju : OpstaSO
     {
         public bool Obrisan { get; set; }
         protected override void IzvrsiKonkretnuOperaciju(IDomenskiObjekat objekat)
@@ -20,14 +20,13 @@ namespace SistemskeOperacije
             else
             {
                 Obrisan = false;
-                throw new Exception("Sistem ne moze da obrise putnika!");
+                throw new Exception("Sistem ne moze da obrise destinaciju!");
             }
         }
 
         protected override void Validacija(IDomenskiObjekat objekat)
         {
-            
-            // throw new NotImplementedException();
+            // VALIDACIJA!
         }
     }
 }

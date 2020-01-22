@@ -131,5 +131,11 @@ namespace Forme
             FrmUpravljanjePutnicima forma = new FrmUpravljanjePutnicima();
             forma.ShowDialog();
         }
+
+        private void obrisiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmObrisiDestinaciju forma = new FrmObrisiDestinaciju();
+            forma.ShowDialog();
+        }
     }
 }

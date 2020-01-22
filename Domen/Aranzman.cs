@@ -185,5 +185,11 @@ namespace Domen
                 Korisnik = (Korisnik)ido;
             }
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Aranzman aranzman &&
+                   AranzmanID == aranzman.AranzmanID;
+        }
     }
 }

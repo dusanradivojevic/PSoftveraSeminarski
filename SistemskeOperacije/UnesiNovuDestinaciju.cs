@@ -33,6 +33,8 @@ namespace SistemskeOperacije
 
         protected override void Validacija(IDomenskiObjekat objekat)
         {
+            //mora da se proveri da li vec postoji takva destinacija u bazi
+            //(slicno i za ostale insert SO
             // !
         }
     }

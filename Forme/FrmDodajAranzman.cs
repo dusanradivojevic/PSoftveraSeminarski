@@ -54,7 +54,7 @@ namespace Forme
             //Prebaciti ovu validaciju u kontroler?
             if(double.TryParse(txtCena.Text, out double cena) &&
                 int.TryParse(txtUkBrMesta.Text, out int ukBrMesta) &&
-                cmbDestinacija.SelectedItem != null)
+                cmbDestinacija.SelectedItem != null && cmbDestinacija.SelectedItem is Destinacija)
             {
                 bool rez = Kontroler.Kontroler.Instance.UnesiNoviAranzman(txtNazivAranzmana.Text,
                     rtbOpis.Text, cena, dtpDatum.Value, ukBrMesta, 0, ukBrMesta,

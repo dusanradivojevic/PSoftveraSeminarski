@@ -27,7 +27,7 @@ namespace Forme
 
         private void btnDodaj_Click(object sender, EventArgs e)
         {
-            if (cmbZemlja.SelectedItem != null)
+            if (cmbZemlja.SelectedItem != null && cmbZemlja.SelectedItem is Zemlja)
             {
                 bool rez = Kontroler.Kontroler.Instance.UnesiNovuDestinaciju(txtNazivGrada.Text,
                     cmbZemlja.SelectedItem as Zemlja,

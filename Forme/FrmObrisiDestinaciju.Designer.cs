@@ -51,6 +51,7 @@
             this.btnObrisi.TabIndex = 9;
             this.btnObrisi.Text = "Obrisi";
             this.btnObrisi.UseVisualStyleBackColor = true;
+            this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
             // 
             // btnOdustani
             // 
@@ -60,6 +61,7 @@
             this.btnOdustani.TabIndex = 10;
             this.btnOdustani.Text = "Odustani";
             this.btnOdustani.UseVisualStyleBackColor = true;
+            this.btnOdustani.Click += new System.EventHandler(this.btnOdustani_Click);
             // 
             // FrmObrisiDestinaciju
             // 

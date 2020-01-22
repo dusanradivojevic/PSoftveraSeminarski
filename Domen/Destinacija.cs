@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace Domen
         }
 
         private String nazivGrada;
-
+        [DisplayName("Naziv grada")]
         public String NazivGrada
         {
             get { return nazivGrada; }
@@ -46,14 +47,15 @@ namespace Domen
             //return nazivGrada;
             return nazivGrada + $" ({Zemlja.NazivZemlje})";
         }
-
+        
+        [Browsable(false)]
         public string NazivTabele => "Destinacija";
-
+        [Browsable(false)]
         public string VrednostiZaInsert => $"{DestinacijaID}, '{nazivGrada}', " +
             $"{Zemlja.ZemljaID}, {Korisnik.KorisnikID}";
-
+        [Browsable(false)]
         public string KriterijumiZaPretragu => $"DestinacijaID = {DestinacijaID}";
-
+        [Browsable(false)]
         public string PrimarniKljuc => "DestinacijaID"; 
 
         public List<IDomenskiObjekat> VratiListu(SqlDataReader reader)
@@ -120,6 +122,12 @@ namespace Domen
             {
                 Korisnik = (Korisnik)ido;
             }
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Destinacija destinacija &&
+                   DestinacijaID == destinacija.DestinacijaID;
         }
     }
 }
