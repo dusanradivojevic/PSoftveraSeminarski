@@ -17,10 +17,13 @@ namespace Forme
         public FrmPrijava()
         {
             InitializeComponent();
-            this.ActiveControl = txtKorisnickoIme;
-            txtKorisnickoIme.Focus();
+            //this.ActiveControl = txtKorisnickoIme;
+            //txtKorisnickoIme.Focus();
+
+            this.ActiveControl = btnPrijaviSe;
+            btnPrijaviSe.Focus();
         }
-               
+
 
         private void btnPrijaviSe_Click(object sender, EventArgs e)
         {
@@ -31,7 +34,7 @@ namespace Forme
             if (k != null)
             {
                 Sesija.Instance.PostaviKorisnika(k);
-                FrmGlavna forma = new FrmGlavna();
+                FrmGlavna forma = new FrmGlavna(this);
                 forma.PostaviKorisnika(Sesija.Instance.VratiKorisnikaToString());
                 forma.ShowDialog();
             }

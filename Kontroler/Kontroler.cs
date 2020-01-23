@@ -185,6 +185,21 @@ namespace Kontroler
 
         // *** DELETE ***
 
+        public bool ObrisiAranzman(Aranzman a)
+        {
+            OpstaSO os = new ObrisiAranzman();
+            try
+            {
+                os.IzvrsiSO(a);
+            }
+            catch
+            {
+                return false;
+            }
+
+            return ((ObrisiAranzman)os).Obrisan;
+        }
+
         public bool ObrisiDestinaciju(Destinacija d)
         {
             OpstaSO os = new ObrisiDestinaciju();
@@ -232,6 +247,8 @@ namespace Kontroler
             {
                 return null;   // U bazi ne postoji korisnik sa unetim mejlom i sifrom
             }
-        }        
+        }
+
+        
     }
 }

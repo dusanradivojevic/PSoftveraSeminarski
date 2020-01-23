@@ -228,6 +228,7 @@
             this.btnObrisi.TabIndex = 18;
             this.btnObrisi.Text = "Obrisi";
             this.btnObrisi.UseVisualStyleBackColor = true;
+            this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
             // 
             // menuStrip1
             // 
@@ -253,14 +254,14 @@
             // dodajToolStripMenuItem
             // 
             this.dodajToolStripMenuItem.Name = "dodajToolStripMenuItem";
-            this.dodajToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.dodajToolStripMenuItem.Text = "Dodaj";
             this.dodajToolStripMenuItem.Click += new System.EventHandler(this.dodajToolStripMenuItem_Click);
             // 
             // obrisiToolStripMenuItem
             // 
             this.obrisiToolStripMenuItem.Name = "obrisiToolStripMenuItem";
-            this.obrisiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.obrisiToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.obrisiToolStripMenuItem.Text = "Obrisi";
             this.obrisiToolStripMenuItem.Click += new System.EventHandler(this.obrisiToolStripMenuItem_Click);
             // 
@@ -300,6 +301,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmGlavna";
             this.Text = "Pretraga aranzmana";
+            this.Load += new System.EventHandler(this.FrmGlavna_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAranzmaniPretraga)).EndInit();
