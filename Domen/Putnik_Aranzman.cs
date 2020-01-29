@@ -80,6 +80,19 @@ namespace Domen
         {
             return null;
         }
+        public bool AdekvatnoPopunjen()
+        {
+            if (JMBG == null)
+                return false;
+
+            if (AranzmanID <= 0)
+                return false;
+
+            if (DatumRezervacije == new DateTime())
+                return false;
+
+            return true;
+        }
 
         public override bool Equals(object obj)
         {
@@ -87,5 +100,6 @@ namespace Domen
                    JMBG == aranzman.JMBG &&
                    AranzmanID == aranzman.AranzmanID;
         }
+
     }
 }

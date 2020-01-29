@@ -86,5 +86,19 @@ namespace Domen
         {
             return;
         }
+
+        public bool AdekvatnoPopunjen()
+        {
+            if (ZemljaID <= 0)
+                return false;
+
+            if (NazivZemlje == null)
+                return false;
+
+            if (SkraceniNaziv == null)
+                return false;
+
+            return true;
+        }
     }
 }

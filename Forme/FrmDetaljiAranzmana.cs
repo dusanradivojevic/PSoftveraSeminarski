@@ -107,6 +107,8 @@ namespace Forme
 
             DodajPutnike(redovi, izabraniPutnici);
             IzbaciPutnike(redovi, sviPutnici);
+
+            IzmeniBrojeveVezaneZaPutnike();
         }
 
         private void DodajPutnike(List<DataGridViewRow> redovi, BindingList<Putnik> odrediste)
@@ -131,9 +133,7 @@ namespace Forme
             txtNazivAranzmana.ReadOnly = false;
             rtbOpis.ReadOnly = false;
             txtCena.ReadOnly = false;
-            txtBrSlbMesta.ReadOnly = false;
             txtUkBrMesta.ReadOnly = false;
-            txtBrojPutnika.ReadOnly = false;
 
             txtDatum.Visible = false;
             dtpDatum.Visible = true;
@@ -168,6 +168,24 @@ namespace Forme
 
             DodajPutnike(redovi, sviPutnici);
             IzbaciPutnike(redovi, izabraniPutnici);
+
+            IzmeniBrojeveVezaneZaPutnike();
+        }
+
+        private void IzmeniBrojeveVezaneZaPutnike()
+        {
+            txtBrojPutnika.Text = izabraniPutnici.Count + "";
+
+            if (txtUkBrMesta.BackColor == txtNazivAranzmana.BackColor)
+            {
+                txtBrSlbMesta.Text = (int.Parse(txtUkBrMesta.Text) - izabraniPutnici.Count) + "";
+                txtBrSlbMesta.BackColor = txtBrojPutnika.BackColor;
+            }
+            else
+            {
+                txtBrSlbMesta.Text = "";
+                txtBrSlbMesta.BackColor = Color.IndianRed;
+            }
         }
 
         private void IzbaciPutnike(List<DataGridViewRow> redovi, BindingList<Putnik> izvoriste)
@@ -197,6 +215,9 @@ namespace Forme
         {
             double cena = Convert.ToDouble(txtCena.Text.Substring(0, txtCena.Text.Length - 2));
 
+            if (txtUkBrMesta.BackColor != Color.White)
+                return;
+
             if (Kontroler.Kontroler.Instance.SacuvajAranzman(Convert.ToInt32(txtID.Text), txtNazivAranzmana.Text,
                 rtbOpis.Text, cena, dtpDatum.Value, Convert.ToInt32(txtUkBrMesta.Text),
                 Convert.ToInt32(txtBrojPutnika.Text), Convert.ToInt32(txtBrSlbMesta.Text),
@@ -215,6 +236,20 @@ namespace Forme
         private void txtDestinacija_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtUkBrMesta_TextChanged(object sender, EventArgs e)
+        {
+            if(int.TryParse(txtUkBrMesta.Text, out int d))
+            {
+                txtUkBrMesta.BackColor = txtNazivAranzmana.BackColor;
+            }
+            else
+            {
+                txtUkBrMesta.BackColor = Color.IndianRed;
+            }
+
+            IzmeniBrojeveVezaneZaPutnike();
         }
     }
 }

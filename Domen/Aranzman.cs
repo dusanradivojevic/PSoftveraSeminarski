@@ -194,6 +194,41 @@ namespace Domen
                 Putnici.Add((Putnik)ido);
             }
         }
+        
+        public bool AdekvatnoPopunjen()
+        {
+            if (AranzmanID == 0)
+                return false;
+
+            if (NazivAranzmana == null)
+                return false;
+
+            if (OpisAranzmana == null)
+                return false;
+
+            if (Cena <= 0)
+                return false;
+
+            if (Datum == new DateTime())
+                return false;
+
+            if (UkupanBrMesta <= 0)
+                return false;
+
+            if (BrojPutnika < 0 || BrojPutnika > UkupanBrMesta)
+                return false;
+
+            if (BrSlobodnihMesta < 0 || BrSlobodnihMesta > UkupanBrMesta)
+                return false;
+
+            if (Destinacija == null || Destinacija.DestinacijaID == 0)
+                return false;
+
+            if (Korisnik == null || Korisnik.KorisnikID == 0)
+                return false;
+
+            return true;
+        }
 
         public override bool Equals(object obj)
         {

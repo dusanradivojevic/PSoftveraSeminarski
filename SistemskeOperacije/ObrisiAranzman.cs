@@ -26,7 +26,16 @@ namespace SistemskeOperacije
 
         protected override void Validacija(IDomenskiObjekat objekat)
         {
-            //throw new NotImplementedException();
+            if (!(objekat is Aranzman))
+            {
+                throw new Exception("Objekat nije tipa Aranzman!");
+            }
+
+            List<IDomenskiObjekat> rezultat = broker.Pronadji(objekat);
+            if (rezultat.Count == 0)
+            {
+                throw new Exception($"U bazi ne postoji Aranzman sa datim ID-jem!");
+            }
         }
     }
 }

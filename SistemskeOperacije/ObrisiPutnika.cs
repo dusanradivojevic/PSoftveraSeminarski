@@ -29,7 +29,17 @@ namespace SistemskeOperacije
             // objekat tipa putnika
             // da li je popunjen adekvatno
             // sprecavanje ponavljanja iz baze
-            // throw new NotImplementedException();
+
+            if (!(objekat is Putnik))
+            {
+                throw new Exception("Objekat nije tipa Putnik!");
+            }
+
+            List<IDomenskiObjekat> rezultat = broker.Pronadji(objekat);
+            if (rezultat.Count == 0)
+            {
+                throw new Exception($"U bazi ne postoji Putnik sa datim JMBG-om!");
+            }
         }
     }
 }

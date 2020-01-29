@@ -28,10 +28,7 @@ namespace SistemskeOperacije
             {
                 pa.JMBG = p.JMBG;
                 broker.Sacuvaj(pa);
-            }
-
-            aranzman.BrojPutnika = aranzman.Putnici.Count();
-            aranzman.BrSlobodnihMesta -= aranzman.BrojPutnika;
+            }                       
 
             brojRedova = broker.Obrisi(aranzman);
             if (brojRedova < 1)
@@ -46,15 +43,20 @@ namespace SistemskeOperacije
 
         protected override void Validacija(IDomenskiObjekat objekat)
         {
-            if(!(objekat is Aranzman))
+            if (!(objekat is Aranzman))
             {
-                throw new ArgumentException("Prosledjeni objekat nije tipa Aranzman!");
+                throw new Exception("Objekat nije tipa Aranzman!");
             }
 
-            Aranzman a = objekat as Aranzman;
-            if(a.UkupanBrMesta < a.Putnici.Count)
+            if (!objekat.AdekvatnoPopunjen())
             {
-                throw new Exception("Broj putnika je veci od kapaciteta aranzmana!");
+                throw new MissingFieldException("Svi neophodni podaci moraju biti ispravno uneti!");
+            }
+
+            List<IDomenskiObjekat> rezultat = broker.Pronadji(objekat);
+            if (rezultat.Count == 0)
+            {
+                throw new Exception("Aranzman ne moze biti azuriran jer ne postoji u bazi!");
             }
         }
     }

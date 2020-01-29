@@ -136,6 +136,7 @@
             this.txtUkBrMesta.Size = new System.Drawing.Size(134, 24);
             this.txtUkBrMesta.TabIndex = 36;
             this.txtUkBrMesta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtUkBrMesta.TextChanged += new System.EventHandler(this.txtUkBrMesta_TextChanged);
             // 
             // label5
             // 

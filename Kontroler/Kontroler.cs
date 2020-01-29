@@ -269,6 +269,9 @@ namespace Kontroler
                 Putnici = lista
             };
 
+            a.BrojPutnika = a.Putnici.Count();
+            a.BrSlobodnihMesta = a.UkupanBrMesta - a.BrojPutnika;
+
             OpstaSO os = new UnosPutnika(); //isto sto i izmeni
             try
             {

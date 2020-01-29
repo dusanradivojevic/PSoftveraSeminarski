@@ -51,7 +51,7 @@ namespace SistemskeOperacije
 
         protected override void Validacija(IDomenskiObjekat objekat)
         {
-            // ?
+            
         }
     }
 }

@@ -123,6 +123,22 @@ namespace Domen
                 Korisnik = (Korisnik)ido;
             }
         }
+        public bool AdekvatnoPopunjen()
+        {
+            if (DestinacijaID <= 0)
+                return false;
+
+            if (NazivGrada == null)
+                return false;
+            
+            if (Zemlja == null || Zemlja.ZemljaID== 0)
+                return false;
+
+            if (Korisnik == null || Korisnik.KorisnikID == 0)
+                return false;
+
+            return true;
+        }
 
         public override bool Equals(object obj)
         {

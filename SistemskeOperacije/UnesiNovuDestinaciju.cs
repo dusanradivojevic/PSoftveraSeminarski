@@ -33,9 +33,21 @@ namespace SistemskeOperacije
 
         protected override void Validacija(IDomenskiObjekat objekat)
         {
-            //mora da se proveri da li vec postoji takva destinacija u bazi
-            //(slicno i za ostale insert SO
-            // !
+            if (!(objekat is Destinacija))
+            {
+                throw new Exception("Objekat nije tipa Destinacija!");
+            }
+
+            if (!objekat.AdekvatnoPopunjen())
+            {
+                throw new MissingFieldException("Svi neophodni podaci moraju biti ispravno uneti!");
+            }
+
+            List<IDomenskiObjekat> rezultat = broker.Pronadji(objekat);
+            if (rezultat.Count != 0)
+            {
+                throw new Exception("Postoji Destinacija sa unetim ID-jem!");
+            }
         }
     }
 }

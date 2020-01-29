@@ -119,5 +119,32 @@ namespace Domen
         {
             return;
         }
+
+        public bool AdekvatnoPopunjen()
+        {
+            if (KorisnikID <= 0)
+                return false;
+
+            if (Ime == null)
+                return false;
+            
+            if (Prezime == null)
+                return false;
+
+            if (Email == null)
+                return false;
+
+            if (Sifra == null)
+                return false;
+
+            return true;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Korisnik korisnik &&
+                   Email == korisnik.Email &&
+                   Sifra == korisnik.Sifra;
+        }
     }
 }

@@ -18,5 +18,6 @@ namespace Domen
         IDomenskiObjekat VratiPodDomen();
         void PostaviVrednost(IDomenskiObjekat ido);
         void PostaviVrednostPodDomena(IDomenskiObjekat ido);
+        bool AdekvatnoPopunjen();
     }
 }

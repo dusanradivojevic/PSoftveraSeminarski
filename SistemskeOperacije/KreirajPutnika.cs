@@ -20,7 +20,7 @@ namespace SistemskeOperacije
             else
             {
                 Putnik = null;
-                throw new Exception("Sistem ne moze da zapamti novi aranzman!");
+                throw new Exception("Sistem ne moze da zapamti novog putnika!");
             }
         }
 
@@ -29,6 +29,11 @@ namespace SistemskeOperacije
             if(!(objekat is Putnik))
             {
                 throw new Exception("Objekat nije tipa Putnik!");
+            }
+
+            if (!objekat.AdekvatnoPopunjen())
+            {
+                throw new MissingFieldException("Svi neophodni podaci moraju biti ispravno uneti!");
             }
 
             List<IDomenskiObjekat> rezultat = broker.Pronadji(objekat);

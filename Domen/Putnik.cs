@@ -119,6 +119,26 @@ namespace Domen
             }
         }
 
+        public bool AdekvatnoPopunjen()
+        {
+            if (JMBG == null)
+                return false;
+
+            if (Ime == null)
+                return false;
+
+            if (Prezime == null)
+                return false;
+
+            if (DatumDodavanja == new DateTime())
+                return false;
+
+            if (Korisnik == null || Korisnik.KorisnikID == 0)
+                return false;
+
+            return true;
+        }
+
         public override bool Equals(object obj)
         {
             return obj is Putnik putnik &&

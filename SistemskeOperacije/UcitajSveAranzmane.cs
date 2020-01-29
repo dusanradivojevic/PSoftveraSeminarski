@@ -62,7 +62,10 @@ namespace SistemskeOperacije
 
         protected override void Validacija(IDomenskiObjekat objekat)
         {
-            // 
+            if (!(objekat is Aranzman))
+            {
+                throw new Exception("Objekat nije tipa Aranzman!");
+            }
         }
     }
 }
