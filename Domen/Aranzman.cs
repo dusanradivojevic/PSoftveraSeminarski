@@ -10,6 +10,11 @@ namespace Domen
 {
     public class Aranzman : IDomenskiObjekat
     {
+        public Aranzman()
+        {
+            Putnici = new List<Putnik>();
+        }
+
         private int aranzmanID;
         [DisplayName("ID")]
         public int AranzmanID
@@ -34,8 +39,7 @@ namespace Domen
             set { opisAranzman = value; }
         }
 
-        private double cena;
-        
+        private double cena;        
         public double Cena
         {
             get { return cena; }
@@ -43,7 +47,6 @@ namespace Domen
         }
 
         private DateTime datum;
-
         public DateTime Datum
         {
             get { return datum; }
@@ -75,7 +78,6 @@ namespace Domen
         }
 
         private Destinacija destinacija;
-
         public Destinacija Destinacija
         {
             get { return destinacija; }
@@ -83,12 +85,14 @@ namespace Domen
         }
 
         private Korisnik korisnik;
-
         public Korisnik Korisnik
         {
             get { return korisnik; }
             set { korisnik = value; }
         }
+
+        [Browsable(false)]
+        public List<Putnik> Putnici { get; set; }
 
         [Browsable(false)]
         public string NazivTabele => "Aranzman";
@@ -183,6 +187,11 @@ namespace Domen
             if(ido is Korisnik)
             {
                 Korisnik = (Korisnik)ido;
+            }
+
+            if(ido is Putnik)
+            {
+                Putnici.Add((Putnik)ido);
             }
         }
 

@@ -218,6 +218,7 @@
             this.btnIzmeni.TabIndex = 17;
             this.btnIzmeni.Text = "Izmeni";
             this.btnIzmeni.UseVisualStyleBackColor = true;
+            this.btnIzmeni.Click += new System.EventHandler(this.btnIzmeni_Click);
             // 
             // btnObrisi
             // 

@@ -26,7 +26,9 @@ namespace SistemskeOperacije
 
         protected override void Validacija(IDomenskiObjekat objekat)
         {
-            
+            // objekat tipa putnika
+            // da li je popunjen adekvatno
+            // sprecavanje ponavljanja iz baze
             // throw new NotImplementedException();
         }
     }

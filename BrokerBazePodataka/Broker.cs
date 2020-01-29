@@ -18,14 +18,6 @@ namespace BrokerBazePodataka
             konekcija = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=db_agencija;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         }
 
-        public int Obrisi(IDomenskiObjekat objekat)
-        {
-            SqlCommand command = new SqlCommand("", konekcija, transakcija);
-            command.CommandText = $"DELETE FROM {objekat.NazivTabele} WHERE" +
-                $" {objekat.KriterijumiZaPretragu}";
-            return command.ExecuteNonQuery();
-        }
-
         public void OtvoriKonekciju()
         {
             konekcija.Open();
@@ -51,6 +43,14 @@ namespace BrokerBazePodataka
             transakcija.Rollback();
         }
         
+        public int Obrisi(IDomenskiObjekat objekat)
+        {
+            SqlCommand command = new SqlCommand("", konekcija, transakcija);
+            command.CommandText = $"DELETE FROM {objekat.NazivTabele} WHERE" +
+                $" {objekat.KriterijumiZaPretragu}";
+            return command.ExecuteNonQuery();
+        }
+
         public int Sacuvaj(IDomenskiObjekat objekat)
         {
             SqlCommand command = new SqlCommand("", konekcija, transakcija);

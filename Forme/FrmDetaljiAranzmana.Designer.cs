@@ -49,7 +49,6 @@
             this.btnOdustani = new System.Windows.Forms.Button();
             this.btnSacuvaj = new System.Windows.Forms.Button();
             this.txtDatum = new System.Windows.Forms.TextBox();
-            this.txtDestinacija = new System.Windows.Forms.TextBox();
             this.txtKorisnik = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvSviPutnici = new System.Windows.Forms.DataGridView();
@@ -58,6 +57,9 @@
             this.dgvIzabraniPutnici = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnIzbaci = new System.Windows.Forms.Button();
+            this.cmbDestinacija = new System.Windows.Forms.ComboBox();
+            this.txtDestinacija = new System.Windows.Forms.TextBox();
+            this.dtpDatum = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSviPutnici)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIzabraniPutnici)).BeginInit();
@@ -267,16 +269,6 @@
             this.txtDatum.TabIndex = 45;
             this.txtDatum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtDestinacija
-            // 
-            this.txtDestinacija.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDestinacija.Location = new System.Drawing.Point(680, 12);
-            this.txtDestinacija.Name = "txtDestinacija";
-            this.txtDestinacija.ReadOnly = true;
-            this.txtDestinacija.Size = new System.Drawing.Size(157, 24);
-            this.txtDestinacija.TabIndex = 46;
-            this.txtDestinacija.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // txtKorisnik
             // 
             this.txtKorisnik.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -362,18 +354,48 @@
             this.btnIzbaci.UseVisualStyleBackColor = true;
             this.btnIzbaci.Click += new System.EventHandler(this.btnIzbaci_Click);
             // 
+            // cmbDestinacija
+            // 
+            this.cmbDestinacija.FormattingEnabled = true;
+            this.cmbDestinacija.Location = new System.Drawing.Point(680, 12);
+            this.cmbDestinacija.Name = "cmbDestinacija";
+            this.cmbDestinacija.Size = new System.Drawing.Size(157, 26);
+            this.cmbDestinacija.TabIndex = 54;
+            this.cmbDestinacija.Visible = false;
+            // 
+            // txtDestinacija
+            // 
+            this.txtDestinacija.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDestinacija.Location = new System.Drawing.Point(680, 13);
+            this.txtDestinacija.Name = "txtDestinacija";
+            this.txtDestinacija.ReadOnly = true;
+            this.txtDestinacija.Size = new System.Drawing.Size(157, 24);
+            this.txtDestinacija.TabIndex = 55;
+            this.txtDestinacija.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDestinacija.TextChanged += new System.EventHandler(this.txtDestinacija_TextChanged);
+            // 
+            // dtpDatum
+            // 
+            this.dtpDatum.Location = new System.Drawing.Point(349, 52);
+            this.dtpDatum.Name = "dtpDatum";
+            this.dtpDatum.Size = new System.Drawing.Size(210, 24);
+            this.dtpDatum.TabIndex = 56;
+            this.dtpDatum.Visible = false;
+            // 
             // FrmDetaljiAranzmana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(911, 501);
+            this.Controls.Add(this.dtpDatum);
+            this.Controls.Add(this.txtDestinacija);
+            this.Controls.Add(this.cmbDestinacija);
             this.Controls.Add(this.btnIzbaci);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnIzaberi);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnKreirajPutnika);
             this.Controls.Add(this.txtKorisnik);
-            this.Controls.Add(this.txtDestinacija);
             this.Controls.Add(this.txtDatum);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -430,7 +452,6 @@
         private System.Windows.Forms.Button btnOdustani;
         private System.Windows.Forms.Button btnSacuvaj;
         private System.Windows.Forms.TextBox txtDatum;
-        private System.Windows.Forms.TextBox txtDestinacija;
         private System.Windows.Forms.TextBox txtKorisnik;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnKreirajPutnika;
@@ -439,5 +460,8 @@
         private System.Windows.Forms.DataGridView dgvIzabraniPutnici;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnIzbaci;
+        private System.Windows.Forms.ComboBox cmbDestinacija;
+        private System.Windows.Forms.TextBox txtDestinacija;
+        private System.Windows.Forms.DateTimePicker dtpDatum;
     }
 }

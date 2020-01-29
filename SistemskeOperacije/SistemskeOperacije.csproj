@@ -45,11 +45,13 @@
     <Compile Include="ObrisiAranzman.cs" />
     <Compile Include="ObrisiDestinaciju.cs" />
     <Compile Include="ObrisiPutnika.cs" />
+    <Compile Include="UcitajSveAranzmane.cs" />
     <Compile Include="UnesiNoviAranzman.cs" />
     <Compile Include="OpstaSO.cs" />
     <Compile Include="PrijaviMe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnesiNovuDestinaciju.cs" />
+    <Compile Include="UnosPutnika.cs" />
     <Compile Include="VratiSve.cs" />
   </ItemGroup>
   <ItemGroup>

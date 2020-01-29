@@ -21,6 +21,10 @@ namespace Forme
             this.frmPrijava = frmPrijava;
             InitializeComponent();
             SrediFormu();
+
+            Thread tajmerZaUcitavanje = new Thread(Tajmer);
+            tajmerZaUcitavanje.IsBackground = true;
+            tajmerZaUcitavanje.Start();
         }
 
         private void SrediFormu()
@@ -75,8 +79,10 @@ namespace Forme
                 dgvAranzmaniPretraga.SelectedCells.Count == 1)
             {
                 int rowIndex = dgvAranzmaniPretraga.SelectedCells[0].RowIndex;
-                DataGridViewRow red = dgvAranzmaniPretraga.Rows[rowIndex];
-                PokreniFrmDetalji(red);
+                //DataGridViewRow red = dgvAranzmaniPretraga.Rows[rowIndex];
+                int aranzmanID = (int) dgvAranzmaniPretraga.Rows[rowIndex].Cells[0].Value;
+                PokreniFrmDetalji(sviAranzmani.Where(x => x.AranzmanID == aranzmanID).SingleOrDefault(),
+                    ((Button)sender).Text);
             }
             else if (dgvAranzmaniPretraga.SelectedCells != null &&
                 dgvAranzmaniPretraga.SelectedCells.Count > 1)
@@ -95,8 +101,10 @@ namespace Forme
 
                 if (flag)
                 {
-                    DataGridViewRow red = dgvAranzmaniPretraga.Rows[rowIndex];
-                    PokreniFrmDetalji(red);
+                    int aranzmanID = (int)dgvAranzmaniPretraga.Rows[rowIndex].Cells[0].Value;
+                    PokreniFrmDetalji(sviAranzmani.Where(x => x.AranzmanID == aranzmanID).SingleOrDefault(),
+                        ((Button)sender).Text);
+                    //PokreniFrmDetalji(red);
                 }
                 else
                 {
@@ -109,23 +117,24 @@ namespace Forme
             }
         }
 
-        private void PokreniFrmDetalji(DataGridViewRow red)
+        private void PokreniFrmDetalji(Aranzman a, string tip)
         {
             // izvuci u kontroler pa da on poziva formu?
 
             FrmDetaljiAranzmana frmDetalji = new FrmDetaljiAranzmana();
-            frmDetalji.PostaviVrednosti(red);
+            frmDetalji.PostaviVrednosti(a);
+
+            if (tip.Equals("Izmeni")) //tekst na dugmetu sa kog je pozvano
+            {
+                frmDetalji.OtkljucajPolja();
+            }
             frmDetalji.ShowDialog();
         }
 
         private void btnDodaj_Click(object sender, EventArgs e)
         {
             FrmDodajAranzman forma = new FrmDodajAranzman();
-            forma.ShowDialog();
-
-            Thread tajmerZaUcitavanje = new Thread(Tajmer);
-            tajmerZaUcitavanje.IsBackground = true;
-            tajmerZaUcitavanje.Start();
+            forma.ShowDialog();            
         }
 
         private void Tajmer()
@@ -228,6 +237,11 @@ namespace Forme
         private void FrmGlavna_Load(object sender, EventArgs e)
         {
             frmPrijava.Visible = false;
+        }
+
+        private void btnIzmeni_Click(object sender, EventArgs e)
+        {
+            btnPrikaziDetalje_Click(sender, e);
         }
     }
     

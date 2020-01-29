@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Domen;
 using BrokerBazePodataka;
 using SistemskeOperacije;
+using System.ComponentModel;
 
 namespace Kontroler
 {
@@ -35,11 +36,11 @@ namespace Kontroler
         public List<Aranzman> VratiSveAranzmane()
         {
             Aranzman a = new Aranzman();
-            OpstaSO os = new VratiSve();
+            OpstaSO os = new UcitajSveAranzmane();
             try
             {
                 os.IzvrsiSO(a);
-                List<Aranzman> lista = ((VratiSve)os).lista.Cast<Aranzman>().ToList();
+                List<Aranzman> lista = ((UcitajSveAranzmane)os).lista.Cast<Aranzman>().ToList();
                 return lista;
             }
             catch (Exception e)
@@ -249,6 +250,36 @@ namespace Kontroler
             }
         }
 
-        
+        public bool SacuvajAranzman(int id, string naziv, string opis, double cena, DateTime datum, 
+            int ukBr, int brP, int brSlb, Destinacija destinacija, Korisnik korisnik, List<Putnik> lista)
+        {
+            //dodaj provere
+            Aranzman a = new Aranzman
+            {
+                AranzmanID = id,
+                NazivAranzmana = naziv,
+                OpisAranzmana = opis,
+                Cena = cena,
+                Datum = datum,
+                UkupanBrMesta = ukBr,
+                BrojPutnika = brP,
+                BrSlobodnihMesta = brSlb,
+                Destinacija = destinacija,
+                Korisnik = korisnik,
+                Putnici = lista
+            };
+
+            OpstaSO os = new UnosPutnika(); //isto sto i izmeni
+            try
+            {
+                os.IzvrsiSO(a);
+            }
+            catch
+            {
+                return false;
+            }
+
+            return ((UnosPutnika)os).UspesanUnos;               
+        }
     }
 }
