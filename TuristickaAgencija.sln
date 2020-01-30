@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resursi", "Resursi", "{B4D6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemskeOperacije", "SistemskeOperacije\SistemskeOperacije.csproj", "{F193F0AA-8B87-4B9F-9382-CD584C9593C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KKI", "KKI\KKI.csproj", "{C0308BDC-142D-47A1-8176-AC42866FA621}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{F193F0AA-8B87-4B9F-9382-CD584C9593C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F193F0AA-8B87-4B9F-9382-CD584C9593C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F193F0AA-8B87-4B9F-9382-CD584C9593C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0308BDC-142D-47A1-8176-AC42866FA621}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0308BDC-142D-47A1-8176-AC42866FA621}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0308BDC-142D-47A1-8176-AC42866FA621}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0308BDC-142D-47A1-8176-AC42866FA621}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

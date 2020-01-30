@@ -1,4 +1,5 @@
 ﻿using Domen;
+using KKI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,27 +21,31 @@ namespace Forme
         }
 
         private void SrediFormu()
-        {
+        {        
             dtpDatum.Format = DateTimePickerFormat.Short;
-            cmbDestinacija.DataSource = Kontroler.Kontroler.Instance.VratiSveDestinacije();
+            try
+            {
+                KkiDestinacija.Instance.PostaviSveDestinacije(cmbDestinacija);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+                //Dispose();
+                // mozda neki blok forme ili tako nesto?
+            }
             txtKorisnik.Text = Sesija.Instance.VratiKorisnikaToString();
         }
-
-        private void FrmDodajAranzman_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void txtUkBrMesta_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtUkBrMesta.Text))
-            {
-                return;
-            }
-
             if(int.TryParse(txtUkBrMesta.Text, out int ukBr))
             {
                 txtBrSlbMesta.Text = ukBr + "";
+                txtUkBrMesta.BackColor = Color.White;
+            }
+            else
+            {
+                txtUkBrMesta.BackColor = Color.IndianRed;
             }
         }
 
@@ -51,29 +56,19 @@ namespace Forme
 
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
-            //Prebaciti ovu validaciju u kontroler?
-            if(double.TryParse(txtCena.Text, out double cena) &&
-                int.TryParse(txtUkBrMesta.Text, out int ukBrMesta) &&
-                cmbDestinacija.SelectedItem != null && cmbDestinacija.SelectedItem is Destinacija)
+            try
             {
-                bool rez = Kontroler.Kontroler.Instance.UnesiNoviAranzman(txtNazivAranzmana.Text,
-                    rtbOpis.Text, cena, dtpDatum.Value, ukBrMesta, 0, ukBrMesta,
-                    cmbDestinacija.SelectedItem as Destinacija,
-                    Sesija.Instance.VratiKorisnikaObjekat());
-                if (rez)
-                {
-                    MessageBox.Show("Aranzman je uspesno sacuvan!");
-                    Dispose();
-                }
-                else
-                {
-                    MessageBox.Show("Sistem ne moze da sacuva aranzman!");
-                }
+                KkiAranzman.Instance.SacuvajAranzman(txtNazivAranzmana.Text,
+                    rtbOpis.Text, txtCena.Text, dtpDatum.Value, txtUkBrMesta.Text, 
+                    txtBrojPutnika.Text, txtBrSlbMesta.Text, cmbDestinacija);
+
+                MessageBox.Show("Aranzman je uspesno sacuvan!");
+                Dispose();
             }
-            else
+            catch (Exception exc)
             {
-                MessageBox.Show("Unesite cenu u odgovarajucem formatu!");
-            }
+                MessageBox.Show(exc.Message);
+            }              
         }
     }
 }

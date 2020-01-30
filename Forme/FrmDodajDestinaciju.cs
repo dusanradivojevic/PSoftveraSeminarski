@@ -1,4 +1,5 @@
 ﻿using Domen;
+using KKI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,56 +22,31 @@ namespace Forme
 
         private void SrediFormu()
         {
-            cmbZemlja.DataSource = Kontroler.Kontroler.Instance.VratiSveZemlje();
+            try
+            {
+                KkiDestinacija.Instance.PostaviSveZemlje(cmbZemlja);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+                //Dispose();
+                // mozda neki blok forme ili tako nesto?
+            }
             txtKorisnik.Text = Sesija.Instance.VratiKorisnikaToString();
         }
 
         private void btnDodaj_Click(object sender, EventArgs e)
         {
-            if (cmbZemlja.SelectedItem != null && cmbZemlja.SelectedItem is Zemlja)
+            try
             {
-                bool rez = Kontroler.Kontroler.Instance.UnesiNovuDestinaciju(txtNazivGrada.Text,
-                    cmbZemlja.SelectedItem as Zemlja,
-                    Sesija.Instance.VratiKorisnikaObjekat());
-                if (rez)
-                {
-                    MessageBox.Show("Destinacija je uspesno sacuvana!");
-                    Dispose();
-                }
-                else
-                {
-                    MessageBox.Show("Sistem ne moze da sacuva destinaciju!");
-                }
+                KkiDestinacija.Instance.SacuvajDestinaciju(cmbZemlja, txtNazivGrada.Text);
+                MessageBox.Show("Destinacija je uspesno sacuvana!");
+                //Dispose();
             }
-            else
+            catch (Exception exc)
             {
-                MessageBox.Show("Morate izabrati zemlju!");
+                MessageBox.Show(exc.Message);
             }
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmbKorisnik_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmbZemlja_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void btnOdustani_Click(object sender, EventArgs e)

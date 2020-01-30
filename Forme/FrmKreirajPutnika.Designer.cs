@@ -60,7 +60,6 @@
             this.txtJmbg.Name = "txtJmbg";
             this.txtJmbg.Size = new System.Drawing.Size(210, 24);
             this.txtJmbg.TabIndex = 24;
-            this.txtJmbg.TextChanged += new System.EventHandler(this.txtNazivAranzmana_TextChanged);
             // 
             // label1
             // 

@@ -103,23 +103,8 @@ namespace Kontroler
 
         // *** INSERT ***
 
-        public bool UnesiNoviAranzman(string naziv, string opis, double cena,
-            DateTime datum, int ukBrMesta, int brPutnika, int brSlbMesta,
-            Destinacija destinacija, Korisnik korisnik)
-        {
-            Aranzman a = new Aranzman
-            {
-                NazivAranzmana = naziv,
-                OpisAranzmana = opis,
-                Cena = cena,
-                Datum = datum,
-                UkupanBrMesta = ukBrMesta,
-                BrojPutnika = brPutnika,
-                BrSlobodnihMesta = brSlbMesta,
-                Destinacija = destinacija,
-                Korisnik = korisnik
-            };
-
+        public bool UnesiNoviAranzman(Aranzman a)
+        {           
             OpstaSO os = new UnesiNoviAranzman();
             try
             {
@@ -135,15 +120,8 @@ namespace Kontroler
                 return false;
         }
 
-        public bool UnesiNovuDestinaciju(string grad, Zemlja zemlja, Korisnik korisnik)
+        public bool UnesiNovuDestinaciju(Destinacija d)
         {
-            Destinacija d = new Destinacija
-            {
-                NazivGrada = grad,
-                Zemlja = zemlja,
-                Korisnik = korisnik
-            };
-
             OpstaSO os = new UnesiNovuDestinaciju();
             try
             {
@@ -159,18 +137,8 @@ namespace Kontroler
                 return false;
         }
 
-        public Putnik KreirajPutnika(string jmbg, string ime, string prezime, DateTime datum,
-            Korisnik korisnik)
-        {
-            Putnik p = new Putnik
-            {
-                JMBG = jmbg,
-                Ime = ime,
-                Prezime = prezime,
-                DatumDodavanja = datum,
-                Korisnik = korisnik
-            };
-
+        public bool KreirajPutnika(Putnik p)
+        {    
             OpstaSO os = new KreirajPutnika();
             try
             {
@@ -178,10 +146,13 @@ namespace Kontroler
             }
             catch
             {
-                return null;
+                return false;
             }
 
-            return ((KreirajPutnika)os).Putnik;
+            if (((KreirajPutnika)os).Putnik != null)
+                return true;
+            else
+                return false;
         }
 
         // *** DELETE ***
@@ -233,11 +204,8 @@ namespace Kontroler
 
         // *** OTHER ***                
 
-        public Korisnik Prijava(string email, string pw)
+        public Korisnik Prijava(Korisnik k)
         {
-            Korisnik k = new Korisnik();
-            k.Email = email;
-            k.Sifra = pw;
             OpstaSO os = new PrijaviMe();
             try
             {
@@ -250,27 +218,10 @@ namespace Kontroler
             }
         }
 
-        public bool SacuvajAranzman(int id, string naziv, string opis, double cena, DateTime datum, 
-            int ukBr, int brP, int brSlb, Destinacija destinacija, Korisnik korisnik, List<Putnik> lista)
+        public bool SacuvajAranzmanSlozen(Aranzman a)
         {
-            //dodaj provere
-            Aranzman a = new Aranzman
-            {
-                AranzmanID = id,
-                NazivAranzmana = naziv,
-                OpisAranzmana = opis,
-                Cena = cena,
-                Datum = datum,
-                UkupanBrMesta = ukBr,
-                BrojPutnika = brP,
-                BrSlobodnihMesta = brSlb,
-                Destinacija = destinacija,
-                Korisnik = korisnik,
-                Putnici = lista
-            };
-
-            a.BrojPutnika = a.Putnici.Count();
-            a.BrSlobodnihMesta = a.UkupanBrMesta - a.BrojPutnika;
+            //    a.BrojPutnika = a.Putnici.Count();
+            //    a.BrSlobodnihMesta = a.UkupanBrMesta - a.BrojPutnika;
 
             OpstaSO os = new UnosPutnika(); //isto sto i izmeni
             try

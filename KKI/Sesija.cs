@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domen;
 
-namespace Forme
+namespace KKI
 {
     public class Sesija
     {

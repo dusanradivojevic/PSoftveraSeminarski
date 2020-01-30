@@ -176,7 +176,6 @@
             this.label2.Size = new System.Drawing.Size(84, 18);
             this.label2.TabIndex = 5;
             this.label2.Text = "Destinacija:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -255,14 +254,14 @@
             // dodajToolStripMenuItem
             // 
             this.dodajToolStripMenuItem.Name = "dodajToolStripMenuItem";
-            this.dodajToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.dodajToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dodajToolStripMenuItem.Text = "Dodaj";
             this.dodajToolStripMenuItem.Click += new System.EventHandler(this.dodajToolStripMenuItem_Click);
             // 
             // obrisiToolStripMenuItem
             // 
             this.obrisiToolStripMenuItem.Name = "obrisiToolStripMenuItem";
-            this.obrisiToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.obrisiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.obrisiToolStripMenuItem.Text = "Obrisi";
             this.obrisiToolStripMenuItem.Click += new System.EventHandler(this.obrisiToolStripMenuItem_Click);
             // 

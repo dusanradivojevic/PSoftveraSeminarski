@@ -83,7 +83,6 @@
             this.label3.Size = new System.Drawing.Size(56, 18);
             this.label3.TabIndex = 4;
             this.label3.Text = "Zemlja:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -93,7 +92,6 @@
             this.label4.Size = new System.Drawing.Size(66, 18);
             this.label4.TabIndex = 5;
             this.label4.Text = "Korisnik:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // cmbZemlja
             // 
@@ -102,7 +100,6 @@
             this.cmbZemlja.Name = "cmbZemlja";
             this.cmbZemlja.Size = new System.Drawing.Size(156, 26);
             this.cmbZemlja.TabIndex = 6;
-            this.cmbZemlja.SelectedIndexChanged += new System.EventHandler(this.cmbZemlja_SelectedIndexChanged);
             // 
             // btnDodaj
             // 

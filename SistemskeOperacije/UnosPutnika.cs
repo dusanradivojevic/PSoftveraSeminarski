@@ -19,8 +19,12 @@ namespace SistemskeOperacije
             int brojRedova = broker.Obrisi(pa);
             if (brojRedova < 1)
             {
-                UspesanUnos = false;
-                throw new Exception("Sistem ne moze da obrise Putnik_Aranzman!");
+                if(broker.Pronadji(pa).Count != 0)
+                {
+                    //ako aranzman nema putnike
+                    UspesanUnos = false;
+                    throw new Exception("Sistem ne moze da obrise Putnik_Aranzman!");
+                }
             }
                         
             pa.DatumRezervacije = DateTime.Now;

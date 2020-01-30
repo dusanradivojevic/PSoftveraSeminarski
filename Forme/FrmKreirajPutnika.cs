@@ -1,4 +1,5 @@
 ﻿using Domen;
+using KKI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,12 +26,7 @@ namespace Forme
             txtDatumDodavanja.Text = DateTime.Now.ToString("dd-MM-yyyy");
             txtKorisnik.Text = Sesija.Instance.VratiKorisnikaToString();
         }
-
-        private void txtNazivAranzmana_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void btnOdustani_Click(object sender, EventArgs e)
         {
             Dispose();
@@ -38,44 +34,17 @@ namespace Forme
 
         private void btnPotvrdi_Click(object sender, EventArgs e)
         {
-            //Prebaciti ovu validaciju u kontroler?
-            if (txtJmbg.Text.Length != 13)
+            try
             {
-                MessageBox.Show("JMBG mora imati tacno 13 cifara!");
-                return;
+                KkiPutnik.Instance.KreirajPutnika(txtJmbg.Text, txtIme.Text,
+                    txtPrezime.Text, txtDatumDodavanja.Text);
+                MessageBox.Show("Putnik je uspesno sacuvan.");
+                Dispose();
             }
-            string jmbg = txtJmbg.Text;
-            bool flag = true;
-            foreach(char c in jmbg)
+            catch (Exception exc)
             {
-                if (!char.IsDigit(c))
-                {
-                    flag = false;
-                    break;
-                }
-            }
-
-            if (flag)
-            {
-                //ovo mora da se pozove tek kad se klikne sacuvaj aranzman
-                var rez = Kontroler.Kontroler.Instance.KreirajPutnika(txtJmbg.Text,
-                    txtIme.Text, txtPrezime.Text, DateTime.ParseExact(txtDatumDodavanja.Text,
-                    "dd-MM-yyyy",CultureInfo.InvariantCulture), 
-                    Sesija.Instance.VratiKorisnikaObjekat());
-                if (rez != null)
-                {
-                    MessageBox.Show("Putnik je uspesno sacuvan!");
-                    Dispose();
-                }
-                else
-                {
-                    MessageBox.Show("Sistem ne moze da sacuva putnika!");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Neispravan JMBG!");
-            }
+                MessageBox.Show(exc.Message);
+            }            
         }
     }
 }

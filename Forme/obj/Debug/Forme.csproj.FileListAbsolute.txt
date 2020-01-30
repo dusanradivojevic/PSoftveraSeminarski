@@ -23,3 +23,5 @@ D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\bin\Debug\Kontroler.pdb
 D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\bin\Debug\BrokerBazePodataka.pdb
 D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\bin\Debug\SistemskeOperacije.dll
 D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\bin\Debug\SistemskeOperacije.pdb
+D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\bin\Debug\KKI.dll
+D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\bin\Debug\KKI.pdb

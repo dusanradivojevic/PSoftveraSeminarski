@@ -1,5 +1,6 @@
 ﻿using Domen;
 using Kontroler;
+using KKI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,20 +28,18 @@ namespace Forme
 
         private void btnPrijaviSe_Click(object sender, EventArgs e)
         {
-            //Validacija unosa, ovde ili u kontroleru
-            Korisnik k = Kontroler.Kontroler.Instance.Prijava(txtKorisnickoIme.Text,
-                txtSifra.Text);
-
-            if (k != null)
+            try
             {
-                Sesija.Instance.PostaviKorisnika(k);
+                KkiGlavna.Instance.Prijava(txtKorisnickoIme.Text, txtSifra.Text);
+
+                //MessageBox.Show("Dobrodosli");
+
                 FrmGlavna forma = new FrmGlavna(this);
-                forma.PostaviKorisnika(Sesija.Instance.VratiKorisnikaToString());
                 forma.ShowDialog();
             }
-            else
+            catch(Exception exc)
             {
-                MessageBox.Show("Neispravan email ili sifra!");
+                MessageBox.Show(exc.Message);
             }
         }
 

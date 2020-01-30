@@ -1,4 +1,5 @@
 ﻿using Domen;
+using KKI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ namespace Forme
 {
     public partial class FrmGlavna : Form
     {
-        private BindingList<Aranzman> sviAranzmani;
+        // Obrisi tajmer ako je refresh postavljen posle svake crud operacija
         private FrmPrijava frmPrijava;
         public FrmGlavna(FrmPrijava frmPrijava)
         {
@@ -29,66 +30,58 @@ namespace Forme
 
         private void SrediFormu()
         {
-            UcitajAranzmane();            
+            PostaviKorisnika();
+            UcitajAranzmane();   
+            
+            // proveri da li ovo radi uopste
             dgvAranzmaniPretraga.AutoSizeColumnsMode =
                 DataGridViewAutoSizeColumnsMode.AllCells;
             dgvAranzmaniPretraga.Columns[2].Width = 60;
-
         }
 
         private void UcitajAranzmane()
         {
-            sviAranzmani = new BindingList<Aranzman>(Kontroler.Kontroler.Instance.VratiSveAranzmane());
-            dgvAranzmaniPretraga.DataSource = sviAranzmani;
+            try
+            {
+                KkiAranzman.Instance.PostaviSveAranzmane(dgvAranzmaniPretraga);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+                //Dispose();
+                // mozda neki blok forme ili tako nesto?
+            }
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        internal void PostaviKorisnika()
         {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        internal void PostaviKorisnika(string korisnik)
-        {
-            odjavaToolStripMenuItem.Text = korisnik;
+            odjavaToolStripMenuItem.Text = Sesija.Instance.VratiKorisnikaToString();
         }
 
         private void odjaviSeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Kontroler ?
-            if (true)
-            {
-                Sesija.Instance.OdjaviKorisnika();
-                MessageBox.Show("Dovidjenja!");
-                frmPrijava.Dispose();
-                //Dispose();
-            }
-            else
-            {
-             //   MessageBox.Show("Sistem ne moze da vas odjavi!");
-            }
+            Sesija.Instance.OdjaviKorisnika();
+            MessageBox.Show("Dovidjenja!");
+            frmPrijava.Dispose();            
         }
 
         private void btnPrikaziDetalje_Click(object sender, EventArgs e)
         {
+            // Ako izabere tacno jednu celiju u jednom redu
             if (dgvAranzmaniPretraga.SelectedCells != null &&
                 dgvAranzmaniPretraga.SelectedCells.Count == 1)
             {
                 int rowIndex = dgvAranzmaniPretraga.SelectedCells[0].RowIndex;
-                //DataGridViewRow red = dgvAranzmaniPretraga.Rows[rowIndex];
-                int aranzmanID = (int) dgvAranzmaniPretraga.Rows[rowIndex].Cells[0].Value;
-                PokreniFrmDetalji(sviAranzmani.Where(x => x.AranzmanID == aranzmanID).SingleOrDefault(),
-                    ((Button)sender).Text);
+                KkiAranzman.Instance.PostaviAranzman(dgvAranzmaniPretraga.Rows[rowIndex]);
+
+                PokreniFrmDetalji(((Button)sender).Text);
             }
+            // Ako izabere vise celija u istom redu ili ceo red
             else if (dgvAranzmaniPretraga.SelectedCells != null &&
                 dgvAranzmaniPretraga.SelectedCells.Count > 1)
             {
-                // Ako odabere vise celija u istom redu ili ceo red
-                bool flag = true;
+                bool flag = true; // Da li je izabrao celije iz razlicith redova
+                                  // (ne mogu da se prikazu 2 aranzmana istovremeno)
                 int rowIndex = dgvAranzmaniPretraga.SelectedCells[0].RowIndex;
                 foreach (DataGridViewCell cell in dgvAranzmaniPretraga.SelectedCells)
                 {
@@ -101,10 +94,9 @@ namespace Forme
 
                 if (flag)
                 {
-                    int aranzmanID = (int)dgvAranzmaniPretraga.Rows[rowIndex].Cells[0].Value;
-                    PokreniFrmDetalji(sviAranzmani.Where(x => x.AranzmanID == aranzmanID).SingleOrDefault(),
-                        ((Button)sender).Text);
-                    //PokreniFrmDetalji(red);
+                    KkiAranzman.Instance.PostaviAranzman(dgvAranzmaniPretraga.Rows[rowIndex]);
+
+                    PokreniFrmDetalji(((Button)sender).Text);
                 }
                 else
                 {
@@ -115,19 +107,19 @@ namespace Forme
             {
                 MessageBox.Show("Morate izabrati tacno jedan red!");
             }
+
+            UcitajAranzmane(); // Refresh
         }
 
-        private void PokreniFrmDetalji(Aranzman a, string tip)
+        private void PokreniFrmDetalji(string tip)
         {
-            // izvuci u kontroler pa da on poziva formu?
-
             FrmDetaljiAranzmana frmDetalji = new FrmDetaljiAranzmana();
-            frmDetalji.PostaviVrednosti(a);
 
             if (tip.Equals("Izmeni")) //tekst na dugmetu sa kog je pozvano
             {
                 frmDetalji.OtkljucajPolja();
             }
+
             frmDetalji.ShowDialog();
         }
 
@@ -203,35 +195,23 @@ namespace Forme
                 }
             }
 
-            foreach (DataGridViewRow red in redovi)
+            if (redovi.Count == 0)
             {
-                //preneti u Kontroler KI
-                Aranzman a = new Aranzman
-                {
-                    AranzmanID = (int)red.Cells[0].Value,
-                    NazivAranzmana = (string)red.Cells[1].Value,
-                    OpisAranzmana = (string)red.Cells[2].Value,
-                    Cena = (double)red.Cells[3].Value,
-                    Datum = (DateTime)red.Cells[4].Value,
-                    UkupanBrMesta = (int)red.Cells[5].Value,
-                    BrojPutnika = (int)red.Cells[6].Value,
-                    BrSlobodnihMesta = (int)red.Cells[7].Value,
-                    Destinacija = red.Cells[8].Value as Destinacija,
-                    Korisnik = red.Cells[9].Value as Korisnik
-                };
-
-                if (Kontroler.Kontroler.Instance.ObrisiAranzman(a))
-                {
-                    sviAranzmani.Remove(a);
-                }
-                else
-                {
-                    MessageBox.Show("Sistem ne moze da obrise aranzman!");
-                    return;
-                }
+                MessageBox.Show("Izaberite aranzmane koje zelite da obrisete!");
+                return;
             }
 
-            MessageBox.Show("Sistem je uspesno obrisao aranzman!");
+            try
+            {
+                KkiAranzman.Instance.ObrisiAranzmane(redovi);
+                MessageBox.Show("Sistem je uspesno obrisao aranzmane!");
+
+                UcitajAranzmane();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }            
         }
 
         private void FrmGlavna_Load(object sender, EventArgs e)

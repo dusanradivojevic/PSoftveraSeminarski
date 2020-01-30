@@ -257,7 +257,6 @@
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(106, 24);
             this.txtID.TabIndex = 3;
-            this.txtID.Text = "(izbrisati)";
             this.txtID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtKorisnik
@@ -299,7 +298,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmDodajAranzman";
             this.Text = "Unos aranzmana";
-            this.Load += new System.EventHandler(this.FrmDodajAranzman_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

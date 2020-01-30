@@ -85,7 +85,6 @@
             this.label8.Size = new System.Drawing.Size(84, 18);
             this.label8.TabIndex = 42;
             this.label8.Text = "Destinacija:";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // txtBrSlbMesta
             // 
@@ -130,7 +129,7 @@
             // txtUkBrMesta
             // 
             this.txtUkBrMesta.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUkBrMesta.Location = new System.Drawing.Point(554, 106);
+            this.txtUkBrMesta.Location = new System.Drawing.Point(554, 105);
             this.txtUkBrMesta.Name = "txtUkBrMesta";
             this.txtUkBrMesta.ReadOnly = true;
             this.txtUkBrMesta.Size = new System.Drawing.Size(134, 24);
@@ -373,7 +372,6 @@
             this.txtDestinacija.Size = new System.Drawing.Size(157, 24);
             this.txtDestinacija.TabIndex = 55;
             this.txtDestinacija.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtDestinacija.TextChanged += new System.EventHandler(this.txtDestinacija_TextChanged);
             // 
             // dtpDatum
             // 

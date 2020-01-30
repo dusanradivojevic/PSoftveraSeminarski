@@ -1,4 +1,5 @@
 ﻿using Domen;
+using KKI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,72 +15,34 @@ namespace Forme
 {
     public partial class FrmDetaljiAranzmana : Form
     {
-        private BindingList<Putnik> izabraniPutnici;
-        private BindingList<Putnik> sviPutnici;
-        private Aranzman aranzman;
+        //private BindingList<Putnik> izabraniPutnici;
+        //private BindingList<Putnik> sviPutnici;
+        //private Aranzman aranzman;
         public FrmDetaljiAranzmana()
         {
             InitializeComponent();
-            izabraniPutnici = new BindingList<Putnik>();
-            sviPutnici = new BindingList<Putnik>();
+            //izabraniPutnici = new BindingList<Putnik>();
+            //sviPutnici = new BindingList<Putnik>();
         }
 
-        internal void PostaviVrednosti(Aranzman a)
+        internal void PostaviVrednosti() 
         {
-            //treba da se izmesti kontroler KI da forma ne bi imala
-            //ref na domenske klase
-
-            /*
-                txtID.Text = (int) red.Cells[0].Value + "";
-                txtNazivAranzmana.Text = red.Cells[1].Value as string;
-                rtbOpis.Text = red.Cells[2].Value as string;
-                txtCena.Text = (double) red.Cells[3].Value + " e";
-                txtDatum.Text = red.Cells[4].Value.ToString().Split(' ')[0]+"20";
-                txtUkBrMesta.Text = (int)red.Cells[5].Value + "";
-                txtBrojPutnika.Text = (int)red.Cells[6].Value + "";
-                txtBrSlbMesta.Text = (int)red.Cells[7].Value + "";
-                txtDestinacija.Text = (red.Cells[8].Value as Destinacija).ToString();
-                txtKorisnik.Text = (red.Cells[9].Value as Korisnik).ToString();
-            */
-            aranzman = a;
-
-            txtID.Text = a.AranzmanID + "";
-            txtNazivAranzmana.Text = a.NazivAranzmana;
-            rtbOpis.Text = a.OpisAranzmana;
-            txtCena.Text = a.Cena + " e";
-            txtDatum.Text = a.Datum.ToString("dd.MM.yyyy");
-            txtUkBrMesta.Text = a.UkupanBrMesta + "";
-            txtBrojPutnika.Text = a.BrojPutnika + "";
-            txtBrSlbMesta.Text = a.BrSlobodnihMesta + "";
-            txtDestinacija.Text = a.Destinacija.ToString();
-            txtKorisnik.Text = a.Korisnik.ToString();
-
-            izabraniPutnici = new BindingList<Putnik>(a.Putnici);
-            dgvIzabraniPutnici.DataSource = izabraniPutnici;
+            //da li treba postaviti vrednosti i na cmb destinaciji
+            KkiAranzman.Instance.IspisiDetaljeAranzmana(txtID, txtNazivAranzmana, rtbOpis,
+                txtCena, txtDatum, txtUkBrMesta, txtBrojPutnika, txtBrSlbMesta, txtDestinacija,
+                txtKorisnik);
+            KkiAranzman.Instance.PostaviPutnikeZaAranzman(dgvIzabraniPutnici);
             UcitajSvePutnike();
         }
 
         private void UcitajSvePutnike()
-        {
-            sviPutnici = new BindingList<Putnik>(Kontroler.Kontroler.Instance.VratiSvePutnike());
-            foreach(Putnik p in sviPutnici.ToList())
-            {
-                if (izabraniPutnici.Contains(p))
-                {
-                    sviPutnici.Remove(p);
-                }
-            }
-            dgvSviPutnici.DataSource = sviPutnici;
+        {            
+            KkiAranzman.Instance.PostaviSvePutnike(dgvSviPutnici);            
         }
 
         private void btnOdustani_Click(object sender, EventArgs e)
         {
             Dispose();
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnIzaberiPutnike_Click(object sender, EventArgs e)
@@ -105,42 +68,51 @@ namespace Forme
                 }
             }
 
-            DodajPutnike(redovi, izabraniPutnici);
-            IzbaciPutnike(redovi, sviPutnici);
+            KkiAranzman.Instance.IzaberiPutnike(dgvIzabraniPutnici, dgvSviPutnici, redovi);
 
             IzmeniBrojeveVezaneZaPutnike();
         }
 
-        private void DodajPutnike(List<DataGridViewRow> redovi, BindingList<Putnik> odrediste)
-        {
-            foreach(DataGridViewRow red in redovi)
-            {
-                Putnik p = new Putnik
-                {
-                    JMBG = (string)red.Cells[0].Value,
-                    Ime = (string)red.Cells[1].Value,
-                    Prezime = (string)red.Cells[2].Value,
-                    DatumDodavanja = (DateTime)red.Cells[3].Value,
-                    Korisnik = red.Cells[4].Value as Korisnik
-                };
+        //private void DodajPutnike(List<DataGridViewRow> redovi, BindingList<Putnik> odrediste)
+        //{
+        //    foreach(DataGridViewRow red in redovi)
+        //    {
+        //        Putnik p = new Putnik
+        //        {
+        //            JMBG = (string)red.Cells[0].Value,
+        //            Ime = (string)red.Cells[1].Value,
+        //            Prezime = (string)red.Cells[2].Value,
+        //            DatumDodavanja = (DateTime)red.Cells[3].Value,
+        //            Korisnik = red.Cells[4].Value as Korisnik
+        //        };
 
-                odrediste.Add(p);
-            }
-        }
+        //        odrediste.Add(p);
+        //    }
+        //}
 
         internal void OtkljucajPolja()
         {
             txtNazivAranzmana.ReadOnly = false;
+            txtUkBrMesta.ReadOnly = false;
+            txtUkBrMesta.BackColor = txtNazivAranzmana.BackColor;
             rtbOpis.ReadOnly = false;
             txtCena.ReadOnly = false;
-            txtUkBrMesta.ReadOnly = false;
 
             txtDatum.Visible = false;
             dtpDatum.Visible = true;
 
             txtDestinacija.Visible = false;
             cmbDestinacija.Visible = true;
-            cmbDestinacija.DataSource = Kontroler.Kontroler.Instance.VratiSveDestinacije();
+            try
+            {
+                KkiDestinacija.Instance.PostaviSveDestinacije(cmbDestinacija);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+                //Dispose();
+                // mozda neki blok forme ili tako nesto? - ovde ili u SrediFormu()
+            }
         }
 
         private void btnIzbaci_Click(object sender, EventArgs e)
@@ -166,19 +138,18 @@ namespace Forme
                 }
             }
 
-            DodajPutnike(redovi, sviPutnici);
-            IzbaciPutnike(redovi, izabraniPutnici);
+            KkiAranzman.Instance.IzaberiPutnike(dgvSviPutnici, dgvIzabraniPutnici, redovi);
 
             IzmeniBrojeveVezaneZaPutnike();
         }
 
         private void IzmeniBrojeveVezaneZaPutnike()
         {
-            txtBrojPutnika.Text = izabraniPutnici.Count + "";
+            txtBrojPutnika.Text = dgvIzabraniPutnici.Rows.Count + "";
 
             if (txtUkBrMesta.BackColor == txtNazivAranzmana.BackColor)
             {
-                txtBrSlbMesta.Text = (int.Parse(txtUkBrMesta.Text) - izabraniPutnici.Count) + "";
+                txtBrSlbMesta.Text = (int.Parse(txtUkBrMesta.Text) - dgvIzabraniPutnici.Rows.Count) + "";
                 txtBrSlbMesta.BackColor = txtBrojPutnika.BackColor;
             }
             else
@@ -188,54 +159,64 @@ namespace Forme
             }
         }
 
-        private void IzbaciPutnike(List<DataGridViewRow> redovi, BindingList<Putnik> izvoriste)
-        {
-            foreach (DataGridViewRow red in redovi)
-            {
-                Putnik p = new Putnik
-                {
-                    JMBG = (string)red.Cells[0].Value,
-                    Ime = (string)red.Cells[1].Value,
-                    Prezime = (string)red.Cells[2].Value,
-                    DatumDodavanja = (DateTime)red.Cells[3].Value,
-                    Korisnik = red.Cells[4].Value as Korisnik
-                };
+        //private void IzbaciPutnike(List<DataGridViewRow> redovi, BindingList<Putnik> izvoriste)
+        //{
+        //    foreach (DataGridViewRow red in redovi)
+        //    {
+        //        Putnik p = new Putnik
+        //        {
+        //            JMBG = (string)red.Cells[0].Value,
+        //            Ime = (string)red.Cells[1].Value,
+        //            Prezime = (string)red.Cells[2].Value,
+        //            DatumDodavanja = (DateTime)red.Cells[3].Value,
+        //            Korisnik = red.Cells[4].Value as Korisnik
+        //        };
 
-                izvoriste.Remove(p);
-            }
-        }
+        //        izvoriste.Remove(p);
+        //    }
+        //}
                
         private void btnKreirajPutnika_Click(object sender, EventArgs e)
         {
             FrmKreirajPutnika forma = new FrmKreirajPutnika();
             forma.ShowDialog();
+
+            UcitajSvePutnike(); 
+            
+            //proveri da li se ova metoda poziva nakon sto se zavrsi
+            //showdialog() ili odmah
         }
 
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
-            double cena = Convert.ToDouble(txtCena.Text.Substring(0, txtCena.Text.Length - 2));
-
-            if (txtUkBrMesta.BackColor != Color.White)
+            //obrati paznju kad se postavlja vrednost aranzmana u kkiAranzman,
+            //vrednost mu mora biti postavljena iz glavne metode
+            if (txtUkBrMesta.BackColor != txtNazivAranzmana.BackColor)
                 return;
 
-            if (Kontroler.Kontroler.Instance.SacuvajAranzman(Convert.ToInt32(txtID.Text), txtNazivAranzmana.Text,
-                rtbOpis.Text, cena, dtpDatum.Value, Convert.ToInt32(txtUkBrMesta.Text),
-                Convert.ToInt32(txtBrojPutnika.Text), Convert.ToInt32(txtBrSlbMesta.Text),
-                cmbDestinacija.SelectedItem as Destinacija, Sesija.Instance.VratiKorisnikaObjekat(),
-                izabraniPutnici.ToList()))
+            try
             {
-                MessageBox.Show("Uspesan unos");
+                DateTime datum;
+                if (txtDatum.Visible)
+                {
+                    datum = DateTime.Parse(txtDatum.Text);
+                }
+                else
+                {
+                    datum = dtpDatum.Value;
+                }
+
+                KkiAranzman.Instance.SacuvajAranzmanSlozen(txtID.Text, txtNazivAranzmana.Text, rtbOpis.Text,
+                txtCena.Text, datum, txtUkBrMesta.Text, txtBrojPutnika.Text, txtBrSlbMesta.Text, 
+                cmbDestinacija, dgvIzabraniPutnici); 
+
+                MessageBox.Show("Aranzman je uspesno sacuvan!");
                 Dispose();
             }
-            else
+            catch (Exception exc)
             {
-                MessageBox.Show("Neuspeno..");
-            }
-        }
-
-        private void txtDestinacija_TextChanged(object sender, EventArgs e)
-        {
-
+                MessageBox.Show(exc.Message);
+            }            
         }
 
         private void txtUkBrMesta_TextChanged(object sender, EventArgs e)

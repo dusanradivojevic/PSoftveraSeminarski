@@ -1,4 +1,5 @@
 ﻿using Domen;
+using KKI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,65 +15,44 @@ namespace Forme
 {
     public partial class FrmUpravljanjePutnicima : Form
     {
-        private BindingList<Putnik> sviPutnici;
         public FrmUpravljanjePutnicima()
         {
             InitializeComponent();
-            sviPutnici = new BindingList<Putnik>();
             SrediFormu();
         }
 
         private void SrediFormu()
         {
-            UcitajPutnike();
+            UcitajSvePutnike();
             txtDatumDodavanja.Text = DateTime.Now.ToString("dd-MM-yyyy");
             txtKorisnik.Text = Sesija.Instance.VratiKorisnikaToString();
         }
 
-        private void UcitajPutnike()
+        private void UcitajSvePutnike()
         {
-            sviPutnici = new BindingList<Putnik>(Kontroler.Kontroler.Instance.VratiSvePutnike());
-            dgvSviPutnici.DataSource = sviPutnici;
+            try
+            {
+                KkiPutnik.Instance.PostaviSvePutnike(dgvSviPutnici);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
 
         private void btnPotvrdi_Click(object sender, EventArgs e)
         {
-            //Prebaciti ovu validaciju u kontroler?
-            if(txtJmbg.Text.Length != 13)
+            try
             {
-                MessageBox.Show("JMBG mora imati tacno 13 cifara!");
-                return;
-            }
-            string jmbg = txtJmbg.Text;
-            bool flag = true;
-            foreach (char c in jmbg)
-            {
-                if (!char.IsDigit(c))
-                {
-                    flag = false;
-                    break;
-                }
-            }
+                KkiPutnik.Instance.KreirajPutnika(txtJmbg.Text, txtIme.Text,
+                    txtPrezime.Text, txtDatumDodavanja.Text);
+                MessageBox.Show("Putnik je uspesno sacuvan.");
 
-            if (flag)
-            {
-                Putnik rez = Kontroler.Kontroler.Instance.KreirajPutnika(txtJmbg.Text,
-                    txtIme.Text, txtPrezime.Text, DateTime.ParseExact(txtDatumDodavanja.Text,
-                    "dd-MM-yyyy", CultureInfo.InvariantCulture),
-                    Sesija.Instance.VratiKorisnikaObjekat());
-                if (rez != null)
-                {
-                    MessageBox.Show("Putnik je uspesno sacuvan!");
-                    sviPutnici.Add(rez);
-                }
-                else
-                {
-                    MessageBox.Show("Sistem ne moze da sacuva putnika!");
-                }
+                UcitajSvePutnike();
             }
-            else
+            catch (Exception exc)
             {
-                MessageBox.Show("Neispravan JMBG!");
+                MessageBox.Show(exc.Message);
             }
         }
 
@@ -99,30 +79,23 @@ namespace Forme
                 }
             }
 
-            foreach (DataGridViewRow red in redovi)
+            if (redovi.Count == 0)
             {
-                //preneti u Kontroler KI
-                Putnik p = new Putnik
-                {
-                    JMBG = (string)red.Cells[0].Value,
-                    Ime = (string)red.Cells[1].Value,
-                    Prezime = (string)red.Cells[2].Value,
-                    DatumDodavanja = (DateTime)red.Cells[3].Value,
-                    Korisnik = red.Cells[4].Value as Korisnik
-                };
-
-                if (Kontroler.Kontroler.Instance.ObrisiPutnika(p))
-                {
-                    sviPutnici.Remove(p);
-                }
-                else
-                {
-                    MessageBox.Show("Sistem ne moze da obrise putnike!");
-                    return;
-                }
+                MessageBox.Show("Izaberite putnike koje zelite da obrisete!");
+                return;
             }
 
-            MessageBox.Show("Sistem je uspesno obrisao putnike!");
+            try
+            {
+                KkiPutnik.Instance.ObrisiPutnike(redovi);
+                MessageBox.Show("Sistem je uspesno obrisao putnike!");
+
+                UcitajSvePutnike();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }            
         }
 
         private void btnZavrsi_Click(object sender, EventArgs e)

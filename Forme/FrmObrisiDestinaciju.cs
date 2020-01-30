@@ -1,4 +1,5 @@
 ﻿using Domen;
+using KKI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,6 @@ namespace Forme
 {
     public partial class FrmObrisiDestinaciju : Form
     {
-        private BindingList<Destinacija> sveDestinacije;
         public FrmObrisiDestinaciju()
         {
             InitializeComponent();
@@ -22,8 +22,21 @@ namespace Forme
 
         private void SrediFormu()
         {
-            sveDestinacije = new BindingList<Destinacija>(Kontroler.Kontroler.Instance.VratiSveDestinacije());
-            dgvDestinacije.DataSource = sveDestinacije;
+            UcitajSveDestinacije();
+        }
+
+        private void UcitajSveDestinacije()
+        {
+            try
+            {
+                KkiDestinacija.Instance.PostaviSveDestinacije(dgvDestinacije);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+                //Dispose();
+                // mozda neki blok forme ili tako nesto? - ovde ili u SrediFormu()
+            }
         }
 
         private void btnOdustani_Click(object sender, EventArgs e)
@@ -54,29 +67,23 @@ namespace Forme
                 }
             }
 
-            foreach (DataGridViewRow red in redovi)
+            if (redovi.Count == 0)
             {
-                //preneti u Kontroler KI
-                Destinacija d = new Destinacija
-                {
-                    DestinacijaID = (int)red.Cells[0].Value,
-                    NazivGrada = (string)red.Cells[1].Value,
-                    Zemlja = red.Cells[2].Value as Zemlja,
-                    Korisnik = red.Cells[3].Value as Korisnik
-                };
-
-                if (Kontroler.Kontroler.Instance.ObrisiDestinaciju(d))
-                {
-                    sveDestinacije.Remove(d);
-                }
-                else
-                {
-                    MessageBox.Show("Sistem ne moze da obrise destinacije!");
-                    return;
-                }
+                MessageBox.Show("Izaberite destinacije koje zelite da obrisete!");
+                return;
             }
 
-            MessageBox.Show("Sistem je uspesno obrisao destinacije!");
+            try
+            {
+                KkiDestinacija.Instance.ObrisiDestinacije(redovi);
+                MessageBox.Show("Sistem je uspesno obrisao destinacije!");
+
+                UcitajSveDestinacije();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
     }
 }
