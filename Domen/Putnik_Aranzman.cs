@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -40,6 +41,8 @@ namespace Domen
         public string KriterijumiZaPretragu => $"AranzmanID = {AranzmanID}";
 
         public string PrimarniKljuc => throw new NotImplementedException();
+
+        public IDictionary Kriterijumi { get; set; }
 
         public void PostaviVrednost(IDomenskiObjekat ido)
         {
@@ -101,5 +104,9 @@ namespace Domen
                    AranzmanID == aranzman.AranzmanID;
         }
 
+        public string UslovFiltera()
+        {
+            return null;
+        }
     }
 }

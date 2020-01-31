@@ -43,8 +43,14 @@
             this.grp1 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvSviPutnici = new System.Windows.Forms.DataGridView();
-            this.btnZavrsi = new System.Windows.Forms.Button();
             this.btnObrisiPutnike = new System.Windows.Forms.Button();
+            this.txtJmbgPretraga = new System.Windows.Forms.TextBox();
+            this.btnPretrazi = new System.Windows.Forms.Button();
+            this.txtPrezimePretraga = new System.Windows.Forms.TextBox();
+            this.txtImePretraga = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.grp1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSviPutnici)).BeginInit();
@@ -96,6 +102,7 @@
             this.txtIme.Name = "txtIme";
             this.txtIme.Size = new System.Drawing.Size(210, 24);
             this.txtIme.TabIndex = 42;
+            this.txtIme.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIme_KeyDown);
             // 
             // label3
             // 
@@ -114,6 +121,7 @@
             this.txtPrezime.Name = "txtPrezime";
             this.txtPrezime.Size = new System.Drawing.Size(210, 24);
             this.txtPrezime.TabIndex = 40;
+            this.txtPrezime.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPrezime_KeyDown);
             // 
             // label2
             // 
@@ -142,6 +150,7 @@
             this.txtJmbg.Name = "txtJmbg";
             this.txtJmbg.Size = new System.Drawing.Size(210, 24);
             this.txtJmbg.TabIndex = 37;
+            this.txtJmbg.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtJmbg_KeyDown);
             // 
             // label1
             // 
@@ -167,9 +176,9 @@
             this.grp1.Controls.Add(this.label3);
             this.grp1.Controls.Add(this.txtIme);
             this.grp1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grp1.Location = new System.Drawing.Point(412, 12);
+            this.grp1.Location = new System.Drawing.Point(448, 7);
             this.grp1.Name = "grp1";
-            this.grp1.Size = new System.Drawing.Size(339, 336);
+            this.grp1.Size = new System.Drawing.Size(303, 336);
             this.grp1.TabIndex = 48;
             this.grp1.TabStop = false;
             this.grp1.Text = "Kreiraj putnika";
@@ -178,9 +187,9 @@
             // 
             this.groupBox1.Controls.Add(this.dgvSviPutnici);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(3, 106);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(394, 195);
+            this.groupBox1.Size = new System.Drawing.Size(439, 196);
             this.groupBox1.TabIndex = 49;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Svi putnici";
@@ -193,24 +202,13 @@
             this.dgvSviPutnici.Location = new System.Drawing.Point(7, 24);
             this.dgvSviPutnici.Name = "dgvSviPutnici";
             this.dgvSviPutnici.ReadOnly = true;
-            this.dgvSviPutnici.Size = new System.Drawing.Size(374, 165);
+            this.dgvSviPutnici.Size = new System.Drawing.Size(426, 165);
             this.dgvSviPutnici.TabIndex = 0;
-            // 
-            // btnZavrsi
-            // 
-            this.btnZavrsi.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnZavrsi.Location = new System.Drawing.Point(150, 302);
-            this.btnZavrsi.Name = "btnZavrsi";
-            this.btnZavrsi.Size = new System.Drawing.Size(99, 40);
-            this.btnZavrsi.TabIndex = 50;
-            this.btnZavrsi.Text = "Zavrsi";
-            this.btnZavrsi.UseVisualStyleBackColor = true;
-            this.btnZavrsi.Click += new System.EventHandler(this.btnZavrsi_Click);
             // 
             // btnObrisiPutnike
             // 
             this.btnObrisiPutnike.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnObrisiPutnike.Location = new System.Drawing.Point(122, 207);
+            this.btnObrisiPutnike.Location = new System.Drawing.Point(122, 308);
             this.btnObrisiPutnike.Name = "btnObrisiPutnike";
             this.btnObrisiPutnike.Size = new System.Drawing.Size(171, 35);
             this.btnObrisiPutnike.TabIndex = 51;
@@ -218,13 +216,87 @@
             this.btnObrisiPutnike.UseVisualStyleBackColor = true;
             this.btnObrisiPutnike.Click += new System.EventHandler(this.btnObrisi_Click);
             // 
+            // txtJmbgPretraga
+            // 
+            this.txtJmbgPretraga.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtJmbgPretraga.Location = new System.Drawing.Point(114, 7);
+            this.txtJmbgPretraga.Name = "txtJmbgPretraga";
+            this.txtJmbgPretraga.Size = new System.Drawing.Size(210, 24);
+            this.txtJmbgPretraga.TabIndex = 52;
+            this.txtJmbgPretraga.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtJmbgPretraga_KeyDown);
+            // 
+            // btnPretrazi
+            // 
+            this.btnPretrazi.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPretrazi.Location = new System.Drawing.Point(331, 60);
+            this.btnPretrazi.Name = "btnPretrazi";
+            this.btnPretrazi.Size = new System.Drawing.Size(105, 35);
+            this.btnPretrazi.TabIndex = 53;
+            this.btnPretrazi.Text = "Pretrazi";
+            this.btnPretrazi.UseVisualStyleBackColor = true;
+            this.btnPretrazi.Click += new System.EventHandler(this.btnPretrazi_Click);
+            // 
+            // txtPrezimePretraga
+            // 
+            this.txtPrezimePretraga.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrezimePretraga.Location = new System.Drawing.Point(114, 71);
+            this.txtPrezimePretraga.Name = "txtPrezimePretraga";
+            this.txtPrezimePretraga.Size = new System.Drawing.Size(179, 24);
+            this.txtPrezimePretraga.TabIndex = 54;
+            this.txtPrezimePretraga.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPrezimePretraga_KeyDown);
+            // 
+            // txtImePretraga
+            // 
+            this.txtImePretraga.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtImePretraga.Location = new System.Drawing.Point(114, 41);
+            this.txtImePretraga.Name = "txtImePretraga";
+            this.txtImePretraga.Size = new System.Drawing.Size(179, 24);
+            this.txtImePretraga.TabIndex = 55;
+            this.txtImePretraga.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtImePretraga_KeyDown);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(12, 10);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(55, 18);
+            this.label5.TabIndex = 56;
+            this.label5.Text = "JMBG:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(12, 44);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 18);
+            this.label6.TabIndex = 57;
+            this.label6.Text = "Ime:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(12, 74);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(67, 18);
+            this.label7.TabIndex = 58;
+            this.label7.Text = "Prezime:";
+            // 
             // FrmUpravljanjePutnicima
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(757, 356);
+            this.ClientSize = new System.Drawing.Size(757, 354);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtImePretraga);
+            this.Controls.Add(this.txtPrezimePretraga);
+            this.Controls.Add(this.btnPretrazi);
+            this.Controls.Add(this.txtJmbgPretraga);
             this.Controls.Add(this.btnObrisiPutnike);
-            this.Controls.Add(this.btnZavrsi);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grp1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -235,6 +307,7 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSviPutnici)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -254,7 +327,13 @@
         private System.Windows.Forms.GroupBox grp1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvSviPutnici;
-        private System.Windows.Forms.Button btnZavrsi;
         private System.Windows.Forms.Button btnObrisiPutnike;
+        private System.Windows.Forms.TextBox txtJmbgPretraga;
+        private System.Windows.Forms.Button btnPretrazi;
+        private System.Windows.Forms.TextBox txtPrezimePretraga;
+        private System.Windows.Forms.TextBox txtImePretraga;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }

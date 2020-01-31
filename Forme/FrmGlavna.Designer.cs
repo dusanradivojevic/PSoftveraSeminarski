@@ -33,14 +33,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnPrikaziDetalje = new System.Windows.Forms.Button();
             this.btnPretrazi = new System.Windows.Forms.Button();
-            this.txtDestinacija = new System.Windows.Forms.TextBox();
             this.txtNaziv = new System.Windows.Forms.TextBox();
             this.txtCena = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtBrSlbMesta = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvAranzmaniPretraga = new System.Windows.Forms.DataGridView();
             this.btnDodaj = new System.Windows.Forms.Button();
@@ -53,6 +51,9 @@
             this.upravljanjePutnicimaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.odjavaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.odjaviSeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtDatum = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnOcisti = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAranzmaniPretraga)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -60,17 +61,18 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnOcisti);
+            this.groupBox1.Controls.Add(this.txtDatum);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.btnPrikaziDetalje);
             this.groupBox1.Controls.Add(this.btnPretrazi);
-            this.groupBox1.Controls.Add(this.txtDestinacija);
             this.groupBox1.Controls.Add(this.txtNaziv);
             this.groupBox1.Controls.Add(this.txtCena);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtBrSlbMesta);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.dgvAranzmaniPretraga);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -85,7 +87,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(447, 65);
+            this.label6.Location = new System.Drawing.Point(278, 65);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(94, 15);
             this.label6.TabIndex = 16;
@@ -93,7 +95,7 @@
             // 
             // btnPrikaziDetalje
             // 
-            this.btnPrikaziDetalje.Location = new System.Drawing.Point(9, 201);
+            this.btnPrikaziDetalje.Location = new System.Drawing.Point(9, 233);
             this.btnPrikaziDetalje.Name = "btnPrikaziDetalje";
             this.btnPrikaziDetalje.Size = new System.Drawing.Size(131, 39);
             this.btnPrikaziDetalje.TabIndex = 15;
@@ -103,7 +105,7 @@
             // 
             // btnPretrazi
             // 
-            this.btnPretrazi.Location = new System.Drawing.Point(9, 120);
+            this.btnPretrazi.Location = new System.Drawing.Point(9, 157);
             this.btnPretrazi.Name = "btnPretrazi";
             this.btnPretrazi.Size = new System.Drawing.Size(131, 39);
             this.btnPretrazi.TabIndex = 14;
@@ -111,27 +113,22 @@
             this.btnPretrazi.UseVisualStyleBackColor = true;
             this.btnPretrazi.Click += new System.EventHandler(this.btnPretrazi_Click);
             // 
-            // txtDestinacija
-            // 
-            this.txtDestinacija.Location = new System.Drawing.Point(256, 38);
-            this.txtDestinacija.Name = "txtDestinacija";
-            this.txtDestinacija.Size = new System.Drawing.Size(149, 24);
-            this.txtDestinacija.TabIndex = 13;
-            // 
             // txtNaziv
             // 
             this.txtNaziv.Location = new System.Drawing.Point(89, 38);
             this.txtNaziv.Name = "txtNaziv";
             this.txtNaziv.Size = new System.Drawing.Size(149, 24);
             this.txtNaziv.TabIndex = 12;
+            this.txtNaziv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNaziv_KeyDown);
             // 
             // txtCena
             // 
-            this.txtCena.Location = new System.Drawing.Point(425, 38);
+            this.txtCena.Location = new System.Drawing.Point(256, 38);
             this.txtCena.Name = "txtCena";
             this.txtCena.Size = new System.Drawing.Size(149, 24);
             this.txtCena.TabIndex = 11;
             this.txtCena.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtCena.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCena_KeyDown);
             // 
             // label5
             // 
@@ -145,7 +142,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(596, 17);
+            this.label4.Location = new System.Drawing.Point(425, 17);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(152, 18);
             this.label4.TabIndex = 9;
@@ -153,29 +150,21 @@
             // 
             // txtBrSlbMesta
             // 
-            this.txtBrSlbMesta.Location = new System.Drawing.Point(599, 38);
+            this.txtBrSlbMesta.Location = new System.Drawing.Point(427, 38);
             this.txtBrSlbMesta.Name = "txtBrSlbMesta";
             this.txtBrSlbMesta.Size = new System.Drawing.Size(149, 24);
             this.txtBrSlbMesta.TabIndex = 8;
             this.txtBrSlbMesta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtBrSlbMesta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBrSlbMesta_KeyDown);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(468, 17);
+            this.label3.Location = new System.Drawing.Point(308, 17);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 18);
             this.label3.TabIndex = 7;
             this.label3.Text = "Cena:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(285, 17);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 18);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Destinacija:";
             // 
             // label1
             // 
@@ -196,6 +185,7 @@
             this.dgvAranzmaniPretraga.ReadOnly = true;
             this.dgvAranzmaniPretraga.Size = new System.Drawing.Size(602, 233);
             this.dgvAranzmaniPretraga.TabIndex = 1;
+            this.dgvAranzmaniPretraga.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvAranzmaniPretraga_KeyDown);
             // 
             // btnDodaj
             // 
@@ -254,14 +244,14 @@
             // dodajToolStripMenuItem
             // 
             this.dodajToolStripMenuItem.Name = "dodajToolStripMenuItem";
-            this.dodajToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.dodajToolStripMenuItem.Text = "Dodaj";
             this.dodajToolStripMenuItem.Click += new System.EventHandler(this.dodajToolStripMenuItem_Click);
             // 
             // obrisiToolStripMenuItem
             // 
             this.obrisiToolStripMenuItem.Name = "obrisiToolStripMenuItem";
-            this.obrisiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.obrisiToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.obrisiToolStripMenuItem.Text = "Obrisi";
             this.obrisiToolStripMenuItem.Click += new System.EventHandler(this.obrisiToolStripMenuItem_Click);
             // 
@@ -287,6 +277,33 @@
             this.odjaviSeToolStripMenuItem.Text = "Odjavi se";
             this.odjaviSeToolStripMenuItem.Click += new System.EventHandler(this.odjaviSeToolStripMenuItem_Click);
             // 
+            // txtDatum
+            // 
+            this.txtDatum.Location = new System.Drawing.Point(599, 38);
+            this.txtDatum.Name = "txtDatum";
+            this.txtDatum.Size = new System.Drawing.Size(149, 24);
+            this.txtDatum.TabIndex = 20;
+            this.txtDatum.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDatum_KeyDown);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(642, 17);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(56, 18);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Datum:";
+            // 
+            // btnOcisti
+            // 
+            this.btnOcisti.Location = new System.Drawing.Point(9, 86);
+            this.btnOcisti.Name = "btnOcisti";
+            this.btnOcisti.Size = new System.Drawing.Size(131, 26);
+            this.btnOcisti.TabIndex = 21;
+            this.btnOcisti.Text = "Ocisti";
+            this.btnOcisti.UseVisualStyleBackColor = true;
+            this.btnOcisti.Click += new System.EventHandler(this.btnOcisti_Click);
+            // 
             // FrmGlavna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,6 +318,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmGlavna";
             this.Text = "Pretraga aranzmana";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmGlavna_FormClosing);
             this.Load += new System.EventHandler(this.FrmGlavna_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -315,12 +333,10 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvAranzmaniPretraga;
         private System.Windows.Forms.Button btnPrikaziDetalje;
         private System.Windows.Forms.Button btnPretrazi;
-        private System.Windows.Forms.TextBox txtDestinacija;
         private System.Windows.Forms.TextBox txtNaziv;
         private System.Windows.Forms.TextBox txtCena;
         private System.Windows.Forms.Label label5;
@@ -338,5 +354,8 @@
         private System.Windows.Forms.ToolStripMenuItem odjavaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem odjaviSeToolStripMenuItem;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnOcisti;
+        private System.Windows.Forms.TextBox txtDatum;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.SqlClient;
@@ -106,6 +107,8 @@ namespace Domen
         public string KriterijumiZaPretragu => $"AranzmanID = {AranzmanID}";
         [Browsable(false)]
         public string PrimarniKljuc => "AranzmanID";
+        [Browsable(false)]
+        public IDictionary Kriterijumi { get; set; }
 
         public override string ToString()
         {
@@ -234,6 +237,16 @@ namespace Domen
         {
             return obj is Aranzman aranzman &&
                    AranzmanID == aranzman.AranzmanID;
+        }
+
+        public string UslovFiltera()
+        {
+            if (Kriterijumi == null)
+                throw new ArgumentException("Dictionary nije postavljen.");
+
+            return $"NazivAranzmana LIKE '%{Kriterijumi["naziv"] as string}%' AND " +
+                $"Cena <= {(double)Kriterijumi["cena"]} AND Datum <= '{(DateTime)Kriterijumi["datum"]}' " +
+                $"AND BrojSlobodnihMesta >= {(int)Kriterijumi["brojSlbMesta"]}";
         }
     }
 }

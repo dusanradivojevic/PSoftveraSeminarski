@@ -1,5 +1,6 @@
 ﻿using Domen;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -104,6 +105,25 @@ namespace KKI
                     throw new Exception("Sistem ne moze da obrise destinacije!");
                 }                
             }
+        }
+
+        public void FiltrirajDestinacije(string grad, DataGridView dgvDestinacije)
+        {
+            IDictionary kriterijumi = new Dictionary<string, string>();
+
+            kriterijumi["nazivGrada"] = string.IsNullOrEmpty(grad) ? "" : grad;
+
+            Destinacija d = new Destinacija();
+            d.Kriterijumi = kriterijumi;
+
+            List<Destinacija> listaDestinacija = Kontroler.Kontroler.Instance.VratiFiltrirano(d).Cast<Destinacija>().ToList();
+
+            if (listaDestinacija.Count == 0)
+            {
+                throw new Exception("Nije pronadjena nijedna destinacija koji zadovoljava kriterijume!");
+            }
+
+            dgvDestinacije.DataSource = listaDestinacija;
         }
 
         public void SacuvajDestinaciju(ComboBox cmbZemlja, string nazivGrada)

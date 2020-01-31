@@ -45,5 +45,29 @@ namespace Forme
                 MessageBox.Show(exc.Message);
             }            
         }
+
+        private void txtJmbg_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPotvrdi_Click(sender, e);
+            }
+        }
+
+        private void txtIme_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPotvrdi_Click(sender, e);
+            }
+        }
+
+        private void txtPrezime_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPotvrdi_Click(sender, e);
+            }
+        }
     }
 }

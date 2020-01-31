@@ -1,5 +1,6 @@
 ﻿using Domen;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -44,6 +45,9 @@ namespace KKI
                     throw new Exception("Neispravan jmbg!");
                 }
             }
+
+            if (string.IsNullOrEmpty(ime) || string.IsNullOrEmpty(prezime))
+                throw new Exception("Unesite sve podatke!");
 
             if(!DateTime.TryParseExact(datum, "dd-MM-yyyy", CultureInfo.InvariantCulture, 
                 DateTimeStyles.None, out DateTime dat))
@@ -105,6 +109,27 @@ namespace KKI
                     throw new Exception("Sistem ne moze da obrise putnike!");
                 }
             }
+        }
+
+        public void FiltrirajPutnike(string jmbg, string ime, string prezime, DataGridView dgvSviPutnici)
+        {
+            IDictionary kriterijumi = new Dictionary<string, string>();
+
+            kriterijumi["jmbg"] = string.IsNullOrEmpty(jmbg) ? "" : jmbg;
+            kriterijumi["ime"] = string.IsNullOrEmpty(ime) ? "" : ime;
+            kriterijumi["prezime"] = string.IsNullOrEmpty(prezime) ? "" : prezime;
+
+            Putnik p = new Putnik();
+            p.Kriterijumi = kriterijumi;
+
+            List<Putnik> listaPutnika = Kontroler.Kontroler.Instance.VratiFiltrirano(p).Cast<Putnik>().ToList();
+
+            if (listaPutnika.Count == 0)
+            {
+                throw new Exception("Nije pronadjen nijedan putnik koji zadovoljava kriterijume!");
+            }
+
+            dgvSviPutnici.DataSource = listaPutnika;
         }
     }
 }

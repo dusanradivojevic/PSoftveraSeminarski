@@ -74,6 +74,7 @@
             this.txtNazivGrada.Name = "txtNazivGrada";
             this.txtNazivGrada.Size = new System.Drawing.Size(156, 24);
             this.txtNazivGrada.TabIndex = 3;
+            this.txtNazivGrada.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNazivGrada_KeyDown);
             // 
             // label3
             // 

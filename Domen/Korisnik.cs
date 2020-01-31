@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -70,6 +71,8 @@ namespace Domen
         }
 
         public string PrimarniKljuc => "KorisnikID";
+
+        public IDictionary Kriterijumi { get; set; }
 
         public override string ToString()
         {
@@ -145,6 +148,11 @@ namespace Domen
             return obj is Korisnik korisnik &&
                    Email == korisnik.Email &&
                    Sifra == korisnik.Sifra;
+        }
+
+        public string UslovFiltera()
+        {
+            return null;
         }
     }
 }

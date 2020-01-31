@@ -48,5 +48,13 @@ namespace Forme
                 btnPrijaviSe_Click(sender, e);
             }
         }
+
+        private void txtKorisnickoIme_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPrijaviSe_Click(sender, e);
+            }
+        }
     }
 }

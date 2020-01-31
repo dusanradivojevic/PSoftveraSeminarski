@@ -2,3 +2,4 @@ D:\FON\PS\Seminarski kod\TuristickaAgencija\Domen\bin\Debug\Domen.dll
 D:\FON\PS\Seminarski kod\TuristickaAgencija\Domen\bin\Debug\Domen.pdb
 D:\FON\PS\Seminarski kod\TuristickaAgencija\Domen\obj\Debug\Domen.dll
 D:\FON\PS\Seminarski kod\TuristickaAgencija\Domen\obj\Debug\Domen.pdb
+D:\FON\PS\Seminarski kod\TuristickaAgencija\Domen\obj\Debug\Domen.csprojAssemblyReference.cache

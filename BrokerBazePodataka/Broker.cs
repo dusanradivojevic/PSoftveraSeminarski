@@ -89,5 +89,15 @@ namespace BrokerBazePodataka
             return rezultat;
         }
 
+        public List<IDomenskiObjekat> Filtriaj(IDomenskiObjekat objekat)
+        {
+            SqlCommand command = new SqlCommand("", konekcija, transakcija);
+            command.CommandText = $"SELECT * FROM {objekat.NazivTabele} " +
+                $"WHERE {objekat.UslovFiltera()}";
+            SqlDataReader reader = command.ExecuteReader();
+            List<IDomenskiObjekat> rezultat = objekat.VratiListu(reader);
+            reader.Close();
+            return rezultat;
+        }
     }
 }

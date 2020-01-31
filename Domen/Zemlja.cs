@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -41,6 +42,8 @@ namespace Domen
         public string KriterijumiZaPretragu => $"ZemljaID = {ZemljaID}";
 
         public string PrimarniKljuc => "ZemljaID";
+
+        public IDictionary Kriterijumi { get; set; }
 
         public override string ToString()
         {
@@ -99,6 +102,11 @@ namespace Domen
                 return false;
 
             return true;
+        }
+
+        public string UslovFiltera()
+        {
+            return null;
         }
     }
 }

@@ -92,6 +92,11 @@ namespace Forme
                 return;
             }
 
+            DialogResult rez = MessageBox.Show("Da li ste sigurni da zelite da obrisete izabrane" +
+                " putnike?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (rez == DialogResult.Cancel)
+                return;
+
             try
             {
                 KkiPutnik.Instance.ObrisiPutnike(redovi);
@@ -105,9 +110,65 @@ namespace Forme
             }            
         }
 
-        private void btnZavrsi_Click(object sender, EventArgs e)
+        private void btnPretrazi_Click(object sender, EventArgs e)
         {
-            Dispose();
+            try
+            {
+                KkiPutnik.Instance.FiltrirajPutnike(txtJmbgPretraga.Text,
+                txtImePretraga.Text, txtPrezimePretraga.Text, dgvSviPutnici);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }            
+        }
+
+        private void txtJmbg_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPotvrdi_Click(sender, e);
+            }
+        }
+
+        private void txtIme_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPotvrdi_Click(sender, e);
+            }
+        }
+
+        private void txtPrezime_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPotvrdi_Click(sender, e);
+            }
+        }
+
+        private void txtJmbgPretraga_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPretrazi_Click(sender, e);
+            }
+        }
+
+        private void txtImePretraga_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPretrazi_Click(sender, e);
+            }
+        }
+
+        private void txtPrezimePretraga_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPretrazi_Click(sender, e);
+            }
         }
     }
 }

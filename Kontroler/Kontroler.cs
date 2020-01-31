@@ -7,6 +7,7 @@ using Domen;
 using BrokerBazePodataka;
 using SistemskeOperacije;
 using System.ComponentModel;
+using System.Collections;
 
 namespace Kontroler
 {
@@ -32,6 +33,20 @@ namespace Kontroler
         }
 
         // *** SELECT ***
+        public List<IDomenskiObjekat> VratiFiltrirano(IDomenskiObjekat ido)
+        {
+            OpstaSO os = new VratiFiltrirano();
+            try
+            {                
+                os.IzvrsiSO(ido);
+                return ((VratiFiltrirano)os).lista;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return new List<IDomenskiObjekat>();
+            }
+        }
 
         public Aranzman VratiPodatkeAranzmana(Aranzman a)
         {
@@ -151,7 +166,7 @@ namespace Kontroler
             else
                 return false;
         }
-
+        
         public bool KreirajPutnika(Putnik p)
         {    
             OpstaSO os = new KreirajPutnika();

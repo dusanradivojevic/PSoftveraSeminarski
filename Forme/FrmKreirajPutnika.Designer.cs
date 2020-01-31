@@ -60,6 +60,7 @@
             this.txtJmbg.Name = "txtJmbg";
             this.txtJmbg.Size = new System.Drawing.Size(210, 24);
             this.txtJmbg.TabIndex = 24;
+            this.txtJmbg.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtJmbg_KeyDown);
             // 
             // label1
             // 
@@ -78,6 +79,7 @@
             this.txtPrezime.Name = "txtPrezime";
             this.txtPrezime.Size = new System.Drawing.Size(210, 24);
             this.txtPrezime.TabIndex = 28;
+            this.txtPrezime.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPrezime_KeyDown);
             // 
             // label2
             // 
@@ -96,6 +98,7 @@
             this.txtIme.Name = "txtIme";
             this.txtIme.Size = new System.Drawing.Size(210, 24);
             this.txtIme.TabIndex = 30;
+            this.txtIme.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIme_KeyDown);
             // 
             // label3
             // 

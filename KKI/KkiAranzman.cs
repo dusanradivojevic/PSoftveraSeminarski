@@ -1,7 +1,9 @@
 ﻿using Domen;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -127,6 +129,29 @@ namespace KKI
             {
                 throw exc;
             }
+        }
+
+        public void FiltrirajAranzmane(string naziv, string strCena, string strDatum, 
+            string strBrSlbMesta, DataGridView dgvAranzmaniPretraga)
+        {
+            IDictionary kriterijumi = new Dictionary<string, object>();
+
+            kriterijumi["naziv"] = string.IsNullOrEmpty(naziv) ? "" : naziv;
+            kriterijumi["cena"] = double.TryParse(strCena, out double cena) ? cena : 99999;
+            kriterijumi["datum"] = DateTime.TryParse(strDatum, out DateTime datum) ? datum : DateTime.ParseExact("31.12.2049", "dd.MM.yyyy", CultureInfo.InvariantCulture);
+            kriterijumi["brojSlbMesta"] = int.TryParse(strBrSlbMesta, out int brSlb) ? brSlb : 0;
+
+            Aranzman a = new Aranzman();
+            a.Kriterijumi = kriterijumi;
+
+            List<Aranzman> listaAranzmana = Kontroler.Kontroler.Instance.VratiFiltrirano(a).Cast<Aranzman>().ToList();
+
+            if (listaAranzmana.Count == 0)
+            {
+                throw new Exception("Nije pronadjen nijedan aranzman koji zadovoljava kriterijume!");
+            }
+
+            dgvAranzmaniPretraga.DataSource = listaAranzmana;
         }
 
         public void IzaberiPutnike(DataGridView izvoriste, DataGridView odrediste, List<DataGridViewRow> redovi)

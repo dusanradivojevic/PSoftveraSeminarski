@@ -72,6 +72,11 @@ namespace Forme
                 return;
             }
 
+            DialogResult rez = MessageBox.Show("Da li ste sigurni da zelite da obrisete izabrane" +
+                " destinacije?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (rez == DialogResult.Cancel)
+                return;
+
             try
             {
                 KkiDestinacija.Instance.ObrisiDestinacije(redovi);
@@ -82,6 +87,26 @@ namespace Forme
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message);
+            }
+        }
+
+        private void btnPretrazi_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                KkiDestinacija.Instance.FiltrirajDestinacije(txtNazivGrada.Text, dgvDestinacije);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+
+        private void txtNazivGrada_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPretrazi_Click(sender, e);
             }
         }
     }

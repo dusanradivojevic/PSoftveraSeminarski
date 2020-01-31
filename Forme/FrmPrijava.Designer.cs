@@ -55,6 +55,7 @@
             this.txtKorisnickoIme.Size = new System.Drawing.Size(226, 24);
             this.txtKorisnickoIme.TabIndex = 1;
             this.txtKorisnickoIme.Text = "r.dusan97@gmail.com";
+            this.txtKorisnickoIme.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKorisnickoIme_KeyDown);
             // 
             // txtSifra
             // 

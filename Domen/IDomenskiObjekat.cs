@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -13,11 +14,13 @@ namespace Domen
         string VrednostiZaInsert { get; }
         string KriterijumiZaPretragu { get; }
         string PrimarniKljuc { get; } //ili da se ID dodaje na naziv tabele
+        IDictionary Kriterijumi { get; set; }
 
         List<IDomenskiObjekat> VratiListu(SqlDataReader reader);
         IDomenskiObjekat VratiPodDomen();
         void PostaviVrednost(IDomenskiObjekat ido);
         void PostaviVrednostPodDomena(IDomenskiObjekat ido);
         bool AdekvatnoPopunjen();
+        string UslovFiltera();
     }
 }

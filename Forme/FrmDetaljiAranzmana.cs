@@ -147,6 +147,11 @@ namespace Forme
             if (txtUkBrMesta.BackColor != txtNazivAranzmana.BackColor)
                 return;
 
+            DialogResult rez = MessageBox.Show("Da li ste sigurni da zelite da sacuvate izmene?", 
+                "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (rez == DialogResult.Cancel)
+                return;
+
             try
             {
                 DateTime datum;

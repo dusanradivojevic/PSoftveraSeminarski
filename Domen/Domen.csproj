@@ -50,5 +50,8 @@
     <Compile Include="Putnik_Aranzman.cs" />
     <Compile Include="Zemlja.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

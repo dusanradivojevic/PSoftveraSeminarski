@@ -20,17 +20,13 @@ namespace Forme
             this.frmPrijava = frmPrijava;
             InitializeComponent();
             SrediFormu();
-
-            //    Thread tajmerZaUcitavanje = new Thread(Tajmer);
-            //    tajmerZaUcitavanje.IsBackground = true;
-            //    tajmerZaUcitavanje.Start();
         }
 
         private void SrediFormu()
         {
             PostaviKorisnika();
-            UcitajAranzmane();   
-            
+            UcitajAranzmane();
+
             // proveri da li ovo radi uopste
             dgvAranzmaniPretraga.AutoSizeColumnsMode =
                 DataGridViewAutoSizeColumnsMode.AllCells;
@@ -129,25 +125,6 @@ namespace Forme
             UcitajAranzmane();
         }
 
-        //private void Tajmer()
-        //{
-        //    try
-        //    {
-        //        while (true)
-        //        {
-        //            Thread.Sleep(15000);
-        //            Invoke(new Action(() =>
-        //            {
-        //                UcitajAranzmane();
-        //            }));
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //    }
-        //}
-
         private void dodajToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmDodajDestinaciju forma = new FrmDodajDestinaciju();
@@ -156,8 +133,15 @@ namespace Forme
 
         private void btnPretrazi_Click(object sender, EventArgs e)
         {
-            
-                    
+            try
+            {
+                KkiAranzman.Instance.FiltrirajAranzmane(txtNaziv.Text, txtCena.Text, 
+                    txtDatum.Text, txtBrSlbMesta.Text, dgvAranzmaniPretraga);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
 
         private void upravljanjePutnicimaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -201,6 +185,11 @@ namespace Forme
                 return;
             }
 
+            DialogResult rez = MessageBox.Show("Da li ste sigurni da zelite da obrisete izabrane" +
+                " aranzmane?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (rez == DialogResult.Cancel)
+                return;
+
             try
             {
                 KkiAranzman.Instance.ObrisiAranzmane(redovi);
@@ -222,6 +211,61 @@ namespace Forme
         private void btnIzmeni_Click(object sender, EventArgs e)
         {
             btnPrikaziDetalje_Click(sender, e);
+        }
+
+        private void FrmGlavna_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Sesija.Instance.OdjaviKorisnika();
+            MessageBox.Show("Dovidjenja!");
+            frmPrijava.Dispose();
+        }
+
+        private void btnOcisti_Click(object sender, EventArgs e)
+        {
+            txtBrSlbMesta.Text = string.Empty;
+            txtCena.Text = string.Empty; 
+            txtDatum.Text = string.Empty;
+            txtNaziv.Text = string.Empty;
+        }
+
+        private void txtNaziv_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPretrazi_Click(sender, e);
+            }
+        }
+
+        private void txtCena_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPretrazi_Click(sender, e);
+            }
+        }
+
+        private void txtBrSlbMesta_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPretrazi_Click(sender, e);
+            }
+        }
+
+        private void txtDatum_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPretrazi_Click(sender, e);
+            }
+        }
+
+        private void dgvAranzmaniPretraga_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPrikaziDetalje_Click(sender, e);
+            }
         }
     }
     

@@ -52,5 +52,13 @@ namespace Forme
         {
             Dispose();
         }
+
+        private void txtNazivGrada_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnDodaj_Click(sender, e);
+            }
+        }
     }
 }
