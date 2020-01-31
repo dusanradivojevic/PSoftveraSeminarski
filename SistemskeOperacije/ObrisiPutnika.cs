@@ -9,7 +9,7 @@ namespace SistemskeOperacije
 {
     public class ObrisiPutnika : OpstaSO
     {
-        public bool Obrisan { get; set; }
+        public bool Obrisan { get; private set; }
         protected override void IzvrsiKonkretnuOperaciju(IDomenskiObjekat objekat)
         {
             int brojRedova = broker.Obrisi(objekat);

@@ -33,6 +33,21 @@ namespace Kontroler
 
         // *** SELECT ***
 
+        public Aranzman VratiPodatkeAranzmana(Aranzman a)
+        {
+            OpstaSO os = new VratiPodatkeAranzmana();
+            try
+            {
+                os.IzvrsiSO(a);
+                return ((VratiPodatkeAranzmana)os).Aranzman;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+
         public List<Aranzman> VratiSveAranzmane()
         {
             Aranzman a = new Aranzman();

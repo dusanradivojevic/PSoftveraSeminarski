@@ -1,5 +1,4 @@
-﻿using Domen;
-using KKI;
+﻿using KKI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +14,6 @@ namespace Forme
 {
     public partial class FrmGlavna : Form
     {
-        // Obrisi tajmer ako je refresh postavljen posle svake crud operacija
         private FrmPrijava frmPrijava;
         public FrmGlavna(FrmPrijava frmPrijava)
         {
@@ -23,9 +21,9 @@ namespace Forme
             InitializeComponent();
             SrediFormu();
 
-            Thread tajmerZaUcitavanje = new Thread(Tajmer);
-            tajmerZaUcitavanje.IsBackground = true;
-            tajmerZaUcitavanje.Start();
+            //    Thread tajmerZaUcitavanje = new Thread(Tajmer);
+            //    tajmerZaUcitavanje.IsBackground = true;
+            //    tajmerZaUcitavanje.Start();
         }
 
         private void SrediFormu()
@@ -126,27 +124,29 @@ namespace Forme
         private void btnDodaj_Click(object sender, EventArgs e)
         {
             FrmDodajAranzman forma = new FrmDodajAranzman();
-            forma.ShowDialog();            
+            forma.ShowDialog();
+
+            UcitajAranzmane();
         }
 
-        private void Tajmer()
-        {
-            try
-            {
-                while (true)
-                {
-                    Thread.Sleep(15000);
-                    Invoke(new Action(() =>
-                    {
-                        UcitajAranzmane();
-                    }));
-                }
-            }
-            catch (Exception)
-            {
+        //private void Tajmer()
+        //{
+        //    try
+        //    {
+        //        while (true)
+        //        {
+        //            Thread.Sleep(15000);
+        //            Invoke(new Action(() =>
+        //            {
+        //                UcitajAranzmane();
+        //            }));
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
 
-            }
-        }
+        //    }
+        //}
 
         private void dodajToolStripMenuItem_Click(object sender, EventArgs e)
         {

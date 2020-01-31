@@ -1,6 +1,4 @@
-﻿using Domen;
-using Kontroler;
-using KKI;
+﻿using KKI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

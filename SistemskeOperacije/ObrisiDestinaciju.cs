@@ -9,7 +9,7 @@ namespace SistemskeOperacije
 {
     public class ObrisiDestinaciju : OpstaSO
     {
-        public bool Obrisan { get; set; }
+        public bool Obrisan { get; private set; }
         protected override void IzvrsiKonkretnuOperaciju(IDomenskiObjekat objekat)
         {
             int brojRedova = broker.Obrisi(objekat);
@@ -26,7 +26,7 @@ namespace SistemskeOperacije
 
         protected override void Validacija(IDomenskiObjekat objekat)
         {
-            if (!(objekat is Aranzman))
+            if (!(objekat is Destinacija))
             {
                 throw new Exception("Objekat nije tipa Destinacija!");
             }

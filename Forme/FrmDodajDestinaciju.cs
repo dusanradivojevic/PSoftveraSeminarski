@@ -1,5 +1,4 @@
-﻿using Domen;
-using KKI;
+﻿using KKI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,7 +40,7 @@ namespace Forme
             {
                 KkiDestinacija.Instance.SacuvajDestinaciju(cmbZemlja, txtNazivGrada.Text);
                 MessageBox.Show("Destinacija je uspesno sacuvana!");
-                //Dispose();
+                Dispose();
             }
             catch (Exception exc)
             {

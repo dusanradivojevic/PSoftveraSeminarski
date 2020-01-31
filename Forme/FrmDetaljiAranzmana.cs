@@ -1,5 +1,4 @@
-﻿using Domen;
-using KKI;
+﻿using KKI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,19 +14,14 @@ namespace Forme
 {
     public partial class FrmDetaljiAranzmana : Form
     {
-        //private BindingList<Putnik> izabraniPutnici;
-        //private BindingList<Putnik> sviPutnici;
-        //private Aranzman aranzman;
         public FrmDetaljiAranzmana()
         {
             InitializeComponent();
-            //izabraniPutnici = new BindingList<Putnik>();
-            //sviPutnici = new BindingList<Putnik>();
+            PostaviVrednosti();
         }
 
         internal void PostaviVrednosti() 
         {
-            //da li treba postaviti vrednosti i na cmb destinaciji
             KkiAranzman.Instance.IspisiDetaljeAranzmana(txtID, txtNazivAranzmana, rtbOpis,
                 txtCena, txtDatum, txtUkBrMesta, txtBrojPutnika, txtBrSlbMesta, txtDestinacija,
                 txtKorisnik);
@@ -68,28 +62,11 @@ namespace Forme
                 }
             }
 
-            KkiAranzman.Instance.IzaberiPutnike(dgvIzabraniPutnici, dgvSviPutnici, redovi);
+            KkiAranzman.Instance.IzaberiPutnike(dgvSviPutnici, dgvIzabraniPutnici, redovi);
 
             IzmeniBrojeveVezaneZaPutnike();
         }
-
-        //private void DodajPutnike(List<DataGridViewRow> redovi, BindingList<Putnik> odrediste)
-        //{
-        //    foreach(DataGridViewRow red in redovi)
-        //    {
-        //        Putnik p = new Putnik
-        //        {
-        //            JMBG = (string)red.Cells[0].Value,
-        //            Ime = (string)red.Cells[1].Value,
-        //            Prezime = (string)red.Cells[2].Value,
-        //            DatumDodavanja = (DateTime)red.Cells[3].Value,
-        //            Korisnik = red.Cells[4].Value as Korisnik
-        //        };
-
-        //        odrediste.Add(p);
-        //    }
-        //}
-
+                
         internal void OtkljucajPolja()
         {
             txtNazivAranzmana.ReadOnly = false;
@@ -138,7 +115,7 @@ namespace Forme
                 }
             }
 
-            KkiAranzman.Instance.IzaberiPutnike(dgvSviPutnici, dgvIzabraniPutnici, redovi);
+            KkiAranzman.Instance.IzaberiPutnike(dgvIzabraniPutnici, dgvSviPutnici, redovi);
 
             IzmeniBrojeveVezaneZaPutnike();
         }
@@ -158,39 +135,15 @@ namespace Forme
                 txtBrSlbMesta.BackColor = Color.IndianRed;
             }
         }
-
-        //private void IzbaciPutnike(List<DataGridViewRow> redovi, BindingList<Putnik> izvoriste)
-        //{
-        //    foreach (DataGridViewRow red in redovi)
-        //    {
-        //        Putnik p = new Putnik
-        //        {
-        //            JMBG = (string)red.Cells[0].Value,
-        //            Ime = (string)red.Cells[1].Value,
-        //            Prezime = (string)red.Cells[2].Value,
-        //            DatumDodavanja = (DateTime)red.Cells[3].Value,
-        //            Korisnik = red.Cells[4].Value as Korisnik
-        //        };
-
-        //        izvoriste.Remove(p);
-        //    }
-        //}
-               
+                               
         private void btnKreirajPutnika_Click(object sender, EventArgs e)
         {
             FrmKreirajPutnika forma = new FrmKreirajPutnika();
             forma.ShowDialog();
-
-            UcitajSvePutnike(); 
-            
-            //proveri da li se ova metoda poziva nakon sto se zavrsi
-            //showdialog() ili odmah
         }
 
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
-            //obrati paznju kad se postavlja vrednost aranzmana u kkiAranzman,
-            //vrednost mu mora biti postavljena iz glavne metode
             if (txtUkBrMesta.BackColor != txtNazivAranzmana.BackColor)
                 return;
 

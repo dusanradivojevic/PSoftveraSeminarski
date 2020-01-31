@@ -9,7 +9,7 @@ namespace SistemskeOperacije
 {
     public class UnosPutnika : OpstaSO
     {
-        public bool UspesanUnos { get; set; }
+        public bool UspesanUnos { get; private set; }
         protected override void IzvrsiKonkretnuOperaciju(IDomenskiObjekat objekat) //Aranzman
         {
             Aranzman aranzman = objekat as Aranzman;

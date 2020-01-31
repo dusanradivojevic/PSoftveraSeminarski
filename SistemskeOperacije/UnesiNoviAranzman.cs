@@ -9,7 +9,7 @@ namespace SistemskeOperacije
 {
     public class UnesiNoviAranzman : OpstaSO
     {
-        public Aranzman Aranzman { get; set; }
+        public Aranzman Aranzman { get; private set; }
         protected override void IzvrsiKonkretnuOperaciju(IDomenskiObjekat objekat)
         {
             object rezultat = broker.VratiNajveciID(objekat);
@@ -38,10 +38,10 @@ namespace SistemskeOperacije
                 throw new Exception("Objekat nije tipa Aranzman!");
             }
 
-            if (!objekat.AdekvatnoPopunjen())
-            {
-                throw new MissingFieldException("Svi neophodni podaci moraju biti ispravno uneti!");
-            }
+            //if (!objekat.AdekvatnoPopunjen())
+            //{
+            //    throw new MissingFieldException("Svi neophodni podaci moraju biti ispravno uneti!");
+            //}
 
             List<IDomenskiObjekat> rezultat = broker.Pronadji(objekat);
             if (rezultat.Count != 0)

@@ -9,7 +9,7 @@ namespace SistemskeOperacije
 {
     public class PrijaviMe : OpstaSO
     {
-        public Korisnik Korisnik { get; set; }
+        public Korisnik Korisnik { get; private set; }
 
         protected override void IzvrsiKonkretnuOperaciju(IDomenskiObjekat objekat)
         {

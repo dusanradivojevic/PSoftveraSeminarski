@@ -1,5 +1,4 @@
-﻿using Domen;
-using KKI;
+﻿using KKI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -49,11 +48,19 @@ namespace Forme
                 MessageBox.Show("Putnik je uspesno sacuvan.");
 
                 UcitajSvePutnike();
+                OcistiFormu();
             }
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message);
             }
+        }
+
+        private void OcistiFormu()
+        {
+            txtJmbg.Text = string.Empty;
+            txtIme.Text = string.Empty;
+            txtPrezime.Text = string.Empty;
         }
 
         private void btnObrisi_Click(object sender, EventArgs e)

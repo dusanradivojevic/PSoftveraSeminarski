@@ -52,6 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnesiNovuDestinaciju.cs" />
     <Compile Include="UnosPutnika.cs" />
+    <Compile Include="VratiPodatkeAranzmana.cs" />
     <Compile Include="VratiSve.cs" />
   </ItemGroup>
   <ItemGroup>

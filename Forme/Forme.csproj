@@ -143,17 +143,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Domen\Domen.csproj">
-      <Project>{64d67e9e-32fa-4800-a04e-c87eb00d1b61}</Project>
-      <Name>Domen</Name>
-    </ProjectReference>
     <ProjectReference Include="..\KKI\KKI.csproj">
       <Project>{c0308bdc-142d-47a1-8176-ac42866fa621}</Project>
       <Name>KKI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Kontroler\Kontroler.csproj">
-      <Project>{16ad2a1e-fc8f-4b1a-aa9f-c5c7dd1c55d2}</Project>
-      <Name>Kontroler</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

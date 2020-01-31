@@ -9,7 +9,7 @@ namespace SistemskeOperacije
 {
     public class KreirajPutnika : OpstaSO
     {
-        public Putnik Putnik { get; set; }
+        public Putnik Putnik { get; private set; }
         protected override void IzvrsiKonkretnuOperaciju(IDomenskiObjekat objekat)
         {            
             int brojRedova = broker.Sacuvaj(objekat);

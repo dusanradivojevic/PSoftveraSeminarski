@@ -64,6 +64,8 @@ namespace KKI
             {
                 throw new Exception("Sistem ne moze da sacuva putnika!");
             }
+
+            KkiAranzman.Instance.DodajKreiranogPutnika(p);
         }
 
         public void PostaviSvePutnike(DataGridView dgvSviPutnici)
