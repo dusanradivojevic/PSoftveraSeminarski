@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domen;
-using BrokerBazePodataka;
 using SistemskeOperacije;
 using System.ComponentModel;
 using System.Collections;
@@ -13,7 +12,6 @@ namespace Kontroler
 {
     public class Kontroler
     {
-        private Broker broker;
         private static Kontroler _instance;
         public static Kontroler Instance
         {
@@ -29,7 +27,6 @@ namespace Kontroler
         }
         private Kontroler()
         {
-            broker = new Broker();
         }
 
         // *** SELECT ***
@@ -44,16 +41,16 @@ namespace Kontroler
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return new List<IDomenskiObjekat>();
+                throw e;
             }
         }
 
-        public Aranzman VratiPodatkeAranzmana(Aranzman a)
+        public IDomenskiObjekat VratiPodatkeAranzmana(IDomenskiObjekat ido)
         {
             OpstaSO os = new VratiPodatkeAranzmana();
             try
             {
-                os.IzvrsiSO(a);
+                os.IzvrsiSO(ido);
                 return ((VratiPodatkeAranzmana)os).Aranzman;
             }
             catch (Exception e)
@@ -63,82 +60,47 @@ namespace Kontroler
             }
         }
 
-        public List<Aranzman> VratiSveAranzmane()
+        public List<IDomenskiObjekat> VratiSveAranzmane()
         {
-            Aranzman a = new Aranzman();
+            IDomenskiObjekat ido = new Aranzman();
             OpstaSO os = new UcitajSveAranzmane();
             try
             {
-                os.IzvrsiSO(a);
-                List<Aranzman> lista = ((UcitajSveAranzmane)os).lista.Cast<Aranzman>().ToList();
+                os.IzvrsiSO(ido);
+                List<IDomenskiObjekat> lista = ((UcitajSveAranzmane)os).lista;
                 return lista;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return new List<Aranzman>();
+                throw e;
             }
         }
 
-        public List<Zemlja> VratiSveZemlje()
+        public List<IDomenskiObjekat> VratiSve(IDomenskiObjekat ido)
         {
-            Zemlja z = new Zemlja();
             OpstaSO os = new VratiSve();
             try
             {
-                os.IzvrsiSO(z);
-                List<Zemlja> lista = ((VratiSve)os).lista.Cast<Zemlja>().ToList();
+                os.IzvrsiSO(ido);
+                List<IDomenskiObjekat> lista = ((VratiSve)os).lista;
                 return lista;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return new List<Zemlja>();
+                throw e;
             }
         }
-
-        public List<Putnik> VratiSvePutnike()
-        {
-            Putnik p = new Putnik();
-            OpstaSO os = new VratiSve();
-            try
-            {
-                os.IzvrsiSO(p);
-                List<Putnik> lista = ((VratiSve)os).lista.Cast<Putnik>().ToList();
-                return lista;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return new List<Putnik>();
-            }
-        }
-
-        public List<Destinacija> VratiSveDestinacije() //ovde metode mogu da vracaju i object
-        {
-            Destinacija d = new Destinacija();
-            OpstaSO os = new VratiSve();
-            try
-            {
-                os.IzvrsiSO(d);
-                List<Destinacija> lista = ((VratiSve)os).lista.Cast<Destinacija>().ToList();
-                return lista;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return new List<Destinacija>();
-            }
-        }
-
+             
         // *** INSERT ***
 
-        public bool UnesiNoviAranzman(Aranzman a)
+        public bool UnesiNoviAranzman(IDomenskiObjekat ido)
         {           
             OpstaSO os = new UnesiNoviAranzman();
             try
             {
-                os.IzvrsiSO(a);
+                os.IzvrsiSO(ido);
             }
             catch
             {
@@ -150,12 +112,12 @@ namespace Kontroler
                 return false;
         }
 
-        public bool UnesiNovuDestinaciju(Destinacija d)
+        public bool UnesiNovuDestinaciju(IDomenskiObjekat ido)
         {
             OpstaSO os = new UnesiNovuDestinaciju();
             try
             {
-                os.IzvrsiSO(d);
+                os.IzvrsiSO(ido);
             }
             catch
             {
@@ -167,12 +129,12 @@ namespace Kontroler
                 return false;
         }
         
-        public bool KreirajPutnika(Putnik p)
+        public bool KreirajPutnika(IDomenskiObjekat ido) //Putnik
         {    
             OpstaSO os = new KreirajPutnika();
             try
             {
-                os.IzvrsiSO(p);
+                os.IzvrsiSO(ido);
             }
             catch
             {
@@ -187,12 +149,12 @@ namespace Kontroler
 
         // *** DELETE ***
 
-        public bool ObrisiAranzman(Aranzman a)
+        public bool ObrisiAranzman(IDomenskiObjekat ido) //Aranzman
         {
             OpstaSO os = new ObrisiAranzman();
             try
             {
-                os.IzvrsiSO(a);
+                os.IzvrsiSO(ido);
             }
             catch
             {
@@ -202,12 +164,12 @@ namespace Kontroler
             return ((ObrisiAranzman)os).Obrisan;
         }
 
-        public bool ObrisiDestinaciju(Destinacija d)
+        public bool ObrisiDestinaciju(IDomenskiObjekat ido) //Destinacija
         {
             OpstaSO os = new ObrisiDestinaciju();
             try
             {
-                os.IzvrsiSO(d);
+                os.IzvrsiSO(ido);
             }
             catch
             {
@@ -217,12 +179,12 @@ namespace Kontroler
             return ((ObrisiDestinaciju)os).Obrisan;
         }           
                
-        public bool ObrisiPutnika(Putnik p)
+        public bool ObrisiPutnika(IDomenskiObjekat ido)
         {
             OpstaSO os = new ObrisiPutnika();
             try
             {
-                os.IzvrsiSO(p);
+                os.IzvrsiSO(ido);
             }
             catch
             {
@@ -234,12 +196,12 @@ namespace Kontroler
 
         // *** OTHER ***                
 
-        public Korisnik Prijava(Korisnik k)
+        public Korisnik Prijava(IDomenskiObjekat ido) //Korisnik
         {
             OpstaSO os = new PrijaviMe();
             try
             {
-                os.IzvrsiSO(k);
+                os.IzvrsiSO(ido);
                 return ((PrijaviMe)os).Korisnik;
             }
             catch
@@ -248,22 +210,19 @@ namespace Kontroler
             }
         }
 
-        public bool SacuvajAranzmanSlozen(Aranzman a)
+        public bool SacuvajAranzmanSlozen(IDomenskiObjekat ido)
         {
-            //    a.BrojPutnika = a.Putnici.Count();
-            //    a.BrSlobodnihMesta = a.UkupanBrMesta - a.BrojPutnika;
-
-            OpstaSO os = new UnosPutnika(); //isto sto i izmeni
+            OpstaSO os = new UnosPutnikaSlozen(); //isto sto i izmeni
             try
             {
-                os.IzvrsiSO(a);
+                os.IzvrsiSO(ido);
             }
             catch
             {
                 return false;
             }
 
-            return ((UnosPutnika)os).UspesanUnos;               
+            return ((UnosPutnikaSlozen)os).UspesanUnos;               
         }
     }
 }

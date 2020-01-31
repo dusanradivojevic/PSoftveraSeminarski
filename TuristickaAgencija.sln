@@ -13,12 +13,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrokerBazePodataka", "Broke
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resursi", "Resursi", "{B4D651D4-9346-42A3-843D-DD0641628B14}"
 	ProjectSection(SolutionItems) = preProject
-		Iconblock-Remixed-Bus.ico = Iconblock-Remixed-Bus.ico
+		BusIcon.ico = BusIcon.ico
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemskeOperacije", "SistemskeOperacije\SistemskeOperacije.csproj", "{F193F0AA-8B87-4B9F-9382-CD584C9593C4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KKI", "KKI\KKI.csproj", "{C0308BDC-142D-47A1-8176-AC42866FA621}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{E87BC4BB-7A40-4747-AD73-8BBA75F5FD1B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KlijentDir", "KlijentDir", "{63110DAF-D825-4F34-976C-F9347526438C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServerDir", "ServerDir", "{731D46A8-4E04-4A83-95D8-216C02D9E90A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zajednicki", "Zajednicki\Zajednicki.csproj", "{0BDB5BB1-E1B4-44F4-A2F5-8EC841761F5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,9 +58,25 @@ Global
 		{C0308BDC-142D-47A1-8176-AC42866FA621}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0308BDC-142D-47A1-8176-AC42866FA621}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0308BDC-142D-47A1-8176-AC42866FA621}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E87BC4BB-7A40-4747-AD73-8BBA75F5FD1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E87BC4BB-7A40-4747-AD73-8BBA75F5FD1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E87BC4BB-7A40-4747-AD73-8BBA75F5FD1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E87BC4BB-7A40-4747-AD73-8BBA75F5FD1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BDB5BB1-E1B4-44F4-A2F5-8EC841761F5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BDB5BB1-E1B4-44F4-A2F5-8EC841761F5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BDB5BB1-E1B4-44F4-A2F5-8EC841761F5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BDB5BB1-E1B4-44F4-A2F5-8EC841761F5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8033ADD3-7EA6-4258-B330-D5475CE4C91C} = {63110DAF-D825-4F34-976C-F9347526438C}
+		{16AD2A1E-FC8F-4B1A-AA9F-C5C7DD1C55D2} = {731D46A8-4E04-4A83-95D8-216C02D9E90A}
+		{2B4FA66D-3219-4D59-A97D-B22902DC7EAB} = {731D46A8-4E04-4A83-95D8-216C02D9E90A}
+		{F193F0AA-8B87-4B9F-9382-CD584C9593C4} = {731D46A8-4E04-4A83-95D8-216C02D9E90A}
+		{C0308BDC-142D-47A1-8176-AC42866FA621} = {63110DAF-D825-4F34-976C-F9347526438C}
+		{E87BC4BB-7A40-4747-AD73-8BBA75F5FD1B} = {731D46A8-4E04-4A83-95D8-216C02D9E90A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {83D4EFCB-D7FE-45F2-AAFA-760FD75A93CA}

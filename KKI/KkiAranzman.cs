@@ -43,9 +43,9 @@ namespace KKI
                 AranzmanID = (int)red.Cells[0].Value
             };
 
-            Aranzman = Kontroler.Kontroler.Instance.VratiPodatkeAranzmana(a);
+            Aranzman = Kontroler.Kontroler.Instance.VratiPodatkeAranzmana(a) as Aranzman;
 
-            sviPutnici = new BindingList<Putnik>(Kontroler.Kontroler.Instance.VratiSvePutnike());
+            sviPutnici = new BindingList<Putnik>(Kontroler.Kontroler.Instance.VratiSve(new Putnik()).Cast<Putnik>().ToList());
             izabraniPutnici = new BindingList<Putnik>(Aranzman.Putnici);
         }
 
@@ -116,7 +116,7 @@ namespace KKI
         {
             try
             {
-                List<Aranzman> listaAran = Kontroler.Kontroler.Instance.VratiSveAranzmane();
+                List<Aranzman> listaAran = Kontroler.Kontroler.Instance.VratiSveAranzmane().Cast<Aranzman>().ToList();
 
                 if (listaAran.Count == 0)
                 {

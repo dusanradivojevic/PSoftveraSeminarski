@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Domen
 {
+    [Serializable]
     public class Putnik : IDomenskiObjekat
     {
         private String jmbg;

@@ -76,7 +76,7 @@ namespace KKI
         {
             try
             {
-                List<Putnik> listaPutnika = Kontroler.Kontroler.Instance.VratiSvePutnike();
+                List<Putnik> listaPutnika = Kontroler.Kontroler.Instance.VratiSve(new Putnik()).Cast<Putnik>().ToList();
 
                 if (listaPutnika.Count == 0)
                 {

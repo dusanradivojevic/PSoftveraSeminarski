@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Domen
 {
+    [Serializable]
     public class Zemlja : IDomenskiObjekat
     {
         private int zemljaID;

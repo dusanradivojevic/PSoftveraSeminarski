@@ -45,10 +45,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BrokerBazePodataka\BrokerBazePodataka.csproj">
-      <Project>{2b4fa66d-3219-4d59-a97d-b22902dc7eab}</Project>
-      <Name>BrokerBazePodataka</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Domen\Domen.csproj">
       <Project>{64d67e9e-32fa-4800-a04e-c87eb00d1b61}</Project>
       <Name>Domen</Name>

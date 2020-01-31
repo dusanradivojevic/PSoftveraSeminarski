@@ -35,9 +35,9 @@ namespace KKI
         {
             try
             {
-                List<Destinacija> listaDest = Kontroler.Kontroler.Instance.VratiSveDestinacije();
+                List<Destinacija> listaDest = Kontroler.Kontroler.Instance.VratiSve(new Destinacija()).Cast<Destinacija>().ToList();
 
-                if(listaDest.Count == 0)
+                if (listaDest.Count == 0)
                 {
                     throw new Exception("Neuspesno ucitavanje destinacija");
                 }
@@ -54,7 +54,7 @@ namespace KKI
         {
             try
             {
-                List<Destinacija> listaDest= Kontroler.Kontroler.Instance.VratiSveDestinacije();
+                List<Destinacija> listaDest= Kontroler.Kontroler.Instance.VratiSve(new Destinacija()).Cast<Destinacija>().ToList();
 
                 if (listaDest.Count == 0)
                 {
@@ -73,7 +73,7 @@ namespace KKI
         {
             try
             {
-                List<Zemlja> listaZem = Kontroler.Kontroler.Instance.VratiSveZemlje();
+                List<Zemlja> listaZem = Kontroler.Kontroler.Instance.VratiSve(new Zemlja()).Cast<Zemlja>().ToList();
 
                 if (listaZem.Count == 0)
                 {

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Domen
 {
+    [Serializable]
     public class Putnik_Aranzman : IDomenskiObjekat
     {
         private string jmbg;

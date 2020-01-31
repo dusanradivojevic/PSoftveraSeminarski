@@ -22,6 +22,7 @@ namespace SistemskeOperacije
                 Obrisan = false;
                 throw new Exception("Sistem ne moze da obrise putnika!");
             }
+            // treba brisati i sve Asocijativne klase!
         }
 
         protected override void Validacija(IDomenskiObjekat objekat)

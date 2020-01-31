@@ -50,13 +50,6 @@ namespace SistemskeOperacije
                 }
             }
 
-            if (sviAranzmani.Count == 0)
-            {
-                throw new Exception("Nije pronadjen nijedan objekat.");
-
-                //ili da samo vratim praznu listu pa da forma prepoznaje dalje
-            }
-
             lista = sviAranzmani;
         }
 

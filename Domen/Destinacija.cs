@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Domen
 {
+    [Serializable]
     public class Destinacija : IDomenskiObjekat
     {
         private int destinacijaID;

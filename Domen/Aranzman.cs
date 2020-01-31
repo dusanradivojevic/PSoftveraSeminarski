@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Domen
 {
+    [Serializable]
     public class Aranzman : IDomenskiObjekat
     {
         public Aranzman()

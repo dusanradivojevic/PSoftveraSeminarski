@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SistemskeOperacije
 {
-    public class UnosPutnika : OpstaSO
+    public class UnosPutnikaSlozen : OpstaSO
     {
         public bool UspesanUnos { get; private set; }
         protected override void IzvrsiKonkretnuOperaciju(IDomenskiObjekat objekat) //Aranzman

@@ -22,6 +22,12 @@ namespace SistemskeOperacije
                 Obrisan = false;
                 throw new Exception("Sistem ne moze da obrise aranzman!");
             }
+
+            //treba obrisati i sve asocijativne klase
+
+            //moze da se izmeni kriterijum u domenskoj klasi za P_A da
+            // kriterijum pretrage bude AID like '%.%' and JMBG like '%.%'
+            //to bi radilo i da jedan od podataka nedostaje
         }
 
         protected override void Validacija(IDomenskiObjekat objekat)
