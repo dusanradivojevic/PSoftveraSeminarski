@@ -57,11 +57,11 @@ namespace Forme
         {
             try
             {
-                KkiAranzman.Instance.SacuvajAranzman(txtNazivAranzmana.Text,
+                string poruka = KkiAranzman.Instance.SacuvajAranzman(txtNazivAranzmana.Text,
                     rtbOpis.Text, txtCena.Text, dtpDatum.Value, txtUkBrMesta.Text, 
                     txtBrojPutnika.Text, txtBrSlbMesta.Text, cmbDestinacija);
 
-                MessageBox.Show("Aranzman je uspesno sacuvan!");
+                MessageBox.Show(poruka);
                 Dispose();
             }
             catch (Exception exc)

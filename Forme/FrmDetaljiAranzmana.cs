@@ -164,11 +164,11 @@ namespace Forme
                     datum = dtpDatum.Value;
                 }
 
-                KkiAranzman.Instance.SacuvajAranzmanSlozen(txtID.Text, txtNazivAranzmana.Text, rtbOpis.Text,
+                string poruka = KkiAranzman.Instance.SacuvajAranzmanSlozen(txtID.Text, txtNazivAranzmana.Text, rtbOpis.Text,
                 txtCena.Text, datum, txtUkBrMesta.Text, txtBrojPutnika.Text, txtBrSlbMesta.Text, 
-                cmbDestinacija, dgvIzabraniPutnici); 
+                cmbDestinacija); 
 
-                MessageBox.Show("Aranzman je uspesno sacuvan!");
+                MessageBox.Show(poruka);
                 Dispose();
             }
             catch (Exception exc)

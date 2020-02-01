@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Zajednicki;
 
 namespace KKI
 {
@@ -43,13 +44,15 @@ namespace KKI
                 AranzmanID = (int)red.Cells[0].Value
             };
 
-            Aranzman = Kontroler.Kontroler.Instance.VratiPodatkeAranzmana(a) as Aranzman;
+            Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiPodatkeAranzmana, a);
+            Aranzman = odg.Objekat as Aranzman;
 
-            sviPutnici = new BindingList<Putnik>(Kontroler.Kontroler.Instance.VratiSve(new Putnik()).Cast<Putnik>().ToList());
+            Odgovor odg2 = Komunikacija.Instance.KreirajZahtev(Operacija.VratiSve, new Putnik());
+            sviPutnici = new BindingList<Putnik>(odg2.Objekat as List<Putnik>);
             izabraniPutnici = new BindingList<Putnik>(Aranzman.Putnici);
         }
 
-        public void SacuvajAranzman(string naziv, string opis, string strCena, DateTime datum, 
+        public string SacuvajAranzman(string naziv, string opis, string strCena, DateTime datum, 
             string strUkBrMesta, string strBrPutnika, string strBrSlbMesta, ComboBox cmbDestinacija)
         {
             if (double.TryParse(strCena, out double cena) &&
@@ -71,10 +74,8 @@ namespace KKI
                     Korisnik = Sesija.Instance.VratiKorisnikaObjekat()
                 };
 
-                if (!Kontroler.Kontroler.Instance.UnesiNoviAranzman(a))
-                {
-                    throw new Exception("Sistem ne moze da sacuva aranzman!");
-                }
+                Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.UnesiNoviAranzman, a);
+                return odg.Poruka;
             }
             else
             {
@@ -87,8 +88,9 @@ namespace KKI
             sviPutnici.Add(p);
         }
 
-        public void ObrisiAranzmane(List<DataGridViewRow> redovi)
+        public string ObrisiAranzmane(List<DataGridViewRow> redovi)
         {
+            Odgovor odg = new Odgovor();
             foreach (DataGridViewRow red in redovi)
             {
                 Aranzman a = new Aranzman
@@ -105,18 +107,17 @@ namespace KKI
                     Korisnik = red.Cells[9].Value as Korisnik
                 };
 
-                if (!Kontroler.Kontroler.Instance.ObrisiAranzman(a))
-                {
-                    throw new Exception("Sistem ne moze da obrise aranzmane!");
-                }
+                odg = Komunikacija.Instance.KreirajZahtev(Operacija.ObrisiAranzman, a);
             }
+            return odg.Poruka;
         }
 
         public void PostaviSveAranzmane(DataGridView dgvAranzmaniPretraga)
         {
             try
             {
-                List<Aranzman> listaAran = Kontroler.Kontroler.Instance.VratiSveAranzmane().Cast<Aranzman>().ToList();
+                Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiSve, new Aranzman());
+                List<Aranzman> listaAran = odg.Objekat as List<Aranzman>;
 
                 if (listaAran.Count == 0)
                 {
@@ -144,7 +145,8 @@ namespace KKI
             Aranzman a = new Aranzman();
             a.Kriterijumi = kriterijumi;
 
-            List<Aranzman> listaAranzmana = Kontroler.Kontroler.Instance.VratiFiltrirano(a).Cast<Aranzman>().ToList();
+            Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiFiltrirano, a);
+            List<Aranzman> listaAranzmana = odg.Objekat as List<Aranzman>;
 
             if (listaAranzmana.Count == 0)
             {
@@ -212,9 +214,9 @@ namespace KKI
             izabraniPutnici.DataSource = this.izabraniPutnici;
         }
 
-        public void SacuvajAranzmanSlozen(string id, string naziv, string opis, string strCena, 
+        public string SacuvajAranzmanSlozen(string id, string naziv, string opis, string strCena, 
             DateTime datum, string strUkBrMesta, string strBrPutnika, string strBrSlbMesta, 
-            ComboBox cmbDestinacija, DataGridView izabraniPutnici)
+            ComboBox cmbDestinacija)
         {
             Destinacija dest;
 
@@ -255,10 +257,8 @@ namespace KKI
                     Putnici = this.izabraniPutnici.ToList()
                 };
 
-                if (!Kontroler.Kontroler.Instance.SacuvajAranzmanSlozen(a))
-                {
-                    throw new Exception("Sistem ne moze da sacuva aranzman!");
-                }
+                Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.SacuvajAranzmanSlozen, a);
+                return odg.Poruka;
             }
             else
             {

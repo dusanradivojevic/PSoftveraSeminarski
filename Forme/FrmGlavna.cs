@@ -192,8 +192,8 @@ namespace Forme
 
             try
             {
-                KkiAranzman.Instance.ObrisiAranzmane(redovi);
-                MessageBox.Show("Sistem je uspesno obrisao aranzmane!");
+                string poruka = KkiAranzman.Instance.ObrisiAranzmane(redovi);
+                MessageBox.Show(poruka);
 
                 UcitajAranzmane();
             }

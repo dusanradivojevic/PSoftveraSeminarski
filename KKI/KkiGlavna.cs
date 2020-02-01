@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Zajednicki;
 
 namespace KKI
 {
@@ -28,7 +29,7 @@ namespace KKI
 
         ////////////////////
         
-        public void Prijava(string email, string pw)
+        public string Prijava(string email, string pw)
         {
             if (string.IsNullOrEmpty(email) ||
                 string.IsNullOrEmpty(pw))
@@ -40,15 +41,15 @@ namespace KKI
             k.Email = email;
             k.Sifra = pw;
 
-            k = Kontroler.Kontroler.Instance.Prijava(k);
-
-            if (k != null)
+            try
             {
-                Sesija.Instance.PostaviKorisnika(k);
+                Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.PrijaviMe, k);
+                Sesija.Instance.PostaviKorisnika(odg.Objekat as Korisnik);
+                return odg.Poruka;
             }
-            else
+            catch (Exception exc)
             {
-                throw new Exception("Neispravan email ili sifra!");
+                throw exc;
             }
         }
     }

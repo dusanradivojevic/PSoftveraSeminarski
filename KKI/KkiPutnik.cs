@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Zajednicki;
 
 namespace KKI
 {
@@ -31,7 +32,7 @@ namespace KKI
 
         ////////////////////
         
-        public void KreirajPutnika(string jmbg, string ime, string prezime, string datum)
+        public string KreirajPutnika(string jmbg, string ime, string prezime, string datum)
         {
             if (jmbg.Length != 13)
             {
@@ -64,19 +65,17 @@ namespace KKI
                 Korisnik = Sesija.Instance.VratiKorisnikaObjekat()
             };
 
-            if (!Kontroler.Kontroler.Instance.KreirajPutnika(p))
-            {
-                throw new Exception("Sistem ne moze da sacuva putnika!");
-            }
-
-            KkiAranzman.Instance.DodajKreiranogPutnika(p);
+            Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.KreirajPutnika, p);
+            KkiAranzman.Instance.DodajKreiranogPutnika(odg.Objekat as Putnik);
+            return odg.Poruka;
         }
 
         public void PostaviSvePutnike(DataGridView dgvSviPutnici)
         {
             try
             {
-                List<Putnik> listaPutnika = Kontroler.Kontroler.Instance.VratiSve(new Putnik()).Cast<Putnik>().ToList();
+                Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiSve, new Putnik());
+                List<Putnik> listaPutnika = odg.Objekat as List<Putnik>;
 
                 if (listaPutnika.Count == 0)
                 {
@@ -91,8 +90,9 @@ namespace KKI
             }
         }
 
-        public void ObrisiPutnike(List<DataGridViewRow> redovi)
+        public string ObrisiPutnike(List<DataGridViewRow> redovi)
         {
+            Odgovor odg = new Odgovor();
             foreach (DataGridViewRow red in redovi)
             {
                 Putnik p = new Putnik
@@ -104,11 +104,9 @@ namespace KKI
                     Korisnik = red.Cells[4].Value as Korisnik
                 };
 
-                if (!Kontroler.Kontroler.Instance.ObrisiPutnika(p))
-                {
-                    throw new Exception("Sistem ne moze da obrise putnike!");
-                }
+                odg = Komunikacija.Instance.KreirajZahtev(Operacija.ObrisiPutnika, p);
             }
+            return odg.Poruka;
         }
 
         public void FiltrirajPutnike(string jmbg, string ime, string prezime, DataGridView dgvSviPutnici)
@@ -122,7 +120,8 @@ namespace KKI
             Putnik p = new Putnik();
             p.Kriterijumi = kriterijumi;
 
-            List<Putnik> listaPutnika = Kontroler.Kontroler.Instance.VratiFiltrirano(p).Cast<Putnik>().ToList();
+            Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiFiltrirano, p);
+            List<Putnik> listaPutnika = odg.Objekat as List<Putnik>;
 
             if (listaPutnika.Count == 0)
             {

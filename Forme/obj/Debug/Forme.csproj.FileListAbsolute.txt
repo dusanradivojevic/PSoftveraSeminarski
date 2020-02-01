@@ -17,11 +17,7 @@ D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\obj\Debug\Forme.FrmKreirajPutn
 D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\obj\Debug\Forme.FrmObrisiDestinaciju.resources
 D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\obj\Debug\Forme.FrmUpravljanjePutnicima.resources
 D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\obj\Debug\Forme.csproj.CopyComplete
-D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\bin\Debug\Kontroler.dll
-D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\bin\Debug\BrokerBazePodataka.dll
-D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\bin\Debug\Kontroler.pdb
-D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\bin\Debug\BrokerBazePodataka.pdb
-D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\bin\Debug\SistemskeOperacije.dll
-D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\bin\Debug\SistemskeOperacije.pdb
 D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\bin\Debug\KKI.dll
 D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\bin\Debug\KKI.pdb
+D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\bin\Debug\Zajednicki.dll
+D:\FON\PS\Seminarski kod\TuristickaAgencija\Forme\bin\Debug\Zajednicki.pdb

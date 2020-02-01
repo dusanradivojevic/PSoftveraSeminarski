@@ -38,8 +38,8 @@ namespace Forme
         {
             try
             {
-                KkiDestinacija.Instance.SacuvajDestinaciju(cmbZemlja, txtNazivGrada.Text);
-                MessageBox.Show("Destinacija je uspesno sacuvana!");
+                string poruka = KkiDestinacija.Instance.SacuvajDestinaciju(cmbZemlja, txtNazivGrada.Text);
+                MessageBox.Show(poruka);
                 Dispose();
             }
             catch (Exception exc)

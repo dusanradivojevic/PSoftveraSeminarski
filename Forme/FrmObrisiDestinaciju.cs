@@ -79,8 +79,8 @@ namespace Forme
 
             try
             {
-                KkiDestinacija.Instance.ObrisiDestinacije(redovi);
-                MessageBox.Show("Sistem je uspesno obrisao destinacije!");
+                string poruka = KkiDestinacija.Instance.ObrisiDestinaciju(redovi);
+                MessageBox.Show(poruka);
 
                 UcitajSveDestinacije();
             }

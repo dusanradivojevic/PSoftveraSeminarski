@@ -196,7 +196,7 @@ namespace Kontroler
 
         // *** OTHER ***                
 
-        public Korisnik Prijava(IDomenskiObjekat ido) //Korisnik
+        public IDomenskiObjekat Prijava(IDomenskiObjekat ido) //Korisnik
         {
             OpstaSO os = new PrijaviMe();
             try

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Zajednicki;
 
 namespace KKI
 {
@@ -35,7 +36,8 @@ namespace KKI
         {
             try
             {
-                List<Destinacija> listaDest = Kontroler.Kontroler.Instance.VratiSve(new Destinacija()).Cast<Destinacija>().ToList();
+                Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiSve, new Destinacija());
+                List<Destinacija> listaDest = odg.Objekat as List<Destinacija>;
 
                 if (listaDest.Count == 0)
                 {
@@ -54,7 +56,8 @@ namespace KKI
         {
             try
             {
-                List<Destinacija> listaDest= Kontroler.Kontroler.Instance.VratiSve(new Destinacija()).Cast<Destinacija>().ToList();
+                Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiSve, new Destinacija());
+                List<Destinacija> listaDest = odg.Objekat as List<Destinacija>;
 
                 if (listaDest.Count == 0)
                 {
@@ -73,7 +76,8 @@ namespace KKI
         {
             try
             {
-                List<Zemlja> listaZem = Kontroler.Kontroler.Instance.VratiSve(new Zemlja()).Cast<Zemlja>().ToList();
+                Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiSve, new Zemlja());
+                List<Zemlja> listaZem = odg.Objekat as List<Zemlja>;
 
                 if (listaZem.Count == 0)
                 {
@@ -88,8 +92,9 @@ namespace KKI
             }
         }
 
-        public void ObrisiDestinacije(List<DataGridViewRow> redovi)
+        public string ObrisiDestinaciju(List<DataGridViewRow> redovi)
         {
+            Odgovor odg = new Odgovor();
             foreach (DataGridViewRow red in redovi)
             {
                 Destinacija d = new Destinacija
@@ -100,11 +105,9 @@ namespace KKI
                     Korisnik = red.Cells[3].Value as Korisnik
                 };
 
-                if (!Kontroler.Kontroler.Instance.ObrisiDestinaciju(d))
-                {
-                    throw new Exception("Sistem ne moze da obrise destinacije!");
-                }                
+                 odg = Komunikacija.Instance.KreirajZahtev(Operacija.ObrisiDestinaciju, d);            
             }
+            return odg.Poruka;
         }
 
         public void FiltrirajDestinacije(string grad, DataGridView dgvDestinacije)
@@ -116,17 +119,18 @@ namespace KKI
             Destinacija d = new Destinacija();
             d.Kriterijumi = kriterijumi;
 
-            List<Destinacija> listaDestinacija = Kontroler.Kontroler.Instance.VratiFiltrirano(d).Cast<Destinacija>().ToList();
+            Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiFiltrirano, d);
+            List<Destinacija> listaDest = odg.Objekat as List<Destinacija>;
 
-            if (listaDestinacija.Count == 0)
+            if (listaDest.Count == 0)
             {
                 throw new Exception("Nije pronadjena nijedna destinacija koji zadovoljava kriterijume!");
             }
 
-            dgvDestinacije.DataSource = listaDestinacija;
+            dgvDestinacije.DataSource = listaDest;
         }
 
-        public void SacuvajDestinaciju(ComboBox cmbZemlja, string nazivGrada)
+        public string SacuvajDestinaciju(ComboBox cmbZemlja, string nazivGrada)
         {
             if (cmbZemlja.SelectedItem == null || !(cmbZemlja.SelectedItem is Zemlja) ||
                 string.IsNullOrEmpty(nazivGrada))
@@ -141,11 +145,8 @@ namespace KKI
                 Korisnik = Sesija.Instance.VratiKorisnikaObjekat()
             };
 
-            bool rez = Kontroler.Kontroler.Instance.UnesiNovuDestinaciju(dest);
-            if (!rez)
-            {
-                throw new Exception("Sistem ne moze da sacuva destinaciju!");
-            }
+            Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.UnesiNovuDestinaciju, dest);
+            return odg.Poruka;
         }
     }
 }

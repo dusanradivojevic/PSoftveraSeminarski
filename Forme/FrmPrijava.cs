@@ -27,9 +27,12 @@ namespace Forme
         {
             try
             {
-                KkiGlavna.Instance.Prijava(txtKorisnickoIme.Text, txtSifra.Text);
+                if (!Komunikacija.Instance.PoveziSe())
+                    throw new Exception("Neuspesno povezivanje na server.");
 
-                //MessageBox.Show("Dobrodosli");
+                string poruka = KkiGlavna.Instance.Prijava(txtKorisnickoIme.Text, txtSifra.Text);
+
+                MessageBox.Show(poruka);
 
                 FrmGlavna forma = new FrmGlavna(this);
                 forma.ShowDialog();

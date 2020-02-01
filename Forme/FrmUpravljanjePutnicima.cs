@@ -43,9 +43,9 @@ namespace Forme
         {
             try
             {
-                KkiPutnik.Instance.KreirajPutnika(txtJmbg.Text, txtIme.Text,
+                string poruka = KkiPutnik.Instance.KreirajPutnika(txtJmbg.Text, txtIme.Text,
                     txtPrezime.Text, txtDatumDodavanja.Text);
-                MessageBox.Show("Putnik je uspesno sacuvan.");
+                MessageBox.Show(poruka);
 
                 UcitajSvePutnike();
                 OcistiFormu();
@@ -99,8 +99,8 @@ namespace Forme
 
             try
             {
-                KkiPutnik.Instance.ObrisiPutnike(redovi);
-                MessageBox.Show("Sistem je uspesno obrisao putnike!");
+                string poruka = KkiPutnik.Instance.ObrisiPutnike(redovi);
+                MessageBox.Show(poruka);
 
                 UcitajSvePutnike();
             }

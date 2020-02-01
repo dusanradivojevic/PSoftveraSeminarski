@@ -46,6 +46,7 @@
     <Compile Include="KkiDestinacija.cs" />
     <Compile Include="KkiGlavna.cs" />
     <Compile Include="KkiPutnik.cs" />
+    <Compile Include="Komunikacija.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sesija.cs" />
   </ItemGroup>
@@ -54,9 +55,9 @@
       <Project>{64d67e9e-32fa-4800-a04e-c87eb00d1b61}</Project>
       <Name>Domen</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Kontroler\Kontroler.csproj">
-      <Project>{16ad2a1e-fc8f-4b1a-aa9f-c5c7dd1c55d2}</Project>
-      <Name>Kontroler</Name>
+    <ProjectReference Include="..\Zajednicki\Zajednicki.csproj">
+      <Project>{0BDB5BB1-E1B4-44F4-A2F5-8EC841761F5B}</Project>
+      <Name>Zajednicki</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
