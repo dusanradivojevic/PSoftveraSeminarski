@@ -21,10 +21,9 @@ namespace SistemskeOperacije
                 IDomenskiObjekat ido = rezultat[i];
                 IDomenskiObjekat podDomen = ido.VratiPodDomen();
 
-                if (podDomen != null)
+                while (podDomen != null)
                 {
                     podDomen.PostaviVrednost(broker.Pronadji(podDomen)[0]);
-                    ido.PostaviVrednostPodDomena(podDomen);
 
                     while (podDomen.VratiPodDomen() != null)
                     {
@@ -33,11 +32,12 @@ namespace SistemskeOperacije
                         podPod.PostaviVrednost(broker.Pronadji(podPod)[0]);
                         podDomen.PostaviVrednostPodDomena(podPod);
                     }
+
+                    ido.PostaviVrednostPodDomena(podDomen);
+                    podDomen = ido.VratiPodDomen();
                 }
-                else
-                {
-                    i++;
-                }
+
+                i++;                
             }
 
             lista = rezultat;

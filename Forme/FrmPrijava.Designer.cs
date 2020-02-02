@@ -38,6 +38,7 @@
             // 
             // btnPrijaviSe
             // 
+            this.btnPrijaviSe.Enabled = false;
             this.btnPrijaviSe.Location = new System.Drawing.Point(198, 159);
             this.btnPrijaviSe.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrijaviSe.Name = "btnPrijaviSe";
@@ -55,6 +56,7 @@
             this.txtKorisnickoIme.Size = new System.Drawing.Size(226, 24);
             this.txtKorisnickoIme.TabIndex = 1;
             this.txtKorisnickoIme.Text = "r.dusan97@gmail.com";
+            this.txtKorisnickoIme.TextChanged += new System.EventHandler(this.txtKorisnickoIme_TextChanged);
             this.txtKorisnickoIme.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKorisnickoIme_KeyDown);
             // 
             // txtSifra
@@ -65,7 +67,7 @@
             this.txtSifra.PasswordChar = '*';
             this.txtSifra.Size = new System.Drawing.Size(226, 24);
             this.txtSifra.TabIndex = 2;
-            this.txtSifra.Text = "123";
+            this.txtSifra.TextChanged += new System.EventHandler(this.txtSifra_TextChanged);
             this.txtSifra.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSifra_KeyDown);
             // 
             // label1

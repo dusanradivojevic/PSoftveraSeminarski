@@ -22,6 +22,11 @@ namespace Forme
         private void SrediFormu()
         {
             UcitajSveDestinacije();
+
+            dgvDestinacije.AutoSizeColumnsMode =
+                DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvDestinacije.Columns[2].Width = 80;
+            dgvDestinacije.Columns[0].Visible = false;
         }
 
         private void UcitajSveDestinacije()

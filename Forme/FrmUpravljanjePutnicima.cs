@@ -176,6 +176,8 @@ namespace Forme
             txtJmbgPretraga.Text = string.Empty;
             txtImePretraga.Text = string.Empty;
             txtPrezimePretraga.Text = string.Empty;
+
+            btnPretrazi_Click(sender, e);
         }
     }
 }

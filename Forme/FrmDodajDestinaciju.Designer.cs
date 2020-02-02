@@ -129,6 +129,7 @@
             this.txtKorisnik.ReadOnly = true;
             this.txtKorisnik.Size = new System.Drawing.Size(156, 24);
             this.txtKorisnik.TabIndex = 10;
+            this.txtKorisnik.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // FrmDodajDestinaciju
             // 

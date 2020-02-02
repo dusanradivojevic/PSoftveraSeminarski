@@ -85,7 +85,10 @@ namespace KKI
 
         internal void DodajKreiranogPutnika(Putnik p)
         {
-            sviPutnici.Add(p);
+            if (sviPutnici != null)
+            {
+                sviPutnici.Add(p);
+            }
         }
 
         public string ObrisiAranzmane(List<DataGridViewRow> redovi)

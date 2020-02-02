@@ -18,7 +18,6 @@ namespace Domen
         }
 
         private int aranzmanID;
-        [DisplayName("ID")]
         public int AranzmanID
         {
             get { return aranzmanID; }

@@ -58,5 +58,31 @@ namespace Forme
                 btnPrijaviSe_Click(sender, e);
             }
         }
+
+        private void txtSifra_TextChanged(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(txtKorisnickoIme.Text) ||
+                string.IsNullOrEmpty(txtSifra.Text))
+            {
+                btnPrijaviSe.Enabled = false;
+            }
+            else
+            {
+                btnPrijaviSe.Enabled = true;
+            }
+        }
+
+        private void txtKorisnickoIme_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtKorisnickoIme.Text) ||
+                string.IsNullOrEmpty(txtSifra.Text))
+            {
+                btnPrijaviSe.Enabled = false;
+            }
+            else
+            {
+                btnPrijaviSe.Enabled = true;
+            }
+        }
     }
 }

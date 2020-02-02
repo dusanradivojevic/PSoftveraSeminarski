@@ -13,7 +13,6 @@ namespace Domen
     public class Destinacija : IDomenskiObjekat
     {
         private int destinacijaID;
-
         public int DestinacijaID
         {
             get { return destinacijaID; }

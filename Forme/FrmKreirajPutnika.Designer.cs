@@ -118,6 +118,7 @@
             this.txtDatumDodavanja.ReadOnly = true;
             this.txtDatumDodavanja.Size = new System.Drawing.Size(210, 24);
             this.txtDatumDodavanja.TabIndex = 31;
+            this.txtDatumDodavanja.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 
@@ -159,6 +160,7 @@
             this.txtKorisnik.ReadOnly = true;
             this.txtKorisnik.Size = new System.Drawing.Size(210, 24);
             this.txtKorisnik.TabIndex = 35;
+            this.txtKorisnik.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // FrmKreirajPutnika
             // 

@@ -250,6 +250,7 @@
             // 
             // btnSacuvaj
             // 
+            this.btnSacuvaj.Enabled = false;
             this.btnSacuvaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSacuvaj.Location = new System.Drawing.Point(303, 452);
             this.btnSacuvaj.Name = "btnSacuvaj";
@@ -272,7 +273,7 @@
             // txtKorisnik
             // 
             this.txtKorisnik.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKorisnik.Location = new System.Drawing.Point(680, 52);
+            this.txtKorisnik.Location = new System.Drawing.Point(680, 54);
             this.txtKorisnik.Name = "txtKorisnik";
             this.txtKorisnik.ReadOnly = true;
             this.txtKorisnik.Size = new System.Drawing.Size(157, 24);
@@ -302,6 +303,7 @@
             // 
             // btnKreirajPutnika
             // 
+            this.btnKreirajPutnika.Enabled = false;
             this.btnKreirajPutnika.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKreirajPutnika.Location = new System.Drawing.Point(408, 395);
             this.btnKreirajPutnika.Name = "btnKreirajPutnika";
@@ -313,6 +315,7 @@
             // 
             // btnIzaberi
             // 
+            this.btnIzaberi.Enabled = false;
             this.btnIzaberi.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIzaberi.Location = new System.Drawing.Point(408, 275);
             this.btnIzaberi.Name = "btnIzaberi";
@@ -345,6 +348,7 @@
             // 
             // btnIzbaci
             // 
+            this.btnIzbaci.Enabled = false;
             this.btnIzbaci.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIzbaci.Location = new System.Drawing.Point(408, 314);
             this.btnIzbaci.Name = "btnIzbaci";

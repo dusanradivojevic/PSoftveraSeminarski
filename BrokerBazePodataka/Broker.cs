@@ -99,5 +99,14 @@ namespace BrokerBazePodataka
             reader.Close();
             return rezultat;
         }
+
+        public object AzurirajBrojPutnika(IDomenskiObjekat objekat)
+        {
+            SqlCommand command = new SqlCommand("", konekcija, transakcija);
+            command.CommandText = $"UPDATE {objekat.NazivTabele} SET BrojPutnika = " +
+                $"BrojPutnika - 1 WHERE {objekat.KriterijumiZaPretragu}";
+            object rez = command.ExecuteNonQuery();
+            return rez;
+        }
     }
 }

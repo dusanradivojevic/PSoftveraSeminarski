@@ -66,7 +66,7 @@ namespace KKI
             };
 
             Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.KreirajPutnika, p);
-            KkiAranzman.Instance.DodajKreiranogPutnika(odg.Objekat as Putnik);
+            KkiAranzman.Instance.DodajKreiranogPutnika(p);
             return odg.Poruka;
         }
 

@@ -15,6 +15,15 @@ namespace SistemskeOperacije
             int brojRedova = broker.Obrisi(objekat);
             if (brojRedova == 1)
             {
+                Putnik_Aranzman pa = new Putnik_Aranzman();
+                pa.JMBG = ((Putnik)objekat).JMBG;
+                pa = broker.Pronadji(pa)[0] as Putnik_Aranzman;
+                broker.Obrisi(pa);
+
+                Aranzman a = new Aranzman();
+                a.AranzmanID = pa.AranzmanID;
+                broker.AzurirajBrojPutnika(a);
+
                 Obrisan = true;
             }
             else

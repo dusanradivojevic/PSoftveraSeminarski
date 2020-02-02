@@ -65,6 +65,7 @@
             this.txtKorisnik.ReadOnly = true;
             this.txtKorisnik.Size = new System.Drawing.Size(210, 24);
             this.txtKorisnik.TabIndex = 47;
+            this.txtKorisnik.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnKreiraj
             // 
@@ -95,6 +96,7 @@
             this.txtDatumDodavanja.ReadOnly = true;
             this.txtDatumDodavanja.Size = new System.Drawing.Size(210, 24);
             this.txtDatumDodavanja.TabIndex = 43;
+            this.txtDatumDodavanja.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtIme
             // 

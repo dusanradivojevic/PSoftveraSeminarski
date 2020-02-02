@@ -28,6 +28,7 @@ namespace Forme
                         txtCena, txtDatum, txtUkBrMesta, txtBrojPutnika, txtBrSlbMesta, txtDestinacija,
                         txtKorisnik);
                 KkiAranzman.Instance.PostaviPutnikeZaAranzman(dgvIzabraniPutnici);
+                IzmeniBrojeveVezaneZaPutnike();
             }
             catch (Exception e)
             {
@@ -91,6 +92,11 @@ namespace Forme
                 
         internal void OtkljucajPolja()
         {
+            btnSacuvaj.Enabled = true;
+            btnKreirajPutnika.Enabled = true;
+            btnIzaberi.Enabled = true;
+            btnIzbaci.Enabled = true;
+
             txtNazivAranzmana.ReadOnly = false;
             txtUkBrMesta.ReadOnly = false;
             txtUkBrMesta.BackColor = txtNazivAranzmana.BackColor;

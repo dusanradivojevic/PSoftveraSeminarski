@@ -43,7 +43,7 @@
             this.dgvDestinacije.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDestinacije.Location = new System.Drawing.Point(12, 69);
             this.dgvDestinacije.Name = "dgvDestinacije";
-            this.dgvDestinacije.Size = new System.Drawing.Size(443, 221);
+            this.dgvDestinacije.Size = new System.Drawing.Size(398, 221);
             this.dgvDestinacije.TabIndex = 0;
             // 
             // btnObrisi
@@ -58,7 +58,7 @@
             // 
             // btnOdustani
             // 
-            this.btnOdustani.Location = new System.Drawing.Point(351, 300);
+            this.btnOdustani.Location = new System.Drawing.Point(306, 300);
             this.btnOdustani.Name = "btnOdustani";
             this.btnOdustani.Size = new System.Drawing.Size(104, 36);
             this.btnOdustani.TabIndex = 10;
@@ -77,7 +77,7 @@
             // 
             // txtNazivGrada
             // 
-            this.txtNazivGrada.Location = new System.Drawing.Point(123, 21);
+            this.txtNazivGrada.Location = new System.Drawing.Point(108, 21);
             this.txtNazivGrada.Name = "txtNazivGrada";
             this.txtNazivGrada.Size = new System.Drawing.Size(168, 24);
             this.txtNazivGrada.TabIndex = 12;
@@ -85,9 +85,9 @@
             // 
             // btnPretrazi
             // 
-            this.btnPretrazi.Location = new System.Drawing.Point(326, 15);
+            this.btnPretrazi.Location = new System.Drawing.Point(301, 18);
             this.btnPretrazi.Name = "btnPretrazi";
-            this.btnPretrazi.Size = new System.Drawing.Size(129, 30);
+            this.btnPretrazi.Size = new System.Drawing.Size(109, 30);
             this.btnPretrazi.TabIndex = 13;
             this.btnPretrazi.Text = "Pretrazi";
             this.btnPretrazi.UseVisualStyleBackColor = true;
@@ -97,7 +97,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(467, 348);
+            this.ClientSize = new System.Drawing.Size(422, 348);
             this.Controls.Add(this.btnPretrazi);
             this.Controls.Add(this.txtNazivGrada);
             this.Controls.Add(this.label1);

@@ -20,6 +20,29 @@ namespace Forme
             this.frmPrijava = frmPrijava;
             InitializeComponent();
             SrediFormu();
+
+            //Thread tajmerZaRefreh = new Thread(Tajmer);
+            //tajmerZaRefreh.IsBackground = true;
+            //tajmerZaRefreh.Start();
+        }
+
+        private void Tajmer()
+        {
+            try
+            {
+                while (true)
+                {
+                    Thread.Sleep(10000);
+                    Invoke(new Action(() =>
+                    {
+                        UcitajAranzmane();
+                    }));
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         private void SrediFormu()
@@ -30,6 +53,7 @@ namespace Forme
             dgvAranzmaniPretraga.AutoSizeColumnsMode =
                 DataGridViewAutoSizeColumnsMode.AllCells;
             dgvAranzmaniPretraga.Columns[2].Width = 60;
+            dgvAranzmaniPretraga.Columns[0].Visible = false; //ID
         }
 
         private void UcitajAranzmane()
@@ -162,6 +186,8 @@ namespace Forme
         {
             FrmUpravljanjePutnicima forma = new FrmUpravljanjePutnicima();
             forma.ShowDialog();
+
+            UcitajAranzmane();
         }
 
         private void obrisiToolStripMenuItem_Click(object sender, EventArgs e)
@@ -240,6 +266,8 @@ namespace Forme
             txtCena.Text = string.Empty; 
             txtDatum.Text = string.Empty;
             txtNaziv.Text = string.Empty;
+
+            btnPretrazi_Click(sender, e);
         }
 
         private void txtNaziv_KeyDown(object sender, KeyEventArgs e)

@@ -39,9 +39,22 @@ namespace Domen
 
         public string VrednostiZaInsert => $"'{JMBG}', {AranzmanID}, '{DatumRezervacije}'";
 
-        public string KriterijumiZaPretragu => $"AranzmanID = {AranzmanID}";
+        public string KriterijumiZaPretragu
+        {
+            get
+            {
+                if (AranzmanID != 0)
+                {
+                    return $"AranzmanID = {AranzmanID}";
+                }
+                else
+                {
+                    return $"JMBG = '{JMBG}'";
+                }
+            }
+        }
 
-        public string PrimarniKljuc => throw new NotImplementedException();
+        public string PrimarniKljuc => null;
 
         public IDictionary Kriterijumi { get; set; }
 

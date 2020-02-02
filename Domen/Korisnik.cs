@@ -60,7 +60,7 @@ namespace Domen
         {
             get
             {
-                if (Email == null)
+                if (KorisnikID != 0)
                 {
                     return $"KorisnikID = {KorisnikID}";
                 }
