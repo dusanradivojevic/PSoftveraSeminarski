@@ -39,7 +39,7 @@ namespace KKI
                 Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiSve, new Destinacija());
                 List<Destinacija> listaDest = (odg.Objekat as List<IDomenskiObjekat>).Cast<Destinacija>().ToList(); 
 
-                if (listaDest.Count == 0)
+                if (listaDest != null && listaDest.Count == 0)
                 {
                     throw new Exception("Neuspesno ucitavanje destinacija");
                 }
@@ -59,7 +59,7 @@ namespace KKI
                 Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiSve, new Destinacija());
                 List<Destinacija> listaDest = (odg.Objekat as List<IDomenskiObjekat>).Cast<Destinacija>().ToList();
 
-                if (listaDest.Count == 0)
+                if (listaDest != null && listaDest.Count == 0)
                 {
                     throw new Exception("Neuspesno ucitavanje destinacija!");
                 }
@@ -79,7 +79,7 @@ namespace KKI
                 Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiSve, new Zemlja());
                 List<Zemlja> listaZem = (odg.Objekat as List<IDomenskiObjekat>).Cast<Zemlja>().ToList();
 
-                if (listaZem.Count == 0)
+                if (listaZem != null && listaZem.Count == 0)
                 {
                     throw new Exception("Neuspesno ucitavanje zemalja!");
                 }
@@ -122,7 +122,7 @@ namespace KKI
             Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiFiltrirano, d);
             List<Destinacija> listaDest = (odg.Objekat as List<IDomenskiObjekat>).Cast<Destinacija>().ToList();
 
-            if (listaDest.Count == 0)
+            if (listaDest != null && listaDest.Count == 0)
             {
                 throw new Exception("Nije pronadjena nijedna destinacija koji zadovoljava kriterijume!");
             }

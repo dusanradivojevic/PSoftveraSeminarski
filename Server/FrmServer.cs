@@ -45,8 +45,7 @@ namespace Server
             else
             {
                 MessageBox.Show("Sistem nije uspeo da pokrene server!");
-            }
-            
+            }            
         }
 
         private void btnZaustavi_Click(object sender, EventArgs e)

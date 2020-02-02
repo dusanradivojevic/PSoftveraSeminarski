@@ -38,11 +38,6 @@ namespace SistemskeOperacije
                 throw new Exception("Objekat nije tipa Aranzman!");
             }
 
-            //if (!objekat.AdekvatnoPopunjen())
-            //{
-            //    throw new MissingFieldException("Svi neophodni podaci moraju biti ispravno uneti!");
-            //}
-
             List<IDomenskiObjekat> rezultat = broker.Pronadji(objekat);
             if (rezultat.Count != 0)
             {

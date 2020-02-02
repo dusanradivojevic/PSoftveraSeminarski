@@ -31,15 +31,10 @@ namespace SistemskeOperacije
                 Obrisan = false;
                 throw new Exception("Sistem ne moze da obrise putnika!");
             }
-            // treba brisati i sve Asocijativne klase!
         }
 
         protected override void Validacija(IDomenskiObjekat objekat)
         {
-            // objekat tipa putnika
-            // da li je popunjen adekvatno
-            // sprecavanje ponavljanja iz baze
-
             if (!(objekat is Putnik))
             {
                 throw new Exception("Objekat nije tipa Putnik!");

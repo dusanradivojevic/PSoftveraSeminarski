@@ -16,11 +16,11 @@ namespace Forme
         public FrmPrijava()
         {
             InitializeComponent();
-            //this.ActiveControl = txtKorisnickoIme;
-            //txtKorisnickoIme.Focus();
+            this.ActiveControl = txtKorisnickoIme;
+            txtKorisnickoIme.Focus();
 
-            this.ActiveControl = btnPrijaviSe;
-            btnPrijaviSe.Focus();            
+            //this.ActiveControl = btnPrijaviSe;
+            //btnPrijaviSe.Focus();            
         }
 
         private void btnPrijaviSe_Click(object sender, EventArgs e)

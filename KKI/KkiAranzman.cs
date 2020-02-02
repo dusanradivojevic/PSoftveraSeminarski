@@ -122,7 +122,7 @@ namespace KKI
                 Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiSve, new Aranzman());
                 List<Aranzman> listaAran = (odg.Objekat as List<IDomenskiObjekat>).Cast<Aranzman>().ToList();
 
-                if (listaAran.Count == 0)
+                if (listaAran != null && listaAran.Count == 0)
                 {
                     throw new Exception("Neuspesno ucitavanje aranzmana!");
                 }
@@ -151,7 +151,7 @@ namespace KKI
             Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiFiltrirano, a);
             List<Aranzman> listaAranzmana = (odg.Objekat as List<IDomenskiObjekat>).Cast<Aranzman>().ToList();
 
-            if (listaAranzmana.Count == 0)
+            if (listaAranzmana != null && listaAranzmana.Count == 0)
             {
                 throw new Exception("Nije pronadjen nijedan aranzman koji zadovoljava kriterijume!");
             }

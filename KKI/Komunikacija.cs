@@ -71,9 +71,6 @@ namespace KKI
                     e = new Exception("Socket exception.");
 
                 throw e; 
-                //u zavisnosti od exc ugasiti server ako je potrebno
-                //jer exc moze da bude samo da destinacija npr nije 
-                //sacuvana jer su losi podaci
             }
         }
 

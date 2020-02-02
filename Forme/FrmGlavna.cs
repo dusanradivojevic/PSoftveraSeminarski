@@ -65,8 +65,6 @@ namespace Forme
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message);
-                //Dispose();
-                // mozda neki blok forme ili tako nesto?
             }
         }
 
@@ -78,7 +76,7 @@ namespace Forme
         private void odjaviSeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Sesija.Instance.OdjaviKorisnika();
-            MessageBox.Show("Dovidjenja!");
+            MessageBox.Show("Uspesno ste se odjavili sa sistema!");
             frmPrijava.Dispose();            
         }
 
@@ -147,7 +145,7 @@ namespace Forme
         {
             FrmDetaljiAranzmana frmDetalji = new FrmDetaljiAranzmana();
 
-            if (tip.Equals("Izmeni")) //tekst na dugmetu sa kog je pozvano
+            if (tip.Equals("Izmeni")) // Tekst na dugmetu sa kog je pozvano
             {
                 frmDetalji.OtkljucajPolja();
             }

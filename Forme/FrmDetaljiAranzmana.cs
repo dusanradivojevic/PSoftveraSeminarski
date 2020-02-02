@@ -115,8 +115,6 @@ namespace Forme
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message);
-                //Dispose();
-                // mozda neki blok forme ili tako nesto? - ovde ili u SrediFormu()
             }
         }
 

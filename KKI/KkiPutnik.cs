@@ -77,7 +77,7 @@ namespace KKI
                 Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiSve, new Putnik());
                 List<Putnik> listaPutnika = (odg.Objekat as List<IDomenskiObjekat>).Cast<Putnik>().ToList();
 
-                if (listaPutnika.Count == 0)
+                if (listaPutnika != null && listaPutnika.Count == 0)
                 {
                     throw new Exception("Neuspesno ucitavanje putnika!");
                 }
@@ -123,7 +123,7 @@ namespace KKI
             Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiFiltrirano, p);
             List<Putnik> listaPutnika = (odg.Objekat as List<IDomenskiObjekat>).Cast<Putnik>().ToList();
 
-            if (listaPutnika.Count == 0)
+            if (listaPutnika != null && listaPutnika.Count == 0)
             {
                 throw new Exception("Nije pronadjen nijedan putnik koji zadovoljava kriterijume!");
             }

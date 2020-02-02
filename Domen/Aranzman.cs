@@ -101,7 +101,7 @@ namespace Domen
         [Browsable(false)]
         public string VrednostiZaInsert => $"{AranzmanID}, '{NazivAranzmana}', '{OpisAranzmana}'," +
             $" {Cena}, '{Datum}', {ukupanBrojMesta}, {BrojPutnika}, {brojSlobodnihMesta}," +
-            $" {Destinacija.DestinacijaID}, {Korisnik.KorisnikID}"; //!
+            $" {Destinacija.DestinacijaID}, {Korisnik.KorisnikID}"; 
 
         [Browsable(false)]
         public string KriterijumiZaPretragu => $"AranzmanID = {AranzmanID}";

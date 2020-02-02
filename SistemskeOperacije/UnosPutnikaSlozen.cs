@@ -21,7 +21,7 @@ namespace SistemskeOperacije
             {
                 if(broker.Pronadji(pa).Count != 0)
                 {
-                    //ako aranzman nema putnike
+                    // Ako aranzman nema putnike ili je tek kreiran
                     UspesanUnos = false;
                     throw new Exception("Sistem ne moze da obrise Putnik_Aranzman!");
                 }

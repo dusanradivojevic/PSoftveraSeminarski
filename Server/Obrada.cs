@@ -78,12 +78,12 @@ namespace Server
             if (objekat is IDomenskiObjekat && 
                 Kontroler.Kontroler.Instance.KreirajPutnika(objekat as IDomenskiObjekat))
             {
-                odg.Poruka = "Sistem je kreirao novog putnika!";
+                odg.Poruka = "Putnik je uspešno sačuvan!";
                 odg.Status = Status.OK;
             }
             else
             {
-                odg.Poruka = "Sistem ne moze da kreira novog putnika!";
+                odg.Poruka = "Sistem ne može da zapamti putnika!";
                 odg.Status = Status.ERR;
             }
             return odg;
@@ -94,12 +94,12 @@ namespace Server
             if (objekat is IDomenskiObjekat &&
                 Kontroler.Kontroler.Instance.ObrisiAranzman(objekat as IDomenskiObjekat))
             {
-                odg.Poruka = "Sistem je uspesno obrisao aranzman!";
+                odg.Poruka = "Sistem je obrisao aranžman!";
                 odg.Status = Status.OK;
             }
             else
             {
-                odg.Poruka = "Sistem ne moze da obrise aranzman!";
+                odg.Poruka = "Sistem ne može da obriše aranžman!";
                 odg.Status = Status.ERR;
             }
             return odg;
@@ -110,12 +110,12 @@ namespace Server
             if (objekat is IDomenskiObjekat &&
                 Kontroler.Kontroler.Instance.ObrisiDestinaciju(objekat as IDomenskiObjekat))
             {
-                odg.Poruka = "Sistem je uspesno obrisao destinaciju!";
+                odg.Poruka = "Sistem je obrisao destinaciju!";
                 odg.Status = Status.OK;
             }
             else
             {
-                odg.Poruka = "Sistem ne moze da obrise destinaciju!";
+                odg.Poruka = "Sistem ne može da obriše destinaciju!";
                 odg.Status = Status.ERR;
             }
             return odg;
@@ -126,12 +126,12 @@ namespace Server
             if (objekat is IDomenskiObjekat &&
                 Kontroler.Kontroler.Instance.ObrisiPutnika(objekat as IDomenskiObjekat))
             {
-                odg.Poruka = "Sistem je uspesno obrisao putnika!";
+                odg.Poruka = "Sistem je obrisao putnike!";
                 odg.Status = Status.OK;
             }
             else
             {
-                odg.Poruka = "Sistem ne moze da obrise putnike!";
+                odg.Poruka = "Sistem ne može da obriše putnike!";
                 odg.Status = Status.ERR;
             }
             return odg;
@@ -144,14 +144,14 @@ namespace Server
                 IDomenskiObjekat ido = Kontroler.Kontroler.Instance.Prijava(objekat as IDomenskiObjekat);
                 if(ido != null)
                 {
-                    odg.Poruka = "Uspesno ste se prijavili!";
+                    odg.Poruka = "Uspešno ste se prijavili na sistem!";
                     odg.Status = Status.OK;
                     odg.Objekat = ido;
                     return odg;
                 }
             }
 
-            odg.Poruka = "Sistem ne moze da Vas prijavi!";
+            odg.Poruka = "Neuspešno prijavljivanje na sistem!";
             odg.Status = Status.ERR;
             return odg;
         }
@@ -207,7 +207,7 @@ namespace Server
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                odg.Poruka = "Sistem ne moze da pronadje podatke prosledjenog Aranzmana!";
+                odg.Poruka = "Sistem ne može da pronađe podatke aranžmana!";
                 odg.Status = Status.ERR;
             }
             return odg;
@@ -227,7 +227,7 @@ namespace Server
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                odg.Poruka = "Sistem ne moze da pronadje trazene objekte!";
+                odg.Poruka = "U sistemu ne postoje objekti sa takvim vrednostima!";
                 odg.Status = Status.ERR;
             }
             return odg;
@@ -238,12 +238,12 @@ namespace Server
             if (objekat is IDomenskiObjekat &&
                 Kontroler.Kontroler.Instance.UnesiNoviAranzman(objekat as IDomenskiObjekat))
             {
-                odg.Poruka = "Sistem je uspesno sacuvao aranzman!";
+                odg.Poruka = "Novi aranžman je uspešno sačuvan!";
                 odg.Status = Status.OK;
             }
             else
             {
-                odg.Poruka = "Sistem ne moze da sacuva aranzman!";
+                odg.Poruka = "Sistem ne može da zapamti aranžman!";
                 odg.Status = Status.ERR;
             }
             return odg;
@@ -254,12 +254,12 @@ namespace Server
             if (objekat is IDomenskiObjekat &&
                 Kontroler.Kontroler.Instance.UnesiNovuDestinaciju(objekat as IDomenskiObjekat))
             {
-                odg.Poruka = "Sistem je uspesno sacuvao destinaciju!";
+                odg.Poruka = "Destinacija je uspešno sačuvana!";
                 odg.Status = Status.OK;
             }
             else
             {
-                odg.Poruka = "Sistem ne moze da sacuva destinaciju!";
+                odg.Poruka = "Sistem ne može da zapamti destinaciju!";
                 odg.Status = Status.ERR;
             }
             return odg;
@@ -270,12 +270,12 @@ namespace Server
             if (objekat is IDomenskiObjekat &&
                 Kontroler.Kontroler.Instance.SacuvajAranzmanSlozen(objekat as IDomenskiObjekat))
             {
-                odg.Poruka = "Sistem je uspesno sacuvao aranzman!";
+                odg.Poruka = "Sistem je zapamtio podatke!";
                 odg.Status = Status.OK;
             }
             else
             {
-                odg.Poruka = "Sistem ne moze da sacuva aranzman!";
+                odg.Poruka = "Sistem ne može da zapamti podatke!";
                 odg.Status = Status.ERR;
             }
             return odg;

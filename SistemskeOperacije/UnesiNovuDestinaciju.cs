@@ -43,8 +43,6 @@ namespace SistemskeOperacije
             {
                 throw new Exception("Postoji Destinacija sa unetim ID-jem!");
             }
-
-            //mora da se doda validacija i za npr pokusaj unosa 2 destinacije sa istim nazivom
         }
     }
 }
