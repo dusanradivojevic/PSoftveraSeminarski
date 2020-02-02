@@ -51,6 +51,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnOcisti = new System.Windows.Forms.Button();
             this.grp1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSviPutnici)).BeginInit();
@@ -221,7 +222,7 @@
             this.txtJmbgPretraga.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtJmbgPretraga.Location = new System.Drawing.Point(114, 7);
             this.txtJmbgPretraga.Name = "txtJmbgPretraga";
-            this.txtJmbgPretraga.Size = new System.Drawing.Size(210, 24);
+            this.txtJmbgPretraga.Size = new System.Drawing.Size(198, 24);
             this.txtJmbgPretraga.TabIndex = 52;
             this.txtJmbgPretraga.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtJmbgPretraga_KeyDown);
             // 
@@ -284,11 +285,23 @@
             this.label7.TabIndex = 58;
             this.label7.Text = "Prezime:";
             // 
+            // btnOcisti
+            // 
+            this.btnOcisti.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOcisti.Location = new System.Drawing.Point(330, 7);
+            this.btnOcisti.Name = "btnOcisti";
+            this.btnOcisti.Size = new System.Drawing.Size(105, 24);
+            this.btnOcisti.TabIndex = 59;
+            this.btnOcisti.Text = "Ocisti";
+            this.btnOcisti.UseVisualStyleBackColor = true;
+            this.btnOcisti.Click += new System.EventHandler(this.btnOcisti_Click);
+            // 
             // FrmUpravljanjePutnicima
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(757, 354);
+            this.Controls.Add(this.btnOcisti);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -335,5 +348,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnOcisti;
     }
 }

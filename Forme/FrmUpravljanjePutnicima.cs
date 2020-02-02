@@ -170,5 +170,12 @@ namespace Forme
                 btnPretrazi_Click(sender, e);
             }
         }
+
+        private void btnOcisti_Click(object sender, EventArgs e)
+        {
+            txtJmbgPretraga.Text = string.Empty;
+            txtImePretraga.Text = string.Empty;
+            txtPrezimePretraga.Text = string.Empty;
+        }
     }
 }

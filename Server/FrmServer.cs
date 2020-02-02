@@ -12,7 +12,6 @@ namespace Server
 {
     public partial class FrmServer : Form
     {
-        private Server Server;
         public FrmServer()
         {
             InitializeComponent();
@@ -39,7 +38,7 @@ namespace Server
 
         private void btnPokreni_Click(object sender, EventArgs e)
         {
-            if (Server.PokreniServer())
+            if (Server.Instance.PokreniServer())
             {
                 UpaljenServerForma();
             }
@@ -52,7 +51,7 @@ namespace Server
 
         private void btnZaustavi_Click(object sender, EventArgs e)
         {
-            if (Server.ZaustaviServer())
+            if (Server.Instance.ZaustaviServer())
             {
                 UgasenServerForma();
             }

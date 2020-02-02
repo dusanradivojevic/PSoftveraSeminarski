@@ -37,7 +37,7 @@ namespace KKI
             try
             {
                 Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiSve, new Destinacija());
-                List<Destinacija> listaDest = odg.Objekat as List<Destinacija>;
+                List<Destinacija> listaDest = (odg.Objekat as List<IDomenskiObjekat>).Cast<Destinacija>().ToList(); 
 
                 if (listaDest.Count == 0)
                 {
@@ -57,7 +57,7 @@ namespace KKI
             try
             {
                 Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiSve, new Destinacija());
-                List<Destinacija> listaDest = odg.Objekat as List<Destinacija>;
+                List<Destinacija> listaDest = (odg.Objekat as List<IDomenskiObjekat>).Cast<Destinacija>().ToList();
 
                 if (listaDest.Count == 0)
                 {
@@ -77,7 +77,7 @@ namespace KKI
             try
             {
                 Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiSve, new Zemlja());
-                List<Zemlja> listaZem = odg.Objekat as List<Zemlja>;
+                List<Zemlja> listaZem = (odg.Objekat as List<IDomenskiObjekat>).Cast<Zemlja>().ToList();
 
                 if (listaZem.Count == 0)
                 {
@@ -120,7 +120,7 @@ namespace KKI
             d.Kriterijumi = kriterijumi;
 
             Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiFiltrirano, d);
-            List<Destinacija> listaDest = odg.Objekat as List<Destinacija>;
+            List<Destinacija> listaDest = (odg.Objekat as List<IDomenskiObjekat>).Cast<Destinacija>().ToList();
 
             if (listaDest.Count == 0)
             {

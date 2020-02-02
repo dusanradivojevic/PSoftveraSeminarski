@@ -48,7 +48,7 @@ namespace KKI
             Aranzman = odg.Objekat as Aranzman;
 
             Odgovor odg2 = Komunikacija.Instance.KreirajZahtev(Operacija.VratiSve, new Putnik());
-            sviPutnici = new BindingList<Putnik>(odg2.Objekat as List<Putnik>);
+            sviPutnici = new BindingList<Putnik>((odg2.Objekat as List<IDomenskiObjekat>).Cast<Putnik>().ToList());
             izabraniPutnici = new BindingList<Putnik>(Aranzman.Putnici);
         }
 
@@ -117,7 +117,7 @@ namespace KKI
             try
             {
                 Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiSve, new Aranzman());
-                List<Aranzman> listaAran = odg.Objekat as List<Aranzman>;
+                List<Aranzman> listaAran = (odg.Objekat as List<IDomenskiObjekat>).Cast<Aranzman>().ToList();
 
                 if (listaAran.Count == 0)
                 {
@@ -146,7 +146,7 @@ namespace KKI
             a.Kriterijumi = kriterijumi;
 
             Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiFiltrirano, a);
-            List<Aranzman> listaAranzmana = odg.Objekat as List<Aranzman>;
+            List<Aranzman> listaAranzmana = (odg.Objekat as List<IDomenskiObjekat>).Cast<Aranzman>().ToList();
 
             if (listaAranzmana.Count == 0)
             {

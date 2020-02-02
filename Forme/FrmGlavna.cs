@@ -26,8 +26,7 @@ namespace Forme
         {
             PostaviKorisnika();
             UcitajAranzmane();
-
-            // proveri da li ovo radi uopste
+            
             dgvAranzmaniPretraga.AutoSizeColumnsMode =
                 DataGridViewAutoSizeColumnsMode.AllCells;
             dgvAranzmaniPretraga.Columns[2].Width = 60;

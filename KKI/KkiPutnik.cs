@@ -75,7 +75,7 @@ namespace KKI
             try
             {
                 Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiSve, new Putnik());
-                List<Putnik> listaPutnika = odg.Objekat as List<Putnik>;
+                List<Putnik> listaPutnika = (odg.Objekat as List<IDomenskiObjekat>).Cast<Putnik>().ToList();
 
                 if (listaPutnika.Count == 0)
                 {
@@ -121,7 +121,7 @@ namespace KKI
             p.Kriterijumi = kriterijumi;
 
             Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiFiltrirano, p);
-            List<Putnik> listaPutnika = odg.Objekat as List<Putnik>;
+            List<Putnik> listaPutnika = (odg.Objekat as List<IDomenskiObjekat>).Cast<Putnik>().ToList();
 
             if (listaPutnika.Count == 0)
             {

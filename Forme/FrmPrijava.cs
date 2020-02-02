@@ -20,7 +20,7 @@ namespace Forme
             //txtKorisnickoIme.Focus();
 
             this.ActiveControl = btnPrijaviSe;
-            btnPrijaviSe.Focus();
+            btnPrijaviSe.Focus();            
         }
 
         private void btnPrijaviSe_Click(object sender, EventArgs e)
