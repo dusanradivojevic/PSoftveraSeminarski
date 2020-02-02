@@ -65,7 +65,15 @@ namespace Forme
                 dgvAranzmaniPretraga.SelectedCells.Count == 1)
             {
                 int rowIndex = dgvAranzmaniPretraga.SelectedCells[0].RowIndex;
-                KkiAranzman.Instance.PostaviAranzman(dgvAranzmaniPretraga.Rows[rowIndex]);
+                try
+                {
+                    KkiAranzman.Instance.PostaviAranzman(dgvAranzmaniPretraga.Rows[rowIndex]);
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show(exc.Message);
+                    return;
+                }
 
                 PokreniFrmDetalji(((Button)sender).Text);
             }
@@ -87,7 +95,14 @@ namespace Forme
 
                 if (flag)
                 {
-                    KkiAranzman.Instance.PostaviAranzman(dgvAranzmaniPretraga.Rows[rowIndex]);
+                    try
+                    {
+                        KkiAranzman.Instance.PostaviAranzman(dgvAranzmaniPretraga.Rows[rowIndex]);
+                    }
+                    catch (Exception exc)
+                    {
+                        MessageBox.Show(exc.Message);
+                    }
 
                     PokreniFrmDetalji(((Button)sender).Text);
                 }

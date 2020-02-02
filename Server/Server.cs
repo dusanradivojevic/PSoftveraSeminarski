@@ -83,7 +83,11 @@ namespace Server
                 osluskujuciSoket.Close();
                 foreach (Obrada o in klijenti)
                 {
-                    o.Zaustavi();
+                    try
+                    {
+                        o.Zaustavi();
+                    }
+                    catch { }
                 }
                 klijenti.Clear();
 

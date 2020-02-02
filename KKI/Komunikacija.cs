@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -62,6 +63,13 @@ namespace KKI
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+
+                if (e is IOException)
+                    e = new Exception ("Server je prestao sa radom.");
+
+                if(e is SocketException)
+                    e = new Exception("Socket exception.");
+
                 throw e; 
                 //u zavisnosti od exc ugasiti server ako je potrebno
                 //jer exc moze da bude samo da destinacija npr nije 

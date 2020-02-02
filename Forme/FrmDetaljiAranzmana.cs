@@ -22,16 +22,31 @@ namespace Forme
 
         internal void PostaviVrednosti() 
         {
-            KkiAranzman.Instance.IspisiDetaljeAranzmana(txtID, txtNazivAranzmana, rtbOpis,
-                txtCena, txtDatum, txtUkBrMesta, txtBrojPutnika, txtBrSlbMesta, txtDestinacija,
-                txtKorisnik);
-            KkiAranzman.Instance.PostaviPutnikeZaAranzman(dgvIzabraniPutnici);
+            try
+            {
+                KkiAranzman.Instance.IspisiDetaljeAranzmana(txtID, txtNazivAranzmana, rtbOpis,
+                        txtCena, txtDatum, txtUkBrMesta, txtBrojPutnika, txtBrSlbMesta, txtDestinacija,
+                        txtKorisnik);
+                KkiAranzman.Instance.PostaviPutnikeZaAranzman(dgvIzabraniPutnici);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
             UcitajSvePutnike();
         }
 
         private void UcitajSvePutnike()
-        {            
-            KkiAranzman.Instance.PostaviSvePutnike(dgvSviPutnici);            
+        {
+            try
+            {
+                KkiAranzman.Instance.PostaviSvePutnike(dgvSviPutnici);         
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
         private void btnOdustani_Click(object sender, EventArgs e)
@@ -62,7 +77,14 @@ namespace Forme
                 }
             }
 
-            KkiAranzman.Instance.IzaberiPutnike(dgvSviPutnici, dgvIzabraniPutnici, redovi);
+            try
+            {
+                KkiAranzman.Instance.IzaberiPutnike(dgvSviPutnici, dgvIzabraniPutnici, redovi);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
 
             IzmeniBrojeveVezaneZaPutnike();
         }
@@ -115,7 +137,14 @@ namespace Forme
                 }
             }
 
-            KkiAranzman.Instance.IzaberiPutnike(dgvIzabraniPutnici, dgvSviPutnici, redovi);
+            try
+            {
+                KkiAranzman.Instance.IzaberiPutnike(dgvIzabraniPutnici, dgvSviPutnici, redovi);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
 
             IzmeniBrojeveVezaneZaPutnike();
         }
