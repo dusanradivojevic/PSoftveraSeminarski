@@ -57,6 +57,8 @@ namespace Domen
         public string VrednostiZaInsert => $"'{JMBG}', '{Ime}', '{Prezime}'," +
             $"'{DatumDodavanja}', {Korisnik.KorisnikID}";
         [Browsable(false)]
+        public string VrednostZaUpdate => null;
+        [Browsable(false)]
         public string KriterijumiZaPretragu => $"JMBG = '{JMBG}'";
         [Browsable(false)]
         public string PrimarniKljuc => "JMBG";

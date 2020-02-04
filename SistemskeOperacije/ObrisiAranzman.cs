@@ -12,13 +12,13 @@ namespace SistemskeOperacije
         public bool Obrisan { get; private set; }
         protected override void IzvrsiKonkretnuOperaciju(IDomenskiObjekat objekat)
         {
+            Putnik_Aranzman pa = new Putnik_Aranzman();
+            pa.AranzmanID = ((Aranzman)objekat).AranzmanID;
+            broker.Obrisi(pa);
+
             int brojRedova = broker.Obrisi(objekat);
             if (brojRedova == 1)
             {
-                Putnik_Aranzman pa = new Putnik_Aranzman();
-                pa.AranzmanID = ((Aranzman)objekat).AranzmanID;
-                broker.Obrisi(pa);
-
                 Obrisan = true;
             }
             else

@@ -81,6 +81,7 @@
             this.txtNazivGrada.Name = "txtNazivGrada";
             this.txtNazivGrada.Size = new System.Drawing.Size(168, 24);
             this.txtNazivGrada.TabIndex = 12;
+            this.txtNazivGrada.TextChanged += new System.EventHandler(this.txtNazivGrada_TextChanged);
             this.txtNazivGrada.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNazivGrada_KeyDown);
             // 
             // btnPretrazi

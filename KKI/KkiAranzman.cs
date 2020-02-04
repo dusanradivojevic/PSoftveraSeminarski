@@ -122,12 +122,12 @@ namespace KKI
                 Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiSve, new Aranzman());
                 List<Aranzman> listaAran = (odg.Objekat as List<IDomenskiObjekat>).Cast<Aranzman>().ToList();
 
+                dgvAranzmaniPretraga.DataSource = listaAran;
+
                 if (listaAran != null && listaAran.Count == 0)
                 {
                     throw new Exception("Neuspesno ucitavanje aranzmana!");
                 }
-
-                dgvAranzmaniPretraga.DataSource = listaAran;
             }
             catch (Exception exc)
             {
@@ -151,12 +151,12 @@ namespace KKI
             Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiFiltrirano, a);
             List<Aranzman> listaAranzmana = (odg.Objekat as List<IDomenskiObjekat>).Cast<Aranzman>().ToList();
 
+            dgvAranzmaniPretraga.DataSource = listaAranzmana;
+
             if (listaAranzmana != null && listaAranzmana.Count == 0)
             {
                 throw new Exception("Nije pronadjen nijedan aranzman koji zadovoljava kriterijume!");
             }
-
-            dgvAranzmaniPretraga.DataSource = listaAranzmana;
         }
 
         public void IzaberiPutnike(DataGridView izvoriste, DataGridView odrediste, List<DataGridViewRow> redovi)

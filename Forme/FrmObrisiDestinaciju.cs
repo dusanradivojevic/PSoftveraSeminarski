@@ -112,5 +112,13 @@ namespace Forme
                 btnPretrazi_Click(sender, e);
             }
         }
+
+        private void txtNazivGrada_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNazivGrada.Text))
+            {
+                btnPretrazi_Click(sender, e);
+            }
+        }
     }
 }

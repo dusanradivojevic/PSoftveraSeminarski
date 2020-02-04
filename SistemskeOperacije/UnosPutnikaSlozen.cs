@@ -16,31 +16,21 @@ namespace SistemskeOperacije
 
             Putnik_Aranzman pa = new Putnik_Aranzman();
             pa.AranzmanID = aranzman.AranzmanID;
-            int brojRedova = broker.Obrisi(pa);
-            if (brojRedova < 1)
-            {
-                if(broker.Pronadji(pa).Count != 0)
-                {
-                    // Ako aranzman nema putnike ili je tek kreiran
-                    UspesanUnos = false;
-                    throw new Exception("Sistem ne moze da obrise Putnik_Aranzman!");
-                }
-            }
-                        
+            broker.Obrisi(pa);
+
             pa.DatumRezervacije = DateTime.Now;
             foreach (Putnik p in aranzman.Putnici) 
             {
                 pa.JMBG = p.JMBG;
-                broker.Sacuvaj(pa);
-            }                       
+                //pa.AranzmanID = aranzman.AranzmanID;
 
-            brojRedova = broker.Obrisi(aranzman);
-            if (brojRedova < 1)
-            {
-                UspesanUnos = false;
-                throw new Exception("Sistem ne moze da obrise Aranzman!");
-            }
-            broker.Sacuvaj(aranzman);
+                if(broker.Pronadji(pa).Count == 0)
+                {
+                    broker.Sacuvaj(pa);
+                }
+            }      
+
+            broker.Azuriraj(aranzman);
 
             UspesanUnos = true;
         }

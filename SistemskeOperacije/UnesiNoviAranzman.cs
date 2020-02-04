@@ -13,11 +13,17 @@ namespace SistemskeOperacije
         protected override void IzvrsiKonkretnuOperaciju(IDomenskiObjekat objekat)
         {
             object rezultat = broker.VratiNajveciID(objekat);
+            int noviID;
             if (rezultat is DBNull)
             {
-                throw new Exception($"{objekat.NazivTabele} ne postoji!");
+                //throw new Exception($"{objekat.NazivTabele} ne postoji!");
+                noviID = 1;
             }
-            int noviID = (int)rezultat + 1;
+            else
+            {
+                noviID = (int)rezultat + 1;
+            }
+
             ((Aranzman)objekat).AranzmanID = noviID;
             int brojRedova = broker.Sacuvaj(objekat);
             if(brojRedova == 1)

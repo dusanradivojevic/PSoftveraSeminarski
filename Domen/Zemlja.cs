@@ -40,6 +40,8 @@ namespace Domen
         public string VrednostiZaInsert => $"{ZemljaID}, '{NazivZemlje}', " +
             $"{SkraceniNaziv}";
 
+        public string VrednostZaUpdate => null;
+
         public string KriterijumiZaPretragu => $"ZemljaID = {ZemljaID}";
 
         public string PrimarniKljuc => "ZemljaID";

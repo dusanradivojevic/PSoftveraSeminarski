@@ -55,11 +55,13 @@ namespace Domen
         public string VrednostiZaInsert => $"{DestinacijaID}, '{nazivGrada}', " +
             $"{Zemlja.ZemljaID}, {Korisnik.KorisnikID}";
         [Browsable(false)]
+        public string VrednostZaUpdate => null;
+        [Browsable(false)]
         public string KriterijumiZaPretragu => $"DestinacijaID = {DestinacijaID}";
         [Browsable(false)]
         public string PrimarniKljuc => "DestinacijaID";
         [Browsable(false)]
-        public IDictionary Kriterijumi { get; set; }
+        public IDictionary Kriterijumi { get; set; }        
 
         public List<IDomenskiObjekat> VratiListu(SqlDataReader reader)
         {

@@ -100,11 +100,11 @@ namespace BrokerBazePodataka
             return rezultat;
         }
 
-        public object AzurirajBrojPutnika(IDomenskiObjekat objekat)
+        public object Azuriraj(IDomenskiObjekat objekat)
         {
             SqlCommand command = new SqlCommand("", konekcija, transakcija);
-            command.CommandText = $"UPDATE {objekat.NazivTabele} SET BrojPutnika = " +
-                $"BrojPutnika - 1 WHERE {objekat.KriterijumiZaPretragu}";
+            command.CommandText = $"UPDATE {objekat.NazivTabele} SET {objekat.VrednostZaUpdate} " +
+                $"WHERE {objekat.KriterijumiZaPretragu}";
             object rez = command.ExecuteNonQuery();
             return rez;
         }

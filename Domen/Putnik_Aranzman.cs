@@ -39,17 +39,23 @@ namespace Domen
 
         public string VrednostiZaInsert => $"'{JMBG}', {AranzmanID}, '{DatumRezervacije}'";
 
+        public string VrednostZaUpdate => null;
+
         public string KriterijumiZaPretragu
         {
             get
             {
-                if (AranzmanID != 0)
+                if (AranzmanID != 0 && JMBG == null)
                 {
                     return $"AranzmanID = {AranzmanID}";
                 }
-                else
+                else if (AranzmanID == 0 && JMBG != null)
                 {
                     return $"JMBG = '{JMBG}'";
+                }
+                else
+                {
+                    return $"AranzmanID = {AranzmanID} AND JMBG = '{JMBG}'";
                 }
             }
         }

@@ -55,7 +55,7 @@ namespace Domen
 
         public string VrednostiZaInsert => $"{korisnikID}, '{Ime}', '{Prezime}', '{Email}', " +
             $"'{Sifra}";
-
+        public string VrednostZaUpdate => null;
         public string KriterijumiZaPretragu
         {
             get

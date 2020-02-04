@@ -39,12 +39,12 @@ namespace KKI
                 Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiSve, new Destinacija());
                 List<Destinacija> listaDest = (odg.Objekat as List<IDomenskiObjekat>).Cast<Destinacija>().ToList(); 
 
+                cmb.DataSource = listaDest;
+                
                 if (listaDest != null && listaDest.Count == 0)
                 {
                     throw new Exception("Neuspesno ucitavanje destinacija");
                 }
-
-                cmb.DataSource = listaDest;                
             }
             catch (Exception exc)
             {
@@ -59,12 +59,12 @@ namespace KKI
                 Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiSve, new Destinacija());
                 List<Destinacija> listaDest = (odg.Objekat as List<IDomenskiObjekat>).Cast<Destinacija>().ToList();
 
+                dgvDestinacije.DataSource = listaDest;
+
                 if (listaDest != null && listaDest.Count == 0)
                 {
                     throw new Exception("Neuspesno ucitavanje destinacija!");
                 }
-
-                dgvDestinacije.DataSource = listaDest;
             }
             catch (Exception exc)
             {
@@ -79,12 +79,12 @@ namespace KKI
                 Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiSve, new Zemlja());
                 List<Zemlja> listaZem = (odg.Objekat as List<IDomenskiObjekat>).Cast<Zemlja>().ToList();
 
+                cmb.DataSource = listaZem;
+
                 if (listaZem != null && listaZem.Count == 0)
                 {
                     throw new Exception("Neuspesno ucitavanje zemalja!");
                 }
-
-                cmb.DataSource = listaZem;
             }
             catch (Exception exc)
             {
@@ -122,12 +122,14 @@ namespace KKI
             Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiFiltrirano, d);
             List<Destinacija> listaDest = (odg.Objekat as List<IDomenskiObjekat>).Cast<Destinacija>().ToList();
 
+            dgvDestinacije.DataSource = listaDest;
+
             if (listaDest != null && listaDest.Count == 0)
             {
                 throw new Exception("Nije pronadjena nijedna destinacija koji zadovoljava kriterijume!");
             }
 
-            dgvDestinacije.DataSource = listaDest;
+
         }
 
         public string SacuvajDestinaciju(ComboBox cmbZemlja, string nazivGrada)

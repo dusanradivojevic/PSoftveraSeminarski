@@ -101,14 +101,19 @@ namespace Domen
         [Browsable(false)]
         public string VrednostiZaInsert => $"{AranzmanID}, '{NazivAranzmana}', '{OpisAranzmana}'," +
             $" {Cena}, '{Datum}', {ukupanBrojMesta}, {BrojPutnika}, {brojSlobodnihMesta}," +
-            $" {Destinacija.DestinacijaID}, {Korisnik.KorisnikID}"; 
-
+            $" {Destinacija.DestinacijaID}, {Korisnik.KorisnikID}";
         [Browsable(false)]
+        public string VrednostZaUpdate => $"NazivAranzmana = '{NazivAranzmana}', " +
+            $"OpisAranzmana = '{OpisAranzmana}', Cena = {Cena}, Datum = '{Datum}', " +
+            $"UkupanBrojMesta = {UkupanBrMesta}, BrojPutnika = {BrojPutnika}, " +
+            $"BrojSlobodnihMesta = {BrSlobodnihMesta}, DestinacijaID = {Destinacija.DestinacijaID}";
+        [Browsable(false)]         
         public string KriterijumiZaPretragu => $"AranzmanID = {AranzmanID}";
         [Browsable(false)]
         public string PrimarniKljuc => "AranzmanID";
         [Browsable(false)]
         public IDictionary Kriterijumi { get; set; }
+        
 
         public override string ToString()
         {

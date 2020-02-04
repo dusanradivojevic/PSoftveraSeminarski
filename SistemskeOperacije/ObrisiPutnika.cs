@@ -17,12 +17,18 @@ namespace SistemskeOperacije
             {
                 Putnik_Aranzman pa = new Putnik_Aranzman();
                 pa.JMBG = ((Putnik)objekat).JMBG;
-                pa = broker.Pronadji(pa)[0] as Putnik_Aranzman;
-                broker.Obrisi(pa);
 
-                Aranzman a = new Aranzman();
-                a.AranzmanID = pa.AranzmanID;
-                broker.AzurirajBrojPutnika(a);
+                if(broker.Pronadji(pa).Count > 0)
+                {
+                    pa = broker.Pronadji(pa)[0] as Putnik_Aranzman;
+                    broker.Obrisi(pa);
+
+                    Aranzman a = new Aranzman();
+                    a.AranzmanID = pa.AranzmanID;
+                    a = broker.Pronadji(a)[0] as Aranzman;
+                    a.BrojPutnika -= 1;
+                    broker.Azuriraj(a);
+                }   
 
                 Obrisan = true;
             }

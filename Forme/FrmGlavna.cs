@@ -50,9 +50,16 @@ namespace Forme
             PostaviKorisnika();
             UcitajAranzmane();
             
-            dgvAranzmaniPretraga.AutoSizeColumnsMode =
-                DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvAranzmaniPretraga.Columns[2].Width = 60;
+            //dgvAranzmaniPretraga.AutoSizeColumnsMode =
+            //    DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvAranzmaniPretraga.Columns[1].Width = 120; // Naziv
+            dgvAranzmaniPretraga.Columns[2].Width = 200; // Opis
+            dgvAranzmaniPretraga.Columns[3].Width = 50; // Cena
+            dgvAranzmaniPretraga.Columns[5].Width = 50; // Uk br mesta
+            dgvAranzmaniPretraga.Columns[6].Width = 50; // Br putnika
+            dgvAranzmaniPretraga.Columns[7].Width = 50; // Br slb mesta
+            dgvAranzmaniPretraga.Columns[8].Width = 200; // Destinacija
+            dgvAranzmaniPretraga.Columns[9].Width = 200; // Korisnik
             dgvAranzmaniPretraga.Columns[0].Visible = false; //ID
         }
 

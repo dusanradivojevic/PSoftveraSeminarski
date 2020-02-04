@@ -12,6 +12,7 @@ namespace Domen
     {
         string NazivTabele { get; }
         string VrednostiZaInsert { get; }
+        string VrednostZaUpdate { get; }
         string KriterijumiZaPretragu { get; }
         string PrimarniKljuc { get; } 
         IDictionary Kriterijumi { get; set; }
