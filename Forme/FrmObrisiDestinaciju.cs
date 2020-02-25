@@ -37,7 +37,7 @@ namespace Forme
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -71,25 +71,25 @@ namespace Forme
 
             if (redovi.Count == 0)
             {
-                MessageBox.Show("Izaberite destinacije koje zelite da obrisete!");
+                MessageBox.Show("Izaberite destinacije koje zelite da obrisete!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             DialogResult rez = MessageBox.Show("Da li ste sigurni da zelite da obrisete izabrane" +
-                " destinacije?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                " destinacije?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (rez == DialogResult.Cancel)
                 return;
 
             try
             {
                 string poruka = KkiDestinacija.Instance.ObrisiDestinaciju(redovi);
-                MessageBox.Show(poruka);
+                MessageBox.Show(poruka, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 UcitajSveDestinacije();
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -101,7 +101,7 @@ namespace Forme
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -423,7 +423,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmDetaljiAranzmana";
-            this.Text = "FrmDetaljiAranzmana";
+            this.Text = "Detalji aranzmana";
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSviPutnici)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIzabraniPutnici)).EndInit();

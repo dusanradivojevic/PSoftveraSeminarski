@@ -32,14 +32,14 @@ namespace Forme
 
                 string poruka = KkiGlavna.Instance.Prijava(txtKorisnickoIme.Text, txtSifra.Text);
 
-                MessageBox.Show(poruka);
+                MessageBox.Show(poruka, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 FrmGlavna forma = new FrmGlavna(this);
                 forma.ShowDialog();
             }
             catch(Exception exc)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -84,5 +84,6 @@ namespace Forme
                 btnPrijaviSe.Enabled = true;
             }
         }
+
     }
 }

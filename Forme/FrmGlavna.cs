@@ -55,11 +55,11 @@ namespace Forme
             dgvAranzmaniPretraga.Columns[1].Width = 120; // Naziv
             dgvAranzmaniPretraga.Columns[2].Width = 200; // Opis
             dgvAranzmaniPretraga.Columns[3].Width = 50; // Cena
-            dgvAranzmaniPretraga.Columns[5].Width = 50; // Uk br mesta
-            dgvAranzmaniPretraga.Columns[6].Width = 50; // Br putnika
-            dgvAranzmaniPretraga.Columns[7].Width = 50; // Br slb mesta
-            dgvAranzmaniPretraga.Columns[8].Width = 200; // Destinacija
-            dgvAranzmaniPretraga.Columns[9].Width = 200; // Korisnik
+            dgvAranzmaniPretraga.Columns[5].Width = 110; // Uk br mesta
+            dgvAranzmaniPretraga.Columns[6].Width = 110; // Br putnika
+            dgvAranzmaniPretraga.Columns[7].Width = 110; // Br slb mesta
+            dgvAranzmaniPretraga.Columns[8].Width = 160; // Destinacija
+            dgvAranzmaniPretraga.Columns[9].Width = 160; // Korisnik
             dgvAranzmaniPretraga.Columns[0].Visible = false; //ID
         }
 
@@ -71,7 +71,7 @@ namespace Forme
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -82,9 +82,16 @@ namespace Forme
 
         private void odjaviSeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Sesija.Instance.OdjaviKorisnika();
-            MessageBox.Show("Uspesno ste se odjavili sa sistema!");
-            frmPrijava.Dispose();            
+            try
+            {
+                Sesija.Instance.OdjaviKorisnika();
+                MessageBox.Show("Uspešno ste se odjavili sa sistema!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                frmPrijava.Dispose();            
+            }
+            catch
+            {
+                MessageBox.Show("Neuspešno odjavljivanje sa sistema!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnPrikaziDetalje_Click(object sender, EventArgs e)
@@ -100,7 +107,7 @@ namespace Forme
                 }
                 catch (Exception exc)
                 {
-                    MessageBox.Show(exc.Message);
+                    MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -130,19 +137,19 @@ namespace Forme
                     }
                     catch (Exception exc)
                     {
-                        MessageBox.Show(exc.Message);
+                        MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                     PokreniFrmDetalji(((Button)sender).Text);
                 }
                 else
                 {
-                    MessageBox.Show("Morate izabrati tacno jedan red!");
+                    MessageBox.Show("Morate izabrati tacno jedan red!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else
             {
-                MessageBox.Show("Morate izabrati tacno jedan red!");
+                MessageBox.Show("Morate izabrati tacno jedan red!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             UcitajAranzmane(); // Refresh
@@ -158,6 +165,7 @@ namespace Forme
             }
 
             frmDetalji.ShowDialog();
+            btnOcisti_Click(null, null);
         }
 
         private void btnDodaj_Click(object sender, EventArgs e)
@@ -183,7 +191,7 @@ namespace Forme
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);               
             }
         }
 
@@ -226,25 +234,25 @@ namespace Forme
 
             if (redovi.Count == 0)
             {
-                MessageBox.Show("Izaberite aranzmane koje zelite da obrisete!");
+                MessageBox.Show("Izaberite aranzmane koje zelite da obrisete!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             DialogResult rez = MessageBox.Show("Da li ste sigurni da zelite da obrisete izabrane" +
-                " aranzmane?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                " aranzmane?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (rez == DialogResult.Cancel)
                 return;
 
             try
             {
                 string poruka = KkiAranzman.Instance.ObrisiAranzmane(redovi);
-                MessageBox.Show(poruka);
+                MessageBox.Show(poruka, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 UcitajAranzmane();
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }            
         }
 
@@ -261,7 +269,7 @@ namespace Forme
         private void FrmGlavna_FormClosing(object sender, FormClosingEventArgs e)
         {
             Sesija.Instance.OdjaviKorisnika();
-            MessageBox.Show("Dovidjenja!");
+            MessageBox.Show("Dovidjenja!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             frmPrijava.Dispose();
         }
 

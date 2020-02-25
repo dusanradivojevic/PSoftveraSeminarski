@@ -28,7 +28,7 @@ namespace Forme
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             txtKorisnik.Text = Sesija.Instance.VratiKorisnikaToString();
         }
@@ -59,12 +59,12 @@ namespace Forme
                     rtbOpis.Text, txtCena.Text, dtpDatum.Value, txtUkBrMesta.Text, 
                     txtBrojPutnika.Text, txtBrSlbMesta.Text, cmbDestinacija);
 
-                MessageBox.Show(poruka);
+                MessageBox.Show(poruka, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Dispose();
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }              
         }
     }

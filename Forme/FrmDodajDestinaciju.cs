@@ -27,7 +27,7 @@ namespace Forme
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             txtKorisnik.Text = Sesija.Instance.VratiKorisnikaToString();
         }
@@ -37,12 +37,12 @@ namespace Forme
             try
             {
                 string poruka = KkiDestinacija.Instance.SacuvajDestinaciju(cmbZemlja, txtNazivGrada.Text);
-                MessageBox.Show(poruka);
+                MessageBox.Show(poruka, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Dispose();
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

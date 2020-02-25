@@ -150,7 +150,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmDodajDestinaciju";
-            this.Text = "Dodavanje destinacije";
+            this.Text = "Unos destinacije";
             this.ResumeLayout(false);
             this.PerformLayout();
 

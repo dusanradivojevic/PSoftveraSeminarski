@@ -79,10 +79,11 @@ namespace KKI
 
                 dgvSviPutnici.DataSource = listaPutnika;
 
-                if (listaPutnika != null && listaPutnika.Count == 0)
-                {
-                    throw new Exception("Neuspesno ucitavanje putnika!");
-                }
+                //if (listaPutnika != null && listaPutnika.Count == 0)
+                //{
+                //    //throw new Exception("Neuspesno ucitavanje putnika!");
+                //    throw new Exception(odg.Poruka);
+                //}
             }
             catch (Exception exc)
             {
@@ -127,7 +128,7 @@ namespace KKI
 
             if (listaPutnika != null && listaPutnika.Count == 0)
             {
-                throw new Exception("Nije pronadjen nijedan putnik koji zadovoljava kriterijume!");
+                throw new Exception("Nije pronadjen nijedan putnik koji zadovoljava kriterijume!");               
             }
         }
     }

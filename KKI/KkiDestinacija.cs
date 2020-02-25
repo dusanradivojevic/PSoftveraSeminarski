@@ -41,10 +41,11 @@ namespace KKI
 
                 cmb.DataSource = listaDest;
                 
-                if (listaDest != null && listaDest.Count == 0)
-                {
-                    throw new Exception("Neuspesno ucitavanje destinacija");
-                }
+                //if (listaDest != null && listaDest.Count == 0)
+                //{
+                //    throw new Exception("Neuspesno ucitavanje destinacija");
+                //    throw new Exception(odg.Poruka);
+                //}
             }
             catch (Exception exc)
             {
@@ -61,10 +62,11 @@ namespace KKI
 
                 dgvDestinacije.DataSource = listaDest;
 
-                if (listaDest != null && listaDest.Count == 0)
-                {
-                    throw new Exception("Neuspesno ucitavanje destinacija!");
-                }
+                //if (listaDest != null && listaDest.Count == 0)
+                //{
+                //    //throw new Exception("Neuspesno ucitavanje destinacija!");
+                //    throw new Exception(odg.Poruka);
+                //}
             }
             catch (Exception exc)
             {
@@ -81,10 +83,11 @@ namespace KKI
 
                 cmb.DataSource = listaZem;
 
-                if (listaZem != null && listaZem.Count == 0)
-                {
-                    throw new Exception("Neuspesno ucitavanje zemalja!");
-                }
+                //if (listaZem != null && listaZem.Count == 0)
+                //{
+                //    //throw new Exception("Neuspesno ucitavanje zemalja!");
+                //    throw new Exception(odg.Poruka);
+                //}
             }
             catch (Exception exc)
             {
@@ -126,10 +129,8 @@ namespace KKI
 
             if (listaDest != null && listaDest.Count == 0)
             {
-                throw new Exception("Nije pronadjena nijedna destinacija koji zadovoljava kriterijume!");
+                //throw new Exception("Nije pronadjena nijedna destinacija koji zadovoljava kriterijume!");
             }
-
-
         }
 
         public string SacuvajDestinaciju(ComboBox cmbZemlja, string nazivGrada)

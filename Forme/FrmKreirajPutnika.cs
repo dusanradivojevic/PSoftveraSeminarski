@@ -37,13 +37,13 @@ namespace Forme
             {
                 string poruka = KkiPutnik.Instance.KreirajPutnika(txtJmbg.Text, txtIme.Text,
                     txtPrezime.Text, txtDatumDodavanja.Text);
-                MessageBox.Show(poruka);
+                MessageBox.Show(poruka, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Dispose();
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message);
-            }            
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void txtJmbg_KeyDown(object sender, KeyEventArgs e)

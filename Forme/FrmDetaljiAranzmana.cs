@@ -30,9 +30,9 @@ namespace Forme
                 KkiAranzman.Instance.PostaviPutnikeZaAranzman(dgvIzabraniPutnici);
                 IzmeniBrojeveVezaneZaPutnike();
             }
-            catch (Exception e)
+            catch (Exception exc)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             UcitajSvePutnike();
@@ -44,9 +44,9 @@ namespace Forme
             {
                 KkiAranzman.Instance.PostaviSvePutnike(dgvSviPutnici);         
             }
-            catch (Exception e)
+            catch (Exception exc)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -84,7 +84,7 @@ namespace Forme
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             IzmeniBrojeveVezaneZaPutnike();
@@ -114,7 +114,7 @@ namespace Forme
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -147,7 +147,7 @@ namespace Forme
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             IzmeniBrojeveVezaneZaPutnike();
@@ -181,7 +181,7 @@ namespace Forme
                 return;
 
             DialogResult rez = MessageBox.Show("Da li ste sigurni da zelite da sacuvate izmene?", 
-                "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (rez == DialogResult.Cancel)
                 return;
 
@@ -199,14 +199,14 @@ namespace Forme
 
                 string poruka = KkiAranzman.Instance.SacuvajAranzmanSlozen(txtID.Text, txtNazivAranzmana.Text, rtbOpis.Text,
                 txtCena.Text, datum, txtUkBrMesta.Text, txtBrojPutnika.Text, txtBrSlbMesta.Text, 
-                cmbDestinacija); 
+                cmbDestinacija);
 
-                MessageBox.Show(poruka);
+                MessageBox.Show(poruka, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Dispose();
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }            
         }
 

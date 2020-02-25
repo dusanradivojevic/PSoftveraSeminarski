@@ -35,7 +35,7 @@ namespace Forme
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -45,14 +45,14 @@ namespace Forme
             {
                 string poruka = KkiPutnik.Instance.KreirajPutnika(txtJmbg.Text, txtIme.Text,
                     txtPrezime.Text, txtDatumDodavanja.Text);
-                MessageBox.Show(poruka);
+                MessageBox.Show(poruka, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 UcitajSvePutnike();
                 OcistiFormu();
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -88,26 +88,27 @@ namespace Forme
 
             if (redovi.Count == 0)
             {
-                MessageBox.Show("Izaberite putnike koje zelite da obrisete!");
+                MessageBox.Show("Izaberite putnike koje zelite da obrisete!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             DialogResult rez = MessageBox.Show("Da li ste sigurni da zelite da obrisete izabrane" +
-                " putnike?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                " putnike?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (rez == DialogResult.Cancel)
                 return;
 
             try
             {
                 string poruka = KkiPutnik.Instance.ObrisiPutnike(redovi);
-                MessageBox.Show(poruka);
-
+                MessageBox.Show(poruka, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
                 UcitajSvePutnike();
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message);
-            }            
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
 
         private void btnPretrazi_Click(object sender, EventArgs e)
@@ -119,8 +120,8 @@ namespace Forme
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message);
-            }            
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void txtJmbg_KeyDown(object sender, KeyEventArgs e)

@@ -316,7 +316,7 @@
             this.Controls.Add(this.grp1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmUpravljanjePutnicima";
-            this.Text = "FrmUpravljanjePutnicima";
+            this.Text = "Upravljanje putnicima";
             this.grp1.ResumeLayout(false);
             this.grp1.PerformLayout();
             this.groupBox1.ResumeLayout(false);

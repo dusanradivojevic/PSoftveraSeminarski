@@ -39,7 +39,7 @@
             // btnPrijaviSe
             // 
             this.btnPrijaviSe.Enabled = false;
-            this.btnPrijaviSe.Location = new System.Drawing.Point(198, 159);
+            this.btnPrijaviSe.Location = new System.Drawing.Point(142, 151);
             this.btnPrijaviSe.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrijaviSe.Name = "btnPrijaviSe";
             this.btnPrijaviSe.Size = new System.Drawing.Size(126, 36);
@@ -50,7 +50,7 @@
             // 
             // txtKorisnickoIme
             // 
-            this.txtKorisnickoIme.Location = new System.Drawing.Point(151, 36);
+            this.txtKorisnickoIme.Location = new System.Drawing.Point(98, 36);
             this.txtKorisnickoIme.Margin = new System.Windows.Forms.Padding(4);
             this.txtKorisnickoIme.Name = "txtKorisnickoIme";
             this.txtKorisnickoIme.Size = new System.Drawing.Size(226, 24);
@@ -61,7 +61,7 @@
             // 
             // txtSifra
             // 
-            this.txtSifra.Location = new System.Drawing.Point(151, 105);
+            this.txtSifra.Location = new System.Drawing.Point(98, 105);
             this.txtSifra.Margin = new System.Windows.Forms.Padding(4);
             this.txtSifra.Name = "txtSifra";
             this.txtSifra.PasswordChar = '*';
@@ -77,9 +77,9 @@
             this.label1.Location = new System.Drawing.Point(13, 39);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 18);
+            this.label1.Size = new System.Drawing.Size(54, 18);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Korisnicko ime:";
+            this.label1.Text = "E-mail:";
             // 
             // label2
             // 
@@ -96,7 +96,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 215);
+            this.ClientSize = new System.Drawing.Size(363, 202);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSifra);

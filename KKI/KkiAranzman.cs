@@ -120,14 +120,15 @@ namespace KKI
             try
             {
                 Odgovor odg = Komunikacija.Instance.KreirajZahtev(Operacija.VratiSve, new Aranzman());
+
                 List<Aranzman> listaAran = (odg.Objekat as List<IDomenskiObjekat>).Cast<Aranzman>().ToList();
 
                 dgvAranzmaniPretraga.DataSource = listaAran;
 
-                if (listaAran != null && listaAran.Count == 0)
-                {
-                    throw new Exception("Neuspesno ucitavanje aranzmana!");
-                }
+                //if (listaAran != null && listaAran.Count == 0)
+                //{
+                //    throw new Exception("Neuspesno ucitavanje aranzmana!");
+                //}
             }
             catch (Exception exc)
             {
@@ -155,7 +156,7 @@ namespace KKI
 
             if (listaAranzmana != null && listaAranzmana.Count == 0)
             {
-                throw new Exception("Nije pronadjen nijedan aranzman koji zadovoljava kriterijume!");
+                throw new Exception("U sistemu ne postoje aranžmani sa takvim vrednostima!");
             }
         }
 
