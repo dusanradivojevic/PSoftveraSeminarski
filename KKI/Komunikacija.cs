@@ -42,6 +42,7 @@ namespace KKI
                     klijentskiSoket.Connect("localhost", 17510);
                     tok = new NetworkStream(klijentskiSoket);
                 }
+
                 return true;
             }
             catch (SocketException e)

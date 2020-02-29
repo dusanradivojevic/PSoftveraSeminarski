@@ -268,7 +268,7 @@ namespace Server
         {
             Odgovor odg = new Odgovor();
             if (objekat is IDomenskiObjekat &&
-                Kontroler.Kontroler.Instance.SacuvajAranzmanSlozen(objekat as IDomenskiObjekat))
+                Kontroler.Kontroler.Instance.UnosPutnikaSlozen(objekat as IDomenskiObjekat))
             {
                 odg.Poruka = "Sistem je zapamtio podatke!";
                 odg.Status = Status.OK;

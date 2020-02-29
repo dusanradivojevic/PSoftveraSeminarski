@@ -21,12 +21,19 @@ namespace Forme
 
         private void SrediFormu()
         {
-            UcitajSveDestinacije();
+            try
+            {
+                UcitajSveDestinacije();
 
-            dgvDestinacije.AutoSizeColumnsMode =
-                DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvDestinacije.Columns[2].Width = 80;
-            dgvDestinacije.Columns[0].Visible = false;
+                dgvDestinacije.AutoSizeColumnsMode =
+                    DataGridViewAutoSizeColumnsMode.AllCells;
+                dgvDestinacije.Columns[2].Width = 80;
+                dgvDestinacije.Columns[0].Visible = false;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void UcitajSveDestinacije()
@@ -37,7 +44,8 @@ namespace Forme
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw exc;
+                //MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

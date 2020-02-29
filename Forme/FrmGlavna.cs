@@ -12,11 +12,12 @@ using System.Windows.Forms;
 
 namespace Forme
 {
-    public partial class FrmGlavna : Form
+    public partial class FrmGlavna : Form, IDomenskaForma
     {
         private FrmPrijava frmPrijava;
         public FrmGlavna(FrmPrijava frmPrijava)
         {
+            KkiAranzman.Instance.forma = this; //treba i za sve ostale kki koji se koriste
             this.frmPrijava = frmPrijava;
             InitializeComponent();
             SrediFormu();
@@ -47,20 +48,27 @@ namespace Forme
 
         private void SrediFormu()
         {
-            PostaviKorisnika();
-            UcitajAranzmane();
+            try
+            {
+                PostaviKorisnika();
+                UcitajAranzmane();
             
-            //dgvAranzmaniPretraga.AutoSizeColumnsMode =
-            //    DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvAranzmaniPretraga.Columns[1].Width = 120; // Naziv
-            dgvAranzmaniPretraga.Columns[2].Width = 200; // Opis
-            dgvAranzmaniPretraga.Columns[3].Width = 50; // Cena
-            dgvAranzmaniPretraga.Columns[5].Width = 110; // Uk br mesta
-            dgvAranzmaniPretraga.Columns[6].Width = 110; // Br putnika
-            dgvAranzmaniPretraga.Columns[7].Width = 110; // Br slb mesta
-            dgvAranzmaniPretraga.Columns[8].Width = 160; // Destinacija
-            dgvAranzmaniPretraga.Columns[9].Width = 160; // Korisnik
-            dgvAranzmaniPretraga.Columns[0].Visible = false; //ID
+                //dgvAranzmaniPretraga.AutoSizeColumnsMode =
+                //    DataGridViewAutoSizeColumnsMode.AllCells;
+                dgvAranzmaniPretraga.Columns[1].Width = 120; // Naziv
+                dgvAranzmaniPretraga.Columns[2].Width = 200; // Opis
+                dgvAranzmaniPretraga.Columns[3].Width = 50; // Cena
+                dgvAranzmaniPretraga.Columns[5].Width = 110; // Uk br mesta
+                dgvAranzmaniPretraga.Columns[6].Width = 110; // Br putnika
+                dgvAranzmaniPretraga.Columns[7].Width = 110; // Br slb mesta
+                dgvAranzmaniPretraga.Columns[8].Width = 160; // Destinacija
+                dgvAranzmaniPretraga.Columns[9].Width = 160; // Korisnik
+                dgvAranzmaniPretraga.Columns[0].Visible = false; //ID
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void UcitajAranzmane()
@@ -176,12 +184,6 @@ namespace Forme
             UcitajAranzmane();
         }
 
-        private void dodajToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmDodajDestinaciju forma = new FrmDodajDestinaciju();
-            forma.ShowDialog();
-        }
-
         private void btnPretrazi_Click(object sender, EventArgs e)
         {
             try
@@ -202,11 +204,21 @@ namespace Forme
 
             UcitajAranzmane();
         }
+       
+        private void dodajToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmDodajDestinaciju forma = new FrmDodajDestinaciju();
+            forma.ShowDialog();
+
+            UcitajAranzmane();
+        }
 
         private void obrisiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmObrisiDestinaciju forma = new FrmObrisiDestinaciju();
             forma.ShowDialog();
+
+            UcitajAranzmane();
         }
 
         private void btnObrisi_Click(object sender, EventArgs e)
@@ -321,6 +333,15 @@ namespace Forme
             {
                 btnPrikaziDetalje_Click(sender, e);
             }
+        }
+
+        public void IspisiPoruku(string tekst)
+        {
+            Invoke(
+                new Action(() =>
+                    MessageBox.Show(tekst, "", MessageBoxButtons.OK)
+                )
+            ); 
         }
     }
     

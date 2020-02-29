@@ -210,7 +210,7 @@ namespace Kontroler
             }
         }
 
-        public bool SacuvajAranzmanSlozen(IDomenskiObjekat ido) // INSERT <-> UPDATE
+        public bool UnosPutnikaSlozen(IDomenskiObjekat ido) // INSERT <-> UPDATE
         {
             OpstaSO os = new UnosPutnikaSlozen(); // Isto sto i izmeni
             try

@@ -16,6 +16,7 @@ namespace KKI
     {
         private BindingList<Putnik> sviPutnici;
         private BindingList<Putnik> izabraniPutnici;
+        public IDomenskaForma forma;
         private Aranzman Aranzman { get; set; }
         private static KkiAranzman _instance;
         public static KkiAranzman Instance
@@ -132,6 +133,11 @@ namespace KKI
             }
             catch (Exception exc)
             {
+                if (exc.Message.Contains("prestao sa radom"))
+                {
+                    Sesija.Instance.PonovoPovezivanje(forma);
+                }
+
                 throw exc;
             }
         }

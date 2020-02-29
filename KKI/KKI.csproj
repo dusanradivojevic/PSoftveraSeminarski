@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDomenskaForma.cs" />
     <Compile Include="KkiAranzman.cs" />
     <Compile Include="KkiDestinacija.cs" />
     <Compile Include="KkiGlavna.cs" />
