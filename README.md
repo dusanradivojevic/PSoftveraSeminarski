@@ -32,8 +32,8 @@ Softverski sistem je podržan pratećom dokumentacijom.
 </ul>
 
 ## Dodatno
-Celokupnu dokumentaciju kao i slike projekata možete pogledati [ovde](Dokumentacija/).
-<br>Kratak sadržaj dokumentacije:
+Celokupnu dokumentaciju kao i slike projekta možete pogledati [ovde](Dokumentacija/).
+<br>Kratak sadržaj navedene dokumentacije:
 <ul>
   <li>Model slučajeva korišćenja</li>
   <li>Dijagram sekvenci slučajeva korišćenja</li>
