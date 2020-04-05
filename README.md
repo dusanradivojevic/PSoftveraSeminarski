@@ -32,7 +32,7 @@ Softverski sistem je podržan pratećom dokumentacijom.
 </ul>
 
 ## Dodatno
-Celokupnu dokumentaciju kao i slike projekata možete pogledati [ovde](Dokumentacija/)
+Celokupnu dokumentaciju kao i slike projekata možete pogledati [ovde](Dokumentacija/).
 <br>Kratak sadržaj dokumentacije:
 <ul>
   <li>Model slučajeva korišćenja</li>
