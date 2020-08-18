@@ -1,43 +1,44 @@
-# Turistička agencija
-Desktop aplikacija za kreiranje aranžmana za ponudu turističke agencije i unos putnika u isti.
+# Travel agency
+Desktop application not only for creating arrangements for travel agency but also for booking them.
 
-## Opis
-Softverski sistem kreiran u okviru seminarskog rada u okviru predmeta Projektovanje softvera na katedri za softversko inženjerstvo na Fakultetu organizacionih nauka. <br>Razvoj softverskog sistema sastojao se iz sledećih faza:
+## Description
+Software system is created within faculty subject at Software engineering department of Faculty of Organizational Sciences.
+<br>Development of software consisted of the following steps:
 <ol>
-<li>Prikupljanje zahteva</li>
-<li>Analiza</li>
-<li>Projektovanje</li>
-<li>Implementacija</li>
-<li>Testiranje</li>
-</ol>
-Softverski sistem je podržan pratećom dokumentacijom.
+<li>Requests collecting</li>
+<li>Requests analysis</li>
+<li>Designing</li>
+<li>Implementation</li>
+<li>Testing</li>
+</ol> 
+Software system comes with detailed documentation.
 
-## Slučajevi korišćenja
+## Use cases
 <ol>
-<li>Upravljanje korisnicima (prijava / odjava)</li>
-<li>Kreiranje, brisanje i ažuriranje aranžmana</li>
-<li>Pretraga i filtriranje aranžmana</li>
-<li>Kreiranje, brisanje i pretraga destinacija</li>
-<li>Kreiranje, brisanje i pretraga putnika</li>
-<li>Prikaz detalja aranžmana i kreiranje rezervacije između putnika i aranžmana</li>
+<li>User managment (login / logout)</li>
+<li>Creating, deleting and updating arrangements</li>
+<li>Searching and sorting of arrangements</li>
+<li>Creating, deleting and searching for destinations</li>
+<li>Creating, deleting and searching for traveler</li>
+<li>Display arrangement details and creation of reservation between traveler and arrangement</li>
 </ol>
 
-## Implementacija
+## Implementation
 <ul>
-<li>Softverski sistem je razvijen korišćenjem .NET tehnologija u Microsoft Visual Studio 2019 okruženju</li>
-<li>Korišćenje UML dijagrama u fazama planiranja</li>
-<li>Klijent-server arhitektura</li>
-<li>MVC dizajn patern</li>
-<li>Microsoft SQL Server Management Studio je korišćen za razvoj i upravljanje skladištem podataka</li>
+  <li>Software system is developed in Microsoft Visual Studio 2019 IDE using .NET technologies</li>
+  <li>UML diagrams were using through planning stages</li>
+  <li>Client-server architecture</li>
+  <li>MVC design pattern</li>
+  <li>Microsoft SQL Server Management Studio is used for database development and management.</li>
 </ul>
 
-## Dodatno
-Celokupnu dokumentaciju kao i slike projekta možete pogledati [ovde](Dokumentacija/).
-<br>Kratak sadržaj navedene dokumentacije:
+## Furthermore
+Complete documentation as well as project images can be seen [here](Dokumentacija/).
+<br>Brief content of documentation:
 <ul>
-  <li>Model slučajeva korišćenja</li>
-  <li>Dijagram sekvenci slučajeva korišćenja</li>
-  <li>Konceptualni i relacioni model sistema</li>
-  <li>Projektovanje ekranskih formi</li>
-  <li>Projektovanje skladišta podataka</li>
+  <li>Model of use cases</li>
+  <li>Sequence diagram of use cases</li>
+  <li>Conceptual and relational system modeling</li>
+  <li>GUI modeling</li>
+  <li>Database modeling</li>
 </ul>
